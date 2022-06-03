@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'animation/animation_screen.dart';
 import 'building/building_layout_screen.dart';
 
 void main() => runApp(const MyApp());
@@ -24,17 +25,35 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: const Text('flutter-tutorial'),
       ),
-      body: Center(
-        child: ElevatedButton(
-          child: const Text('Tutorial1'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const BuildLayoutScreen(),
+      body: Padding(
+        padding: const EdgeInsets.all(100.0),
+        child: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                child: const Text('Tutorial1'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BuildLayoutScreen(),
+                    ),
+                  );
+                },
               ),
-            );
-          },
+              ElevatedButton(
+                child: const Text('Tutorial1-1'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const LogoApp(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
