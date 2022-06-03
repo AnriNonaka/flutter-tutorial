@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'animation_screen.dart';
-import 'building_layout_screen.dart';
+import 'animation/animation_screen.dart';
+import 'building/building_layout_screen.dart';
 
 void main() => runApp(const MyApp());
 
