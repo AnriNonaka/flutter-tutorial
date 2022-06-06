@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/youtube/youtube_screen.dart';
 import 'animation/animation_screen.dart';
 import 'building/building_layout_screen.dart';
 
@@ -23,7 +24,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('flutter-tutorial'),
+        title: const Text('メイン画像'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(100.0),
@@ -48,6 +49,17 @@ class Home extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => const LogoApp(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('YouTube'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const YoutubeScreen(),
                     ),
                   );
                 },
