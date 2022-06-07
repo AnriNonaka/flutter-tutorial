@@ -135,15 +135,6 @@ class YoutubeScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(top: 10.0),
                 child: Column(
                   children: [
-                    Row(
-                      children: const [
-                        Text(
-                          '急上昇動画',
-                          style: TextStyle(color: Colors.white, fontSize: 25),
-                          textAlign: TextAlign.start,
-                        ),
-                      ],
-                    ),
                     Image.asset('images/動画画像.png'),
                     ListTile(
                       leading: CircleAvatar(
