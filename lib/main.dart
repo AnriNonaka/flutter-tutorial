@@ -24,7 +24,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('メイン画像'),
+        title: const Text('メイン画面'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(100.0),
@@ -59,7 +59,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const YoutubeScreen(),
+                      builder: (context) => YoutubeScreen(),
                     ),
                   );
                 },
