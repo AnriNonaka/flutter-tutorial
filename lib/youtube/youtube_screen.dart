@@ -9,7 +9,7 @@ class YoutubeScreen extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: _buildAppBar(),
       body: _buildBody(context),
-      bottomNavigationBar: _buildbottomNavigationBar(),
+      bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
 
@@ -70,7 +70,6 @@ class YoutubeScreen extends StatelessWidget {
         child: Column(
           children: [
             Wrap(
-              // //gridviewで囲ってるから、cardでsizedbox使うのは無理。これでcardの大きさを家変える。
               // 「crossAxisCount: 2」使ってたけど、wrapで囲むために_buildCategoryメソッド作った。
               alignment: WrapAlignment.start,
               children: <Widget>[
@@ -179,7 +178,7 @@ class YoutubeScreen extends StatelessWidget {
     );
   }
 
-  BottomNavigationBar _buildbottomNavigationBar() {
+  BottomNavigationBar _buildBottomNavigationBar() {
     return BottomNavigationBar(
       unselectedItemColor: Colors.white,
       selectedItemColor: Colors.white,
@@ -218,27 +217,25 @@ class YoutubeScreen extends StatelessWidget {
   Widget _buildCategory(
       BuildContext context, Color color, IconData icon, String label) {
     return SizedBox(
-      child: SizedBox(
-        //カードを2個に並べる「crossAxisCount: 2」じゃないやり方
-        width: (MediaQuery.of(context).size.width - 16) / 2,
-        child: Card(
-          color: color,
-          //cardの中のアイコンとTextを中央・左端にやる時は、Rowを使ったらできた
-          child: Row(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Icon(
-                  icon,
-                  color: Colors.white,
-                ),
+      //カードを2個に並べる「crossAxisCount: 2」じゃないやり方
+      width: (MediaQuery.of(context).size.width - 16) / 2,
+      child: Card(
+        color: color,
+        //cardの中のアイコンとTextを中央・左端にやる時は、Rowを使ったらできた
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Icon(
+                icon,
+                color: Colors.white,
               ),
-              Text(
-                label,
-                style: const TextStyle(color: Colors.white),
-              ),
-            ],
-          ),
+            ),
+            Text(
+              label,
+              style: const TextStyle(color: Colors.white),
+            ),
+          ],
         ),
       ),
     );
