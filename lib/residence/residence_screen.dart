@@ -23,9 +23,15 @@ class ResidenceScreen extends StatelessWidget {
               children: const [
                 Padding(
                   padding: EdgeInsets.only(top: 5.0),
-                  child: Icon(Icons.search,size: 25,),
+                  child: Icon(
+                    Icons.search,
+                    size: 25,
+                  ),
                 ),
-                Text('物件',style: TextStyle(fontSize: 10),),
+                Text(
+                  '物件',
+                  style: TextStyle(fontSize: 10),
+                ),
               ],
             ),
           ), //テキスト//アイコン
@@ -36,30 +42,34 @@ class ResidenceScreen extends StatelessWidget {
 
   Widget _buildBody(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-        color: Colors.yellow[50],
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 40),
-              child: Material(
+      //SafeAreaで囲ってあげるとpadding:を設定しなくてもいい感じにしてくれる
+      child: SafeArea(
+        child: Container(
+          color: const Color.fromRGBO(249, 248, 246, 0.5),
+          child: Column(
+            children: [
+              Material(
                 elevation: 6.0,
                 child: Row(
                   children: [
                     const Padding(
                       padding: EdgeInsets.only(left: 8, bottom: 3, right: 7),
                       child: Chip(
-                        label: Text('カウルのおすすめ',
-                            style: TextStyle(color: Colors.teal,fontWeight: FontWeight.w700)),
+                        label: Text(
+                          'カウルのおすすめ',
+                          style: TextStyle(
+                              color: Colors.teal, fontWeight: FontWeight.w700),
+                        ),
                       ),
                     ),
                     Badge(
-                      badgeContent: const Text('1',
-                          style: TextStyle(color: Colors.white)),
+                      badgeContent: const Text(
+                        '1',
+                        style: TextStyle(color: Colors.white),
+                      ),
                       position: BadgePosition.topEnd(top: -4, end: -4),
                       child: const Chip(
-                        label: Text(
-                            style: TextStyle(fontWeight: FontWeight.w700), 'リフォーム済み'),
+                        label: Text('リフォーム済みの'),
                       ),
                     ),
                     const Spacer(), //間をあけれる
@@ -74,63 +84,168 @@ class ResidenceScreen extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 10),
-              child: Column(
-                children: [
-                  Card(
-                    elevation: 3,
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 12),
-                          child: Row(
-                            children: const [
-                              Padding(
-                                padding: EdgeInsets.only(left: 20.0),
-                                child: Text('カウルのおすすめ    ',
+              Padding(
+                padding: const EdgeInsets.only(top: 10),
+                child: Column(
+                  children: [
+                    Card(
+                      elevation: 3,
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 12),
+                            child: Row(
+                              children: const [
+                                Padding(
+                                  padding: EdgeInsets.only(left: 20.0),
+                                  child: Text(
+                                    'カウルのおすすめ    ',
                                     style:
-                                        TextStyle(fontWeight: FontWeight.w900)),
-                              ),
-                              Text('新着3件',
+                                        TextStyle(fontWeight: FontWeight.w900),
+                                  ),
+                                ),
+                                Text(
+                                  '新着3件',
                                   style: TextStyle(
                                       color: Colors.deepOrange,
                                       fontSize: 12,
-                                      fontWeight: FontWeight.bold)),
-                              Spacer(),
-                              Padding(
-                                padding: EdgeInsets.only(right: 5.0),
-                                child: Text(
-                                  '編集',
-                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Spacer(),
+                                Padding(
+                                  padding: EdgeInsets.only(right: 5.0),
+                                  child: Text(
+                                    '編集',
+                                    style: TextStyle(
+                                      color: Colors.teal,
+                                      fontSize: 13,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsets.only(right: 20.0),
+                                  child: Icon(
+                                    Icons.edit,
                                     color: Colors.teal,
-                                    fontSize: 13,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(3.0),
+                            child: Card(
+                              elevation: 0,
+                              color: const Color.fromRGBO(249, 248, 246, 0.5),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: const [
+                                          Padding(
+                                            padding:
+                                                EdgeInsets.only(right: 5.0),
+                                            child: Icon(
+                                              Icons.train,
+                                              size: 16,
+                                            ),
+                                          ),
+                                          Text(
+                                            '東京駅・品川駅・川崎駅・横浜駅・目黒駅・恵比寿駅・渋谷駅・',
+                                            style: TextStyle(fontSize: 10.7),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: const [
+                                          Padding(
+                                            padding:
+                                                EdgeInsets.only(right: 5.0),
+                                            child: Icon(
+                                              Icons.paid,
+                                              size: 16,
+                                            ),
+                                          ),
+                                          Text(
+                                            '下限なし 〜2,000万円',
+                                            style: TextStyle(fontSize: 10.7),
+                                          ),
+                                        ],
+                                      ),
+                                      Row(
+                                        children: const [
+                                          Padding(
+                                            padding:
+                                                EdgeInsets.only(right: 5.0),
+                                            child: Icon(
+                                              Icons.error_outline,
+                                              size: 16,
+                                            ),
+                                          ),
+                                          Text(
+                                            '1R 〜 4LDK/10㎡以上/徒歩20分',
+                                            style: TextStyle(fontSize: 10.7),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: EdgeInsets.only(right: 20.0),
-                                child: Icon(
-                                  Icons.edit,
-                                  color: Colors.teal,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(3.0),
-                          child: Card(
-                            elevation: 0,
-                            color: Colors.yellow[50],
-                            child: Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4.0),
+                      child: Card(
+                        elevation: 3,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: double.infinity,
+                              child: Image.asset(
+                                'images/物件写真.png',
+                                fit: BoxFit.contain,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Card(
+                                elevation: 0,
                                 child: Column(
                                   children: [
+                                    Row(
+                                      children: const [
+                                        Text(
+                                          'Rising place川崎',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 6.0),
+                                      child: Row(
+                                        children: const [
+                                          Text(
+                                            '2,000万円',
+                                            style: TextStyle(
+                                                color: Colors.deepOrange,
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                     Row(
                                       children: const [
                                         Padding(
@@ -141,8 +256,8 @@ class ResidenceScreen extends StatelessWidget {
                                           ),
                                         ),
                                         Text(
-                                          '東京駅・品川駅・川崎駅・横浜駅・目黒駅・恵比寿駅・渋谷駅・',
-                                          style: TextStyle(fontSize: 10.7),
+                                          '京急本線 京急川崎駅 より 徒歩9分',
+                                          style: TextStyle(fontSize: 11),
                                         ),
                                       ],
                                     ),
@@ -151,13 +266,13 @@ class ResidenceScreen extends StatelessWidget {
                                         Padding(
                                           padding: EdgeInsets.only(right: 5.0),
                                           child: Icon(
-                                            Icons.paid,
+                                            Icons.house,
                                             size: 16,
                                           ),
                                         ),
                                         Text(
-                                          '下限なし 〜2,000万円',
-                                          style: TextStyle(fontSize: 10.7),
+                                          '1K / 21.24㎡ 南西向き',
+                                          style: TextStyle(fontSize: 11),
                                         ),
                                       ],
                                     ),
@@ -166,13 +281,13 @@ class ResidenceScreen extends StatelessWidget {
                                         Padding(
                                           padding: EdgeInsets.only(right: 5.0),
                                           child: Icon(
-                                            Icons.error_outline,
+                                            Icons.apartment,
                                             size: 16,
                                           ),
                                         ),
                                         Text(
-                                          '1R 〜 4LDK/10㎡以上/徒歩20分',
-                                          style: TextStyle(fontSize: 10.7),
+                                          '2階/15年建 築5年',
+                                          style: TextStyle(fontSize: 11),
                                         ),
                                       ],
                                     ),
@@ -180,108 +295,13 @@ class ResidenceScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4.0),
-                    child: Card(
-                      elevation: 3,
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            width: double.infinity,
-                            child: Image.asset(
-                              'images/物件写真.png',
-                              fit: BoxFit.contain,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Card(
-                              elevation: 0,
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: const [
-                                      Text(
-                                        'Rising place川崎',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 6.0),
-                                    child: Row(
-                                      children: const [
-                                        Text('2,000万円',
-                                            style: TextStyle(
-                                                color: Colors.deepOrange,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                  ),
-                                  Row(
-                                    children: const [
-                                      Padding(
-                                        padding: EdgeInsets.only(right: 5.0),
-                                        child: Icon(
-                                          Icons.train,
-                                          size: 16,
-                                        ),
-                                      ),
-                                      Text(
-                                        '京急本線 京急川崎駅 より 徒歩9分',
-                                        style: TextStyle(fontSize: 11),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: const [
-                                      Padding(
-                                        padding: EdgeInsets.only(right: 5.0),
-                                        child: Icon(
-                                          Icons.house,
-                                          size: 16,
-                                        ),
-                                      ),
-                                      Text(
-                                        '1K / 21.24㎡ 南西向き',
-                                        style: TextStyle(fontSize: 11),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: const [
-                                      Padding(
-                                        padding: EdgeInsets.only(right: 5.0),
-                                        child: Icon(
-                                          Icons.apartment,
-                                          size: 16,
-                                        ),
-                                      ),
-                                      Text(
-                                        '2階/15年建 築5年',
-                                        style: TextStyle(fontSize: 11),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: SizedBox(
-                                  width: 170,
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  //ここに最初SizedBoxで「width: 170」を指定していた→子にしていたContainerで指定できた。→padding削除
                                   child: Container(
+                                    width: 170,
                                     decoration: BoxDecoration(
                                       border: Border.all(color: Colors.grey),
                                       borderRadius: BorderRadius.circular(10),
@@ -307,10 +327,8 @@ class ResidenceScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 170,
-                                child: Container(
+                                Container(
+                                  width: 170,
                                   decoration: BoxDecoration(
                                     border: Border.all(color: Colors.grey),
                                     borderRadius: BorderRadius.circular(10),
@@ -335,108 +353,139 @@ class ResidenceScreen extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 4.0),
-                    child: Card(
-                      elevation: 3,
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            width: double.infinity,
-                            child: Image.asset(
-                              'images/物件写真.png',
-                              fit: BoxFit.contain,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 4.0),
+                      child: Card(
+                        elevation: 3,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              width: double.infinity,
+                              child: Image.asset(
+                                'images/物件写真.png',
+                                fit: BoxFit.contain,
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Card(
-                              elevation: 0,
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: const [
-                                      Text(
-                                        'Rising place川崎',
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 6.0),
-                                    child: Row(
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Card(
+                                elevation: 0,
+                                child: Column(
+                                  children: [
+                                    Row(
                                       children: const [
-                                        Text('2,000万円',
+                                        Text(
+                                          'Rising place川崎',
+                                          style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 6.0),
+                                      child: Row(
+                                        children: const [
+                                          Text(
+                                            '2,000万円',
                                             style: TextStyle(
                                                 color: Colors.deepOrange,
                                                 fontSize: 20,
-                                                fontWeight: FontWeight.bold)),
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Row(
+                                      children: const [
+                                        Padding(
+                                          padding: EdgeInsets.only(right: 5.0),
+                                          child: Icon(
+                                            Icons.train,
+                                            size: 16,
+                                          ),
+                                        ),
+                                        Text(
+                                          '京急本線 京急川崎駅 より 徒歩9分',
+                                          style: TextStyle(fontSize: 11),
+                                        ),
                                       ],
                                     ),
-                                  ),
-                                  Row(
-                                    children: const [
-                                      Padding(
-                                        padding: EdgeInsets.only(right: 5.0),
-                                        child: Icon(
-                                          Icons.train,
-                                          size: 16,
+                                    Row(
+                                      children: const [
+                                        Padding(
+                                          padding: EdgeInsets.only(right: 5.0),
+                                          child: Icon(
+                                            Icons.house,
+                                            size: 16,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        '京急本線 京急川崎駅 より 徒歩9分',
-                                        style: TextStyle(fontSize: 11),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: const [
-                                      Padding(
-                                        padding: EdgeInsets.only(right: 5.0),
-                                        child: Icon(
-                                          Icons.house,
-                                          size: 16,
+                                        Text(
+                                          '1K / 21.24㎡ 南西向き',
+                                          style: TextStyle(fontSize: 11),
                                         ),
-                                      ),
-                                      Text(
-                                        '1K / 21.24㎡ 南西向き',
-                                        style: TextStyle(fontSize: 11),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: const [
-                                      Padding(
-                                        padding: EdgeInsets.only(right: 5.0),
-                                        child: Icon(
-                                          Icons.apartment,
-                                          size: 16,
+                                      ],
+                                    ),
+                                    Row(
+                                      children: const [
+                                        Padding(
+                                          padding: EdgeInsets.only(right: 5.0),
+                                          child: Icon(
+                                            Icons.apartment,
+                                            size: 16,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        '2階/15年建 築5年',
-                                        style: TextStyle(fontSize: 11),
-                                      ),
-                                    ],
-                                  ),
-                                ],
+                                        Text(
+                                          '2階/15年建 築5年',
+                                          style: TextStyle(fontSize: 11),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                          ),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: SizedBox(
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: SizedBox(
+                                    width: 170,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(color: Colors.grey),
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      child: Row(
+                                        children: const [
+                                          Padding(
+                                            padding: EdgeInsets.only(
+                                                top: 8.0,
+                                                left: 20,
+                                                right: 19,
+                                                bottom: 8),
+                                            child: Icon(
+                                              Icons.delete,
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                          Text(
+                                            '興味なし',
+                                            style: TextStyle(fontSize: 16),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
                                   width: 170,
                                   child: Container(
                                     decoration: BoxDecoration(
@@ -449,60 +498,32 @@ class ResidenceScreen extends StatelessWidget {
                                           padding: EdgeInsets.only(
                                               top: 8.0,
                                               left: 20,
-                                              right: 19,
+                                              right: 14,
                                               bottom: 8),
                                           child: Icon(
-                                            Icons.delete,
+                                            Icons.favorite_border,
                                             color: Colors.grey,
                                           ),
                                         ),
                                         Text(
-                                          '興味なし',
+                                          'お気に入り',
                                           style: TextStyle(fontSize: 16),
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
-                              ),
-                              SizedBox(
-                                width: 170,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Row(
-                                    children: const [
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                            top: 8.0,
-                                            left: 20,
-                                            right: 14,
-                                            bottom: 8),
-                                        child: Icon(
-                                          Icons.favorite_border,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                      Text(
-                                        'お気に入り',
-                                        style: TextStyle(fontSize: 16),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -548,7 +569,7 @@ class ResidenceScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                )
+                ),
               ),
             ],
           ),
