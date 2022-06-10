@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tutorial/residence/residence_screen.dart';
 import 'package:flutter_tutorial/youtube/youtube_screen.dart';
 import 'animation/animation_screen.dart';
 import 'building/building_layout_screen.dart';
@@ -60,6 +61,17 @@ class Home extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                       builder: (context) => YoutubeScreen(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Tutorial2-2'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const ResidenceScreen(),
                     ),
                   );
                 },
