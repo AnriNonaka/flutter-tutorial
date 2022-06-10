@@ -1,8 +1,13 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
+
+
 class ResidenceScreen extends StatelessWidget {
   const ResidenceScreen({Key? key}) : super(key: key);
+  //これを作ったら「lightGray」をどこからでも呼び出せる。
+  //1メソッド内で書くことも可能。今回は多数のメソッドで使いたいからここに。
+  static const lightGray = Color.fromRGBO(249, 248, 246, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -41,11 +46,13 @@ class ResidenceScreen extends StatelessWidget {
   }
 
   Widget _buildBody(BuildContext context) {
+    //何回も使うカラーをここでメンバ変数にする（プライベートにしてたら警告でたので「_」を外しました。）
+
     return SingleChildScrollView(
       //SafeAreaで囲ってあげるとpadding:を設定しなくてもいい感じにしてくれる
       child: SafeArea(
         child: Container(
-          color: const Color.fromRGBO(249, 248, 246, 0.5),
+          color: lightGray,
           child: Column(
             children: [
               Material(
@@ -136,7 +143,7 @@ class ResidenceScreen extends StatelessWidget {
                             padding: const EdgeInsets.all(3.0),
                             child: Card(
                               elevation: 0,
-                              color: const Color.fromRGBO(249, 248, 246, 0.5),
+                              color: lightGray,
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10),
