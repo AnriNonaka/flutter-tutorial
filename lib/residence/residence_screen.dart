@@ -258,7 +258,7 @@ class ResidenceScreen extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: _dummyPropertyData.length,
                       itemBuilder: (BuildContext context, int index) {
-                        final currentMovieData = _dummyPropertyData[index];
+                        final currentPropertyData = _dummyPropertyData[index];
                         return Padding(
                           padding: const EdgeInsets.only(top: 4.0),
                           child: Card(
@@ -268,7 +268,7 @@ class ResidenceScreen extends StatelessWidget {
                                 SizedBox(
                                   width: double.infinity,
                                   child: Image.asset(
-                                    'images/物件写真.png',
+                                    currentPropertyData.imagePath,
                                     fit: BoxFit.contain,
                                   ),
                                 ),
@@ -279,10 +279,10 @@ class ResidenceScreen extends StatelessWidget {
                                     child: Column(
                                       children: [
                                         Row(
-                                          children: const [
+                                          children: [
                                             Text(
-                                              'Rising place川崎',
-                                              style: TextStyle(
+                                              currentPropertyData.title,
+                                              style: const TextStyle(
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.bold),
                                             ),
@@ -292,10 +292,10 @@ class ResidenceScreen extends StatelessWidget {
                                           padding: const EdgeInsets.only(
                                               bottom: 6.0),
                                           child: Row(
-                                            children: const [
+                                            children: [
                                               Text(
-                                                '2,000万円',
-                                                style: TextStyle(
+                                                currentPropertyData.price,
+                                                style: const TextStyle(
                                                     color: Colors.deepOrange,
                                                     fontSize: 20,
                                                     fontWeight:
@@ -305,8 +305,8 @@ class ResidenceScreen extends StatelessWidget {
                                           ),
                                         ),
                                         Row(
-                                          children: const [
-                                            Padding(
+                                          children: [
+                                            const Padding(
                                               padding:
                                                   EdgeInsets.only(right: 5.0),
                                               child: Icon(
@@ -315,14 +315,15 @@ class ResidenceScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
-                                              '京急本線 京急川崎駅 より 徒歩9分',
-                                              style: TextStyle(fontSize: 11),
+                                              currentPropertyData.traffic,
+                                              style:
+                                                  const TextStyle(fontSize: 11),
                                             ),
                                           ],
                                         ),
                                         Row(
-                                          children: const [
-                                            Padding(
+                                          children: [
+                                            const Padding(
                                               padding:
                                                   EdgeInsets.only(right: 5.0),
                                               child: Icon(
@@ -331,14 +332,15 @@ class ResidenceScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
-                                              '1K / 21.24㎡ 南西向き',
-                                              style: TextStyle(fontSize: 11),
+                                              currentPropertyData.detail1,
+                                              style:
+                                                  const TextStyle(fontSize: 11),
                                             ),
                                           ],
                                         ),
                                         Row(
-                                          children: const [
-                                            Padding(
+                                          children: [
+                                            const Padding(
                                               padding:
                                                   EdgeInsets.only(right: 5.0),
                                               child: Icon(
@@ -347,8 +349,9 @@ class ResidenceScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
-                                              '2階/15年建 築5年',
-                                              style: TextStyle(fontSize: 11),
+                                              currentPropertyData.detail2,
+                                              style:
+                                                  const TextStyle(fontSize: 11),
                                             ),
                                           ],
                                         ),
