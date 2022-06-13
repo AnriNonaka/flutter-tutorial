@@ -62,6 +62,8 @@ class MerukariScreen extends StatelessWidget {
   }
 
   Widget _buildBody(context) {
+    //ここに定数を作って、各Containerのwidthで使う。
+    final bottomWidths =  (MediaQuery.of(context).size.width - 60) / 4;
     return SingleChildScrollView(
       child: Container(
         color: const Color.fromRGBO(239, 239, 239, 1),
@@ -86,139 +88,141 @@ class MerukariScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 20, top: 20),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    width: 75,
-                    height: 85,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: lightGray,
-                      ),
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(top: 4.0),
-                            child: Icon(
-                              Icons.camera_alt_outlined,
-                              size: 30,
-                            ),
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: SizedBox(
+                height: 85,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal:8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        width: bottomWidths,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(
+                            color: lightGray,
                           ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 6.0),
-                            child: Text(
-                              '写真を撮る',
-                              style: TextStyle(fontSize: 10),
-                            ),
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Padding(
+                                padding: EdgeInsets.only(top: 4.0),
+                                child: Icon(
+                                  Icons.camera_alt_outlined,
+                                  size: 30,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 6.0),
+                                child: Text(
+                                  '写真を撮る',
+                                  style: TextStyle(fontSize: 10),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                      Container(
+                        width: bottomWidths,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(
+                            color: lightGray,
+                          ),
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Padding(
+                                padding: EdgeInsets.only(top: 4.0),
+                                child: Icon(
+                                  Icons.photo_library_outlined,
+                                  size: 30,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 6.0),
+                                child: Text(
+                                  'アルバム',
+                                  style: TextStyle(fontSize: 10),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: bottomWidths,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(
+                            color: lightGray,
+                          ),
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Padding(
+                                padding: EdgeInsets.only(top: 4.0),
+                                child: Icon(
+                                  Icons.qr_code,
+                                  size: 30,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 2.0),
+                                child: Text(
+                                  ' バーコード\n(本・コスメ)',
+                                  style: TextStyle(fontSize: 10, height: 1),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: bottomWidths,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(5),
+                          border: Border.all(
+                            color: lightGray,
+                          ),
+                        ),
+                        child: Center(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: const [
+                              Padding(
+                                padding: EdgeInsets.only(top: 4.0),
+                                child: Icon(
+                                  Icons.description_outlined,
+                                  size: 30,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 5.0),
+                                child: Text(
+                                  '下書き一覧',
+                                  style: TextStyle(fontSize: 10),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  Container(
-                    width: 75,
-                    height: 85,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: lightGray,
-                      ),
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(top: 4.0),
-                            child: Icon(
-                              Icons.photo_library_outlined,
-                              size: 30,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 6.0),
-                            child: Text(
-                              'アルバム',
-                              style: TextStyle(fontSize: 10),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 75,
-                    height: 85,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: lightGray,
-                      ),
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(top: 4.0),
-                            child: Icon(
-                              Icons.qr_code,
-                              size: 30,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 2.0),
-                            child: Text(
-                              ' バーコード\n(本・コスメ)',
-                              style: TextStyle(fontSize: 10, height: 1),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 75,
-                    height: 85,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: lightGray,
-                      ),
-                    ),
-                    child: Center(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: const [
-                          Padding(
-                            padding: EdgeInsets.only(top: 4.0),
-                            child: Icon(
-                              Icons.description_outlined,
-                              size: 30,
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(top: 5.0),
-                            child: Text(
-                              '下書き一覧',
-                              style: TextStyle(fontSize: 10),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
             Container(
@@ -231,7 +235,6 @@ class MerukariScreen extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all( 1.0),
                         child: Container(
-                          // height: 60,
                           decoration: const BoxDecoration(
                             border: Border(
                               bottom: BorderSide(color: lightGray),
