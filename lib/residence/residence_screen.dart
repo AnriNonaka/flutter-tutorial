@@ -2,7 +2,6 @@ import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
 
-
 class ResidenceScreen extends StatelessWidget {
   const ResidenceScreen({Key? key}) : super(key: key);
   //これを作ったら「lightGray」をどこからでも呼び出せる。
