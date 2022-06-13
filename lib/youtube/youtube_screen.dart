@@ -1,7 +1,44 @@
 import 'package:flutter/material.dart';
 
+class MovieInfo {
+  final String imagePath;
+  final String iconPath;
+  final String title;
+  final String subTitle;
+
+  MovieInfo({
+    required this.imagePath,
+    required this.iconPath,
+    required this.title,
+    required this.subTitle,
+  });
+}
+
 class YoutubeScreen extends StatelessWidget {
   YoutubeScreen({Key? key}) : super(key: key);
+
+  final List<MovieInfo> _dummyMovieData = [
+    MovieInfo(
+        imagePath: 'images/動画画像.png',
+        iconPath: 'images/ARASHIロゴ.png',
+        title: 'test~~~test~~~test~~~test~~~test~~~',
+        subTitle: 'donadona_pooh'),
+    MovieInfo(
+        imagePath: 'images/動画画像.png',
+        iconPath: 'images/ARASHIロゴ.png',
+        title: 'test~~~test~~~test~~~test~~~test~~~',
+        subTitle: 'donadona_pooh'),
+    MovieInfo(
+        imagePath: 'images/動画画像.png',
+        iconPath: 'images/ARASHIロゴ.png',
+        title: 'test~~~test~~~test~~~test~~~test~~~',
+        subTitle: 'donadona_pooh'),
+    MovieInfo(
+        imagePath: 'images/動画画像.png',
+        iconPath: 'images/ARASHIロゴ.png',
+        title: 'test~~~test~~~test~~~test~~~test~~~',
+        subTitle: 'donadona_pooh'),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -84,84 +121,60 @@ class YoutubeScreen extends StatelessWidget {
                 _buildCategory(context, Colors.cyan, Icons.sports, 'スポーツ'),
               ],
             ),
-            Card(
-              color: Colors.black38,
-              elevation: 0,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Column(
-                  children: [
-                    Row(
-                      children: const [
-                        Text(
-                          '急上昇動画',
-                          style: TextStyle(color: Colors.white, fontSize: 25),
-                          textAlign: TextAlign.start,
+            Padding(
+              padding: const EdgeInsets.only(top: 20.0),
+              child: Row(
+                children: const [
+                  Text(
+                    '急上昇動画',
+                    style: TextStyle(color: Colors.white, fontSize: 25),
+                    textAlign: TextAlign.start,
+                  ),
+                ],
+              ),
+            ),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: _dummyMovieData.length,
+              itemBuilder: (BuildContext context, int index) {
+                final currentMovieData = _dummyMovieData[index];
+                return Card(
+                  color: Colors.black38,
+                  elevation: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10.0),
+                    child: Column(
+                      children: [
+                        Image.asset(currentMovieData.imagePath),
+                        ListTile(
+                          leading: CircleAvatar(
+                            backgroundColor: Colors.white,
+                            child: Image.asset(currentMovieData.iconPath),
+                          ),
+                          title: Text(
+                            currentMovieData.title,
+                            style: const TextStyle(
+                              color: Colors.white,
+                            ),
+                          ),
+                          subtitle: Text(
+                            currentMovieData.subTitle,
+                            style: const TextStyle(
+                              color: Colors.white38,
+                            ),
+                          ),
+                          trailing: const Icon(
+                            Icons.more_vert,
+                            color: Colors.white,
+                            size: 30,
+                          ),
                         ),
                       ],
                     ),
-                    Image.asset('images/動画画像.png'),
-                    ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        child: Image.asset('images/ARASHIロゴ.png'),
-                      ),
-                      title: const Text(
-                        '"This is ARASHI LIVE 2020.12.31"Digest Movie',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      subtitle: const Text(
-                        'ARASHI・127万回視聴・1日前',
-                        style: TextStyle(
-                          color: Colors.white38,
-                        ),
-                      ),
-                      trailing: const Icon(
-                        Icons.more_vert,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Card(
-              color: Colors.black38,
-              elevation: 0,
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10.0),
-                child: Column(
-                  children: [
-                    Image.asset('images/動画画像.png'),
-                    ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.white,
-                        child: Image.asset('images/ARASHIロゴ.png'),
-                      ),
-                      title: const Text(
-                        '"This is ARASHI LIVE 2020.12.31"Digest Movie',
-                        style: TextStyle(
-                          color: Colors.white,
-                        ),
-                      ),
-                      subtitle: const Text(
-                        'ARASHI・127万回視聴・1日前',
-                        style: TextStyle(
-                          color: Colors.white38,
-                        ),
-                      ),
-                      trailing: const Icon(
-                        Icons.more_vert,
-                        color: Colors.white,
-                        size: 30,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+                  ),
+                );
+              },
             ),
           ],
         ),
