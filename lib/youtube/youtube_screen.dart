@@ -21,23 +21,23 @@ class YoutubeScreen extends StatelessWidget {
     MovieInfo(
         imagePath: 'images/動画画像.png',
         iconPath: 'images/ARASHIロゴ.png',
-        title: 'test~~~test~~~test~~~test~~~test~~~',
-        subTitle: 'donadona_pooh'),
+        title: '"This is ARASHI LIVE 2020.12.31"Digest Movie',
+        subTitle: 'ARASHI・127万回視聴・1日前'),
     MovieInfo(
         imagePath: 'images/動画画像.png',
         iconPath: 'images/ARASHIロゴ.png',
-        title: 'test~~~test~~~test~~~test~~~test~~~',
-        subTitle: 'donadona_pooh'),
+        title: '"This is ARASHI LIVE 2020.12.31"Digest Movie',
+        subTitle: 'ARASHI・127万回視聴・1日前'),
     MovieInfo(
         imagePath: 'images/動画画像.png',
         iconPath: 'images/ARASHIロゴ.png',
-        title: 'test~~~test~~~test~~~test~~~test~~~',
-        subTitle: 'donadona_pooh'),
+        title: '"This is ARASHI LIVE 2020.12.31"Digest Movie',
+        subTitle: 'ARASHI・127万回視聴・1日前'),
     MovieInfo(
         imagePath: 'images/動画画像.png',
         iconPath: 'images/ARASHIロゴ.png',
-        title: 'test~~~test~~~test~~~test~~~test~~~',
-        subTitle: 'donadona_pooh'),
+        title: '"This is ARASHI LIVE 2020.12.31"Digest Movie',
+        subTitle: 'ARASHI・127万回視聴・1日前'),
   ];
 
   @override
@@ -134,8 +134,10 @@ class YoutubeScreen extends StatelessWidget {
               ),
             ),
             ListView.builder(
+              //下記2行追加してエラー解決
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
+              //_dummyMovieDataの数の並びができる
               itemCount: _dummyMovieData.length,
               itemBuilder: (BuildContext context, int index) {
                 final currentMovieData = _dummyMovieData[index];
