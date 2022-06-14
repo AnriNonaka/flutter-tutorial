@@ -1,12 +1,57 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 
+class PropertyInfo {
+  final String imagePath;
+  final String title;
+  final String price;
+  final String traffic;
+  final String detail1;
+  final String detail2;
+
+  PropertyInfo({
+    required this.imagePath,
+    required this.title,
+    required this.price,
+    required this.traffic,
+    required this.detail1,
+    required this.detail2,
+  });
+}
 
 class ResidenceScreen extends StatelessWidget {
-  const ResidenceScreen({Key? key}) : super(key: key);
+  ResidenceScreen({Key? key}) : super(key: key);
+
   //これを作ったら「lightGray」をどこからでも呼び出せる。
   //1メソッド内で書くことも可能。今回は多数のメソッドで使いたいからここに。
   static const lightGray = Color.fromRGBO(249, 248, 246, 1);
+
+  final List<PropertyInfo> _dummyPropertyData = [
+    PropertyInfo(
+      imagePath: 'images/物件写真.png',
+      title: 'Rising place川崎',
+      price: '2,000万円',
+      traffic: '京急本線 京急川崎駅 より 徒歩9分',
+      detail1: '1K / 21.24㎡ 南西向き',
+      detail2: '2階/15年建 築5年',
+    ),
+    PropertyInfo(
+      imagePath: 'images/物件写真.png',
+      title: 'Rising place川崎',
+      price: '2,000万円',
+      traffic: '京急本線 京急川崎駅 より 徒歩9分',
+      detail1: '1K / 21.24㎡ 南西向き',
+      detail2: '2階/15年建 築5年',
+    ),
+    PropertyInfo(
+      imagePath: 'images/物件写真.png',
+      title: 'Rising place川崎',
+      price: '2,000万円',
+      traffic: '京急本線 京急川崎駅 より 徒歩9分',
+      detail1: '1K / 21.24㎡ 南西向き',
+      detail2: '2階/15年建 築5年',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -208,263 +253,148 @@ class ResidenceScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 4.0),
-                      child: Card(
-                        elevation: 3,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              width: double.infinity,
-                              child: Image.asset(
-                                'images/物件写真.png',
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Card(
-                                elevation: 0,
-                                child: Column(
-                                  children: [
-                                    Row(
-                                      children: const [
-                                        Text(
-                                          'Rising place川崎',
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 6.0),
-                                      child: Row(
-                                        children: const [
-                                          Text(
-                                            '2,000万円',
-                                            style: TextStyle(
-                                                color: Colors.deepOrange,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Padding(
-                                          padding: EdgeInsets.only(right: 5.0),
-                                          child: Icon(
-                                            Icons.train,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        Text(
-                                          '京急本線 京急川崎駅 より 徒歩9分',
-                                          style: TextStyle(fontSize: 11),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Padding(
-                                          padding: EdgeInsets.only(right: 5.0),
-                                          child: Icon(
-                                            Icons.house,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        Text(
-                                          '1K / 21.24㎡ 南西向き',
-                                          style: TextStyle(fontSize: 11),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Padding(
-                                          padding: EdgeInsets.only(right: 5.0),
-                                          child: Icon(
-                                            Icons.apartment,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        Text(
-                                          '2階/15年建 築5年',
-                                          style: TextStyle(fontSize: 11),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Row(
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: _dummyPropertyData.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        final currentPropertyData = _dummyPropertyData[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(top: 4.0),
+                          child: Card(
+                            elevation: 3,
+                            child: Column(
                               children: [
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: Image.asset(
+                                    currentPropertyData.imagePath,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
                                 Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  //ここに最初SizedBoxで「width: 170」を指定していた→子にしていたContainerで指定できた。→padding削除
-                                  child: Container(
-                                    width: 170,
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Row(
-                                      children: const [
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Card(
+                                    elevation: 0,
+                                    child: Column(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              currentPropertyData.title,
+                                              style: const TextStyle(
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                          ],
+                                        ),
                                         Padding(
-                                          padding: EdgeInsets.only(
-                                              top: 8.0,
-                                              left: 20,
-                                              right: 19,
-                                              bottom: 8),
-                                          child: Icon(
-                                            Icons.delete,
-                                            color: Colors.grey,
+                                          padding: const EdgeInsets.only(
+                                              bottom: 6.0),
+                                          child: Row(
+                                            children: [
+                                              Text(
+                                                currentPropertyData.price,
+                                                style: const TextStyle(
+                                                    color: Colors.deepOrange,
+                                                    fontSize: 20,
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                              ),
+                                            ],
                                           ),
                                         ),
-                                        Text(
-                                          '興味なし',
-                                          style: TextStyle(fontSize: 16),
+                                        Row(
+                                          children: [
+                                            const Padding(
+                                              padding:
+                                                  EdgeInsets.only(right: 5.0),
+                                              child: Icon(
+                                                Icons.train,
+                                                size: 16,
+                                              ),
+                                            ),
+                                            Text(
+                                              currentPropertyData.traffic,
+                                              style:
+                                                  const TextStyle(fontSize: 11),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Padding(
+                                              padding:
+                                                  EdgeInsets.only(right: 5.0),
+                                              child: Icon(
+                                                Icons.house,
+                                                size: 16,
+                                              ),
+                                            ),
+                                            Text(
+                                              currentPropertyData.detail1,
+                                              style:
+                                                  const TextStyle(fontSize: 11),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            const Padding(
+                                              padding:
+                                                  EdgeInsets.only(right: 5.0),
+                                              child: Icon(
+                                                Icons.apartment,
+                                                size: 16,
+                                              ),
+                                            ),
+                                            Text(
+                                              currentPropertyData.detail2,
+                                              style:
+                                                  const TextStyle(fontSize: 11),
+                                            ),
+                                          ],
                                         ),
                                       ],
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width: 170,
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.grey),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: Row(
-                                    children: const [
-                                      Padding(
-                                        padding: EdgeInsets.only(
-                                            top: 8.0,
-                                            left: 20,
-                                            right: 14,
-                                            bottom: 8),
-                                        child: Icon(
-                                          Icons.favorite_border,
-                                          color: Colors.grey,
-                                        ),
-                                      ),
-                                      Text(
-                                        'お気に入り',
-                                        style: TextStyle(fontSize: 16),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 4.0),
-                      child: Card(
-                        elevation: 3,
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              width: double.infinity,
-                              child: Image.asset(
-                                'images/物件写真.png',
-                                fit: BoxFit.contain,
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Card(
-                                elevation: 0,
-                                child: Column(
+                                Row(
                                   children: [
-                                    Row(
-                                      children: const [
-                                        Text(
-                                          'Rising place川崎',
-                                          style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      ],
-                                    ),
                                     Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 6.0),
-                                      child: Row(
-                                        children: const [
-                                          Text(
-                                            '2,000万円',
-                                            style: TextStyle(
-                                                color: Colors.deepOrange,
-                                                fontSize: 20,
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ],
+                                      padding: const EdgeInsets.all(10.0),
+                                      //ここに最初SizedBoxで「width: 170」を指定していた→子にしていたContainerで指定できた。→padding削除
+                                      child: Container(
+                                        width: 170,
+                                        decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.grey),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Row(
+                                          children: const [
+                                            Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: 8.0,
+                                                  left: 20,
+                                                  right: 19,
+                                                  bottom: 8),
+                                              child: Icon(
+                                                Icons.delete,
+                                                color: Colors.grey,
+                                              ),
+                                            ),
+                                            Text(
+                                              '興味なし',
+                                              style: TextStyle(fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                    Row(
-                                      children: const [
-                                        Padding(
-                                          padding: EdgeInsets.only(right: 5.0),
-                                          child: Icon(
-                                            Icons.train,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        Text(
-                                          '京急本線 京急川崎駅 より 徒歩9分',
-                                          style: TextStyle(fontSize: 11),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Padding(
-                                          padding: EdgeInsets.only(right: 5.0),
-                                          child: Icon(
-                                            Icons.house,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        Text(
-                                          '1K / 21.24㎡ 南西向き',
-                                          style: TextStyle(fontSize: 11),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: const [
-                                        Padding(
-                                          padding: EdgeInsets.only(right: 5.0),
-                                          child: Icon(
-                                            Icons.apartment,
-                                            size: 16,
-                                          ),
-                                        ),
-                                        Text(
-                                          '2階/15年建 築5年',
-                                          style: TextStyle(fontSize: 11),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.all(10.0),
-                                  child: SizedBox(
-                                    width: 170,
-                                    child: Container(
+                                    Container(
+                                      width: 170,
                                       decoration: BoxDecoration(
                                         border: Border.all(color: Colors.grey),
                                         borderRadius: BorderRadius.circular(10),
@@ -475,55 +405,27 @@ class ResidenceScreen extends StatelessWidget {
                                             padding: EdgeInsets.only(
                                                 top: 8.0,
                                                 left: 20,
-                                                right: 19,
+                                                right: 14,
                                                 bottom: 8),
                                             child: Icon(
-                                              Icons.delete,
+                                              Icons.favorite_border,
                                               color: Colors.grey,
                                             ),
                                           ),
                                           Text(
-                                            '興味なし',
+                                            'お気に入り',
                                             style: TextStyle(fontSize: 16),
                                           ),
                                         ],
                                       ),
                                     ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 170,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.grey),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Row(
-                                      children: const [
-                                        Padding(
-                                          padding: EdgeInsets.only(
-                                              top: 8.0,
-                                              left: 20,
-                                              right: 14,
-                                              bottom: 8),
-                                          child: Icon(
-                                            Icons.favorite_border,
-                                            color: Colors.grey,
-                                          ),
-                                        ),
-                                        Text(
-                                          'お気に入り',
-                                          style: TextStyle(fontSize: 16),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                  ],
                                 ),
                               ],
                             ),
-                          ],
-                        ),
-                      ),
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),
