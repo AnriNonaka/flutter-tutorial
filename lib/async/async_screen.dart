@@ -161,8 +161,8 @@ class _AsyncScreenState extends State<AsyncScreen> {
     return Column(
       children: [
         Text('名前 $_name'),
-        Text('誕生日 $_age'),
-        Text('年齢 $_birthday'),
+        Text('年齢 $_age'),
+        Text('誕生日 $_birthday'),
       ],
     );
   }
