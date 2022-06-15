@@ -156,7 +156,7 @@ class _AsyncScreenState extends State<AsyncScreen> {
     );
   }
 
-  //③画面にchageされたvalueの情報が表示される
+  //③画面にchangeされたvalueの情報が表示される
   Widget _buildInformationSection(context) {
     return Column(
       children: [
