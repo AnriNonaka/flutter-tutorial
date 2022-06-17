@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tutorial/residence/residence_screen.dart';
 import 'package:flutter_tutorial/youtube/youtube_screen.dart';
 import 'animation/animation_screen.dart';
+import 'async/async_screen.dart';
 import 'building/building_layout_screen.dart';
 import 'merukari/merukari_screen.dart';
 import 'mvvm/qiita_top_screen.dart';
@@ -73,7 +74,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ResidenceScreen(),
+                      builder: (context) =>  ResidenceScreen(),
                     ),
                   );
                 },
@@ -90,16 +91,27 @@ class Home extends StatelessWidget {
                 },
               ),
               ElevatedButton(
+                child: const Text('async'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AsyncScreen(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
                 child: const Text('Tutorial5'),
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const QiitaTopScreen(),
+                      builder: (context) => QiitaTopScreen(),
                     ),
                   );
                 },
-              ),
+              )
             ],
           ),
         ),
