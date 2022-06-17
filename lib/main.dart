@@ -7,7 +7,9 @@ import 'building/building_layout_screen.dart';
 import 'merukari/merukari_screen.dart';
 import 'mvvm/qiita_top_screen.dart';
 
-void main() => runApp(const ProviderScope(child: MyApp()));
+void main() => runApp(
+    //これは必須
+    const ProviderScope(child: MyApp()));
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
