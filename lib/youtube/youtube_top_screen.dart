@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_tutorial/youtube/youtube_client_state_notifier.dart';
+
+import 'model/youtube_item.dart';
 
 class MovieInfo {
   final String imagePath;
@@ -14,38 +18,19 @@ class MovieInfo {
   });
 }
 
-class YoutubeScreen extends StatelessWidget {
-  YoutubeScreen({Key? key}) : super(key: key);
-
-  final List<MovieInfo> _dummyMovieData = [
-    MovieInfo(
-        imagePath: 'images/動画画像.png',
-        iconPath: 'images/ARASHIロゴ.png',
-        title: '"This is ARASHI LIVE 2020.12.31"Digest Movie',
-        subTitle: 'ARASHI・127万回視聴・1日前'),
-    MovieInfo(
-        imagePath: 'images/動画画像.png',
-        iconPath: 'images/ARASHIロゴ.png',
-        title: '"This is ARASHI LIVE 2020.12.31"Digest Movie',
-        subTitle: 'ARASHI・127万回視聴・1日前'),
-    MovieInfo(
-        imagePath: 'images/動画画像.png',
-        iconPath: 'images/ARASHIロゴ.png',
-        title: '"This is ARASHI LIVE 2020.12.31"Digest Movie',
-        subTitle: 'ARASHI・127万回視聴・1日前'),
-    MovieInfo(
-        imagePath: 'images/動画画像.png',
-        iconPath: 'images/ARASHIロゴ.png',
-        title: '"This is ARASHI LIVE 2020.12.31"Digest Movie',
-        subTitle: 'ARASHI・127万回視聴・1日前'),
-  ];
+//StatelessWidget →変更
+class YoutubeScreen extends ConsumerWidget {
+  const YoutubeScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  //変更(御作法で)
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(youtubeClientStateNotifier);
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: _buildAppBar(),
-      body: _buildBody(context),
+      body: _buildBody(context, state.youtubeItems),
       bottomNavigationBar: _buildBottomNavigationBar(),
     );
   }
@@ -100,7 +85,7 @@ class YoutubeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBody(context) {
+  Widget _buildBody(context, List<YoutubeItem> youtubeItems) {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -134,13 +119,11 @@ class YoutubeScreen extends StatelessWidget {
               ),
             ),
             ListView.builder(
-              //下記2行追加してエラー解決
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              //_dummyMovieDataの数の並びができる
-              itemCount: _dummyMovieData.length,
-              itemBuilder: (BuildContext context, int index) {
-                final currentMovieData = _dummyMovieData[index];
+              itemCount: youtubeItems.length,
+              itemBuilder: (context, index) {
+                final currentMovieData = youtubeItems[index];
                 return Card(
                   color: Colors.black38,
                   elevation: 0,
@@ -148,23 +131,66 @@ class YoutubeScreen extends StatelessWidget {
                     padding: const EdgeInsets.only(top: 10.0),
                     child: Column(
                       children: [
-                        Image.asset(currentMovieData.imagePath),
+                        Image.network(currentMovieData.imagePath ?? ''),
                         ListTile(
                           leading: CircleAvatar(
                             backgroundColor: Colors.white,
-                            child: Image.asset(currentMovieData.iconPath),
+                            child: SizedBox(
+                                width: 37,
+                                child: Image.network(
+                                    currentMovieData.iconPath ?? '')),
                           ),
                           title: Text(
-                            currentMovieData.title,
+                            currentMovieData.title ?? '',
                             style: const TextStyle(
                               color: Colors.white,
                             ),
                           ),
-                          subtitle: Text(
-                            currentMovieData.subTitle,
-                            style: const TextStyle(
-                              color: Colors.white38,
-                            ),
+                          subtitle: Row(
+                            children: [
+                              Text(
+                                currentMovieData.channelName ?? '',
+                                style: const TextStyle(
+                                  color: Colors.white38,
+                                ),
+                              ),
+                              const Text(
+                                '・',
+                                style: TextStyle(
+                                  color: Colors.white38,
+                                ),
+                              ),
+                              Text(
+                                currentMovieData.numOfViews.toString(),
+                                style: const TextStyle(
+                                  color: Colors.white38,
+                                ),
+                              ),
+                              const Text(
+                                '万回視聴',
+                                style: TextStyle(
+                                  color: Colors.white38,
+                                ),
+                              ),
+                              const Text(
+                                '・',
+                                style: TextStyle(
+                                  color: Colors.white38,
+                                ),
+                              ),
+                              Text(
+                                currentMovieData.daysAgo.toString(),
+                                style: const TextStyle(
+                                  color: Colors.white38,
+                                ),
+                              ),
+                              const Text(
+                                '日前',
+                                style: TextStyle(
+                                  color: Colors.white38,
+                                ),
+                              ),
+                            ],
                           ),
                           trailing: const Icon(
                             Icons.more_vert,

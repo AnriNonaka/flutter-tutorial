@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tutorial/residence/residence_screen.dart';
-import 'package:flutter_tutorial/youtube/youtube_screen.dart';
+import 'package:flutter_tutorial/youtube/youtube_top_screen.dart';
 import 'animation/animation_screen.dart';
 import 'async/async_screen.dart';
 import 'building/building_layout_screen.dart';
@@ -23,6 +23,21 @@ class MyApp extends StatelessWidget {
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
+
+  //プログレスインジケーターの表示
+  void showProgressDialog(context) {
+    showGeneralDialog(
+        context: context,
+        barrierDismissible: false,
+        transitionDuration: const Duration(milliseconds: 300),
+        barrierColor: Colors.black.withOpacity(0.5),
+        pageBuilder: (BuildContext context, Animation animation,
+            Animation secondaryAnimation) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +78,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => YoutubeScreen(),
+                      builder: (context) => const YoutubeScreen(),
                     ),
                   );
                 },
@@ -74,7 +89,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>  ResidenceScreen(),
+                      builder: (context) => ResidenceScreen(),
                     ),
                   );
                 },
@@ -96,7 +111,7 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => AsyncScreen(),
+                      builder: (context) => const AsyncScreen(),
                     ),
                   );
                 },
@@ -107,11 +122,11 @@ class Home extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => QiitaTopScreen(),
+                      builder: (context) => const QiitaTopScreen(),
                     ),
                   );
                 },
-              )
+              ),
             ],
           ),
         ),
