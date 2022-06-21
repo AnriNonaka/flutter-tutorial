@@ -7,7 +7,7 @@ final youtubeClientStateNotifier = StateNotifierProvider.autoDispose<
     YoutubeClientState>((ref) => YoutubeClientStateNotifier(ref.read));
 
 class YoutubeClientStateNotifier extends StateNotifier<YoutubeClientState> {
-  YoutubeClientStateNotifier(this._read) : super(const YoutubeClientState()){
+  YoutubeClientStateNotifier(this._read) : super(const YoutubeClientState()) {
     fetchYoutubeItems();
   }
 
@@ -15,9 +15,8 @@ class YoutubeClientStateNotifier extends StateNotifier<YoutubeClientState> {
 
   Future<void> fetchYoutubeItems() async {
     state = state.copyWith(isLoading: true);
-
     final youtubeItems =
-    await _read(youtubeRepositoryProvider).fetchYoutubeItems();
+        await _read(youtubeRepositoryProvider).fetchYoutubeItems();
 
     if (youtubeItems.isNotEmpty) {
       state = state.copyWith(
