@@ -21,13 +21,11 @@ class _$YoutubeClientStateTearOff {
   _YoutubeClientState call(
       {bool isLoading = false,
       bool isReadyData = false,
-      List<YoutubeItem> youtubeItems = const <YoutubeItem>[],
-      String currentTag = ''}) {
+      List<YoutubeItem> youtubeItems = const <YoutubeItem>[]}) {
     return _YoutubeClientState(
       isLoading: isLoading,
       isReadyData: isReadyData,
       youtubeItems: youtubeItems,
-      currentTag: currentTag,
     );
   }
 }
@@ -40,7 +38,6 @@ mixin _$YoutubeClientState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isReadyData => throw _privateConstructorUsedError;
   List<YoutubeItem> get youtubeItems => throw _privateConstructorUsedError;
-  String get currentTag => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $YoutubeClientStateCopyWith<YoutubeClientState> get copyWith =>
@@ -52,11 +49,7 @@ abstract class $YoutubeClientStateCopyWith<$Res> {
   factory $YoutubeClientStateCopyWith(
           YoutubeClientState value, $Res Function(YoutubeClientState) then) =
       _$YoutubeClientStateCopyWithImpl<$Res>;
-  $Res call(
-      {bool isLoading,
-      bool isReadyData,
-      List<YoutubeItem> youtubeItems,
-      String currentTag});
+  $Res call({bool isLoading, bool isReadyData, List<YoutubeItem> youtubeItems});
 }
 
 /// @nodoc
@@ -73,7 +66,6 @@ class _$YoutubeClientStateCopyWithImpl<$Res>
     Object? isLoading = freezed,
     Object? isReadyData = freezed,
     Object? youtubeItems = freezed,
-    Object? currentTag = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
@@ -88,10 +80,6 @@ class _$YoutubeClientStateCopyWithImpl<$Res>
           ? _value.youtubeItems
           : youtubeItems // ignore: cast_nullable_to_non_nullable
               as List<YoutubeItem>,
-      currentTag: currentTag == freezed
-          ? _value.currentTag
-          : currentTag // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -103,11 +91,7 @@ abstract class _$YoutubeClientStateCopyWith<$Res>
           _YoutubeClientState value, $Res Function(_YoutubeClientState) then) =
       __$YoutubeClientStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {bool isLoading,
-      bool isReadyData,
-      List<YoutubeItem> youtubeItems,
-      String currentTag});
+  $Res call({bool isLoading, bool isReadyData, List<YoutubeItem> youtubeItems});
 }
 
 /// @nodoc
@@ -126,7 +110,6 @@ class __$YoutubeClientStateCopyWithImpl<$Res>
     Object? isLoading = freezed,
     Object? isReadyData = freezed,
     Object? youtubeItems = freezed,
-    Object? currentTag = freezed,
   }) {
     return _then(_YoutubeClientState(
       isLoading: isLoading == freezed
@@ -141,10 +124,6 @@ class __$YoutubeClientStateCopyWithImpl<$Res>
           ? _value.youtubeItems
           : youtubeItems // ignore: cast_nullable_to_non_nullable
               as List<YoutubeItem>,
-      currentTag: currentTag == freezed
-          ? _value.currentTag
-          : currentTag // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -155,8 +134,7 @@ class _$_YoutubeClientState implements _YoutubeClientState {
   const _$_YoutubeClientState(
       {this.isLoading = false,
       this.isReadyData = false,
-      this.youtubeItems = const <YoutubeItem>[],
-      this.currentTag = ''});
+      this.youtubeItems = const <YoutubeItem>[]});
 
   @JsonKey()
   @override
@@ -167,13 +145,10 @@ class _$_YoutubeClientState implements _YoutubeClientState {
   @JsonKey()
   @override
   final List<YoutubeItem> youtubeItems;
-  @JsonKey()
-  @override
-  final String currentTag;
 
   @override
   String toString() {
-    return 'YoutubeClientState(isLoading: $isLoading, isReadyData: $isReadyData, youtubeItems: $youtubeItems, currentTag: $currentTag)';
+    return 'YoutubeClientState(isLoading: $isLoading, isReadyData: $isReadyData, youtubeItems: $youtubeItems)';
   }
 
   @override
@@ -185,9 +160,7 @@ class _$_YoutubeClientState implements _YoutubeClientState {
             const DeepCollectionEquality()
                 .equals(other.isReadyData, isReadyData) &&
             const DeepCollectionEquality()
-                .equals(other.youtubeItems, youtubeItems) &&
-            const DeepCollectionEquality()
-                .equals(other.currentTag, currentTag));
+                .equals(other.youtubeItems, youtubeItems));
   }
 
   @override
@@ -195,8 +168,7 @@ class _$_YoutubeClientState implements _YoutubeClientState {
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(isReadyData),
-      const DeepCollectionEquality().hash(youtubeItems),
-      const DeepCollectionEquality().hash(currentTag));
+      const DeepCollectionEquality().hash(youtubeItems));
 
   @JsonKey(ignore: true)
   @override
@@ -208,8 +180,7 @@ abstract class _YoutubeClientState implements YoutubeClientState {
   const factory _YoutubeClientState(
       {bool isLoading,
       bool isReadyData,
-      List<YoutubeItem> youtubeItems,
-      String currentTag}) = _$_YoutubeClientState;
+      List<YoutubeItem> youtubeItems}) = _$_YoutubeClientState;
 
   @override
   bool get isLoading;
@@ -217,8 +188,6 @@ abstract class _YoutubeClientState implements YoutubeClientState {
   bool get isReadyData;
   @override
   List<YoutubeItem> get youtubeItems;
-  @override
-  String get currentTag;
   @override
   @JsonKey(ignore: true)
   _$YoutubeClientStateCopyWith<_YoutubeClientState> get copyWith =>

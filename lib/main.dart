@@ -24,19 +24,20 @@ class MyApp extends StatelessWidget {
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
-  //プログレスインジケーターの表示
+  //プログレスインジケーターの関数
   void showProgressDialog(context) {
     showGeneralDialog(
-        context: context,
-        barrierDismissible: false,
-        transitionDuration: const Duration(milliseconds: 300),
-        barrierColor: Colors.black.withOpacity(0.5),
-        pageBuilder: (BuildContext context, Animation animation,
-            Animation secondaryAnimation) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        });
+      context: context,
+      barrierDismissible: false,
+      transitionDuration: const Duration(milliseconds: 300),
+      barrierColor: Colors.black.withOpacity(0.5),
+      pageBuilder: (BuildContext context, Animation animation,
+          Animation secondaryAnimation) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
   }
 
   @override
@@ -52,79 +53,114 @@ class Home extends StatelessWidget {
             children: [
               ElevatedButton(
                 child: const Text('Tutorial1'),
-                onPressed: () {
+                onPressed: () async {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const BuildLayoutScreen(),
                     ),
                   );
+                  showProgressDialog(context);
+                  // ３秒後にダイアログを閉じる
+                  await Future.delayed(const Duration(seconds: 2));
+                  // ignore: use_build_context_synchronously
+                  Navigator.of(context).pop();
                 },
               ),
               ElevatedButton(
                 child: const Text('Tutorial1-1'),
-                onPressed: () {
+                onPressed: () async {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const LogoApp(),
                     ),
                   );
+                  showProgressDialog(context);
+                  // ３秒後にダイアログを閉じる
+                  await Future.delayed(const Duration(seconds: 2));
+                  // ignore: use_build_context_synchronously
+                  Navigator.of(context).pop();
                 },
               ),
               ElevatedButton(
                 child: const Text('YouTube'),
-                onPressed: () {
+                onPressed: () async {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const YoutubeScreen(),
                     ),
                   );
+                  showProgressDialog(context);
+                  // ３秒後にダイアログを閉じる
+                  await Future.delayed(const Duration(seconds: 2));
+                  // ignore: use_build_context_synchronously
+                  Navigator.of(context).pop();
                 },
               ),
               ElevatedButton(
                 child: const Text('Tutorial2-2'),
-                onPressed: () {
+                onPressed: () async {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => ResidenceScreen(),
                     ),
                   );
+                  showProgressDialog(context);
+                  // ３秒後にダイアログを閉じる
+                  await Future.delayed(const Duration(seconds: 2));
+                  // ignore: use_build_context_synchronously
+                  Navigator.of(context).pop();
                 },
               ),
               ElevatedButton(
                 child: const Text('Tutorial2-3'),
-                onPressed: () {
+                onPressed: () async {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => MerukariScreen(),
                     ),
                   );
+                  showProgressDialog(context);
+                  // ３秒後にダイアログを閉じる
+                  await Future.delayed(const Duration(seconds: 2));
+                  // ignore: use_build_context_synchronously
+                  Navigator.of(context).pop();
                 },
               ),
               ElevatedButton(
                 child: const Text('async'),
-                onPressed: () {
+                onPressed: () async {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const AsyncScreen(),
                     ),
                   );
+                  showProgressDialog(context);
+                  // ３秒後にダイアログを閉じる
+                  await Future.delayed(const Duration(seconds: 2));
+                  // ignore: use_build_context_synchronously
+                  Navigator.of(context).pop();
                 },
               ),
               ElevatedButton(
                 child: const Text('Tutorial5'),
-                onPressed: () {
+                onPressed: () async {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const QiitaTopScreen(),
                     ),
                   );
+                  showProgressDialog(context);
+                  // ３秒後にダイアログを閉じる
+                  await Future.delayed(const Duration(seconds: 2));
+                  // ignore: use_build_context_synchronously
+                  Navigator.of(context).pop();
                 },
               ),
             ],

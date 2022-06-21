@@ -38,7 +38,6 @@ class YoutubeClientStateNotifier extends StateNotifier<YoutubeClientState> {
     state = state.copyWith(
       isLoading: false,
       isReadyData: false,
-      currentTag: '',
     );
   }
 }

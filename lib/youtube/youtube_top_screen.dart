@@ -146,51 +146,11 @@ class YoutubeScreen extends ConsumerWidget {
                               color: Colors.white,
                             ),
                           ),
-                          subtitle: Row(
-                            children: [
-                              Text(
-                                currentMovieData.channelName ?? '',
-                                style: const TextStyle(
-                                  color: Colors.white38,
-                                ),
-                              ),
-                              const Text(
-                                '・',
-                                style: TextStyle(
-                                  color: Colors.white38,
-                                ),
-                              ),
-                              Text(
-                                currentMovieData.numOfViews.toString(),
-                                style: const TextStyle(
-                                  color: Colors.white38,
-                                ),
-                              ),
-                              const Text(
-                                '万回視聴',
-                                style: TextStyle(
-                                  color: Colors.white38,
-                                ),
-                              ),
-                              const Text(
-                                '・',
-                                style: TextStyle(
-                                  color: Colors.white38,
-                                ),
-                              ),
-                              Text(
-                                currentMovieData.daysAgo.toString(),
-                                style: const TextStyle(
-                                  color: Colors.white38,
-                                ),
-                              ),
-                              const Text(
-                                '日前',
-                                style: TextStyle(
-                                  color: Colors.white38,
-                                ),
-                              ),
-                            ],
+                          subtitle: Text(
+                            '${currentMovieData.channelName ?? ''}・'
+                            '${currentMovieData.numOfViews.toString()}万回再生・'
+                            '${currentMovieData.daysAgo.toString()}日前',
+                            style: const TextStyle(color: Colors.white38),
                           ),
                           trailing: const Icon(
                             Icons.more_vert,

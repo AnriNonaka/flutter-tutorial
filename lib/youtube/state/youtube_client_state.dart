@@ -9,6 +9,5 @@ class YoutubeClientState with _$YoutubeClientState {
     @Default(false) bool isLoading,
     @Default(false) bool isReadyData,
     @Default(<YoutubeItem>[]) List<YoutubeItem> youtubeItems,
-    @Default('') String currentTag,
   }) = _YoutubeClientState;
 }
