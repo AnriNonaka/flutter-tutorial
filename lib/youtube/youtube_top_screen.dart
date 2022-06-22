@@ -19,8 +19,8 @@ class MovieInfo {
 }
 
 //StatelessWidget →変更
-class YoutubeScreen extends ConsumerWidget {
-  const YoutubeScreen({Key? key}) : super(key: key);
+class YoutubeTopScreen extends ConsumerWidget {
+  const YoutubeTopScreen({Key? key}) : super(key: key);
 
   @override
   //変更(御作法で)
@@ -214,7 +214,6 @@ class YoutubeScreen extends ConsumerWidget {
     );
   }
 
-  //
   Widget _buildCategory(
       BuildContext context, Color color, IconData icon, String label) {
     return SizedBox(
