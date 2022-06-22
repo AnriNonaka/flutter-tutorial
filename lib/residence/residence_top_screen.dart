@@ -1,5 +1,8 @@
 import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_tutorial/residence/model/residence_item.dart';
+import 'package:flutter_tutorial/residence/residence_client_state_notifier.dart';
 
 class PropertyInfo {
   final String imagePath;
@@ -19,44 +22,26 @@ class PropertyInfo {
   });
 }
 
-class ResidenceScreen extends StatelessWidget {
-  ResidenceScreen({Key? key}) : super(key: key);
+//StatelessWidget →変更
+class ResidenceTopScreen extends  ConsumerWidget {
+  const ResidenceTopScreen({Key? key}) : super(key: key);
 
   //これを作ったら「lightGray」をどこからでも呼び出せる。
   //1メソッド内で書くことも可能。今回は多数のメソッドで使いたいからここに。
   static const lightGray = Color.fromRGBO(249, 248, 246, 1);
 
-  final List<PropertyInfo> _dummyPropertyData = [
-    PropertyInfo(
-      imagePath: 'images/物件写真.png',
-      title: 'Rising place川崎',
-      price: '2,000万円',
-      traffic: '京急本線 京急川崎駅 より 徒歩9分',
-      detail1: '1K / 21.24㎡ 南西向き',
-      detail2: '2階/15年建 築5年',
-    ),
-    PropertyInfo(
-      imagePath: 'images/物件写真.png',
-      title: 'Rising place川崎',
-      price: '2,000万円',
-      traffic: '京急本線 京急川崎駅 より 徒歩9分',
-      detail1: '1K / 21.24㎡ 南西向き',
-      detail2: '2階/15年建 築5年',
-    ),
-    PropertyInfo(
-      imagePath: 'images/物件写真.png',
-      title: 'Rising place川崎',
-      price: '2,000万円',
-      traffic: '京急本線 京急川崎駅 より 徒歩9分',
-      detail1: '1K / 21.24㎡ 南西向き',
-      detail2: '2階/15年建 築5年',
-    ),
-  ];
-
   @override
-  Widget build(BuildContext context) {
+  //変更(御作法で)
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(residenceClientStateNotifier);
+    //youtube_client_state_notifier.dartの「state = state.copyWith(isLoading: true);」
+    // のフラグを活用して、読み込んでる時だけインジケータ出す
+    if (state.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
     return Scaffold(
-      body: _buildBody(context),
+      body: _buildBody(context,state.residenceItems),
       bottomNavigationBar: _buildBottomNavigationBar(),
       floatingActionButton: SizedBox(
         width: 60,
@@ -89,7 +74,7 @@ class ResidenceScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBody(BuildContext context) {
+  Widget _buildBody(context,List<ResidenceItem> residenceItems) {
     //何回も使うカラーをここでメンバ変数にする（プライベートにしてたら警告でたので「_」を外しました。）
 
     return SingleChildScrollView(
@@ -256,9 +241,9 @@ class ResidenceScreen extends StatelessWidget {
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: _dummyPropertyData.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        final currentPropertyData = _dummyPropertyData[index];
+                      itemCount: residenceItems.length,
+                      itemBuilder: (context, index) {
+                        final currentPropertyData = residenceItems[index];
                         return Padding(
                           padding: const EdgeInsets.only(top: 4.0),
                           child: Card(
@@ -267,8 +252,8 @@ class ResidenceScreen extends StatelessWidget {
                               children: [
                                 SizedBox(
                                   width: double.infinity,
-                                  child: Image.asset(
-                                    currentPropertyData.imagePath,
+                                  child: Image.network(
+                                    currentPropertyData.imagePath ?? '',
                                     fit: BoxFit.contain,
                                   ),
                                 ),
@@ -281,7 +266,7 @@ class ResidenceScreen extends StatelessWidget {
                                         Row(
                                           children: [
                                             Text(
-                                              currentPropertyData.title,
+                                              currentPropertyData.title ?? '',
                                               style: const TextStyle(
                                                   fontSize: 20,
                                                   fontWeight: FontWeight.bold),
@@ -294,7 +279,7 @@ class ResidenceScreen extends StatelessWidget {
                                           child: Row(
                                             children: [
                                               Text(
-                                                currentPropertyData.price,
+                                                currentPropertyData.price ?? '',
                                                 style: const TextStyle(
                                                     color: Colors.deepOrange,
                                                     fontSize: 20,
@@ -315,7 +300,7 @@ class ResidenceScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
-                                              currentPropertyData.traffic,
+                                              currentPropertyData.traffic ?? '',
                                               style:
                                                   const TextStyle(fontSize: 11),
                                             ),
@@ -332,7 +317,7 @@ class ResidenceScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
-                                              currentPropertyData.detail1,
+                                              currentPropertyData.detail1 ?? '',
                                               style:
                                                   const TextStyle(fontSize: 11),
                                             ),
@@ -349,7 +334,7 @@ class ResidenceScreen extends StatelessWidget {
                                               ),
                                             ),
                                             Text(
-                                              currentPropertyData.detail2,
+                                              currentPropertyData.detail2 ?? '',
                                               style:
                                                   const TextStyle(fontSize: 11),
                                             ),
