@@ -23,7 +23,7 @@ class PropertyInfo {
 }
 
 //StatelessWidget →変更
-class ResidenceTopScreen extends  ConsumerWidget {
+class ResidenceTopScreen extends ConsumerWidget {
   const ResidenceTopScreen({Key? key}) : super(key: key);
 
   //これを作ったら「lightGray」をどこからでも呼び出せる。
@@ -41,7 +41,7 @@ class ResidenceTopScreen extends  ConsumerWidget {
     }
 
     return Scaffold(
-      body: _buildBody(context,state.residenceItems),
+      body: _buildBody(context, state.residenceItems),
       bottomNavigationBar: _buildBottomNavigationBar(),
       floatingActionButton: SizedBox(
         width: 60,
@@ -74,9 +74,7 @@ class ResidenceTopScreen extends  ConsumerWidget {
     );
   }
 
-  Widget _buildBody(context,List<ResidenceItem> residenceItems) {
-    //何回も使うカラーをここでメンバ変数にする（プライベートにしてたら警告でたので「_」を外しました。）
-
+  Widget _buildBody(BuildContext context, List<ResidenceItem> residenceItems) {
     return SingleChildScrollView(
       //SafeAreaで囲ってあげるとpadding:を設定しなくてもいい感じにしてくれる
       child: SafeArea(
