@@ -18,7 +18,7 @@ class ResidenceClientStateNotifier extends StateNotifier<ResidenceClientState> {
     final residenceItems =
     await _read(residenceRepositoryProvider).fetchResidenceItems();
 
-    if (residenceItems!.isNotEmpty) {
+    if (residenceItems.isNotEmpty) {
       state = state.copyWith(
         isLoading: false,
         isReadyData: true,
