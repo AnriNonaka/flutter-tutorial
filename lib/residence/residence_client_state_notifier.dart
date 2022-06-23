@@ -7,7 +7,8 @@ final residenceClientStateNotifier = StateNotifierProvider.autoDispose<
     ResidenceClientState>((ref) => ResidenceClientStateNotifier(ref.read));
 
 class ResidenceClientStateNotifier extends StateNotifier<ResidenceClientState> {
-  ResidenceClientStateNotifier(this._read) : super(const ResidenceClientState()){
+  ResidenceClientStateNotifier(this._read)
+      : super(const ResidenceClientState()) {
     fetchResidenceItems();
   }
 
@@ -16,7 +17,7 @@ class ResidenceClientStateNotifier extends StateNotifier<ResidenceClientState> {
   Future<void> fetchResidenceItems() async {
     state = state.copyWith(isLoading: true);
     final residenceItems =
-    await _read(residenceRepositoryProvider).fetchResidenceItems();
+        await _read(residenceRepositoryProvider).fetchResidenceItems();
 
     if (residenceItems.isNotEmpty) {
       state = state.copyWith(

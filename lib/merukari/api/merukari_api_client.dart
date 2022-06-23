@@ -10,7 +10,7 @@ part 'merukari_api_client.g.dart';
 abstract class MerukariApiClient {
   factory MerukariApiClient(Dio dio, {String baseUrl}) = _MerukariApiClient;
 
-  static MerukariApiClient create() {
+  static Future<MerukariApiClient> create() async {
     final dio = Dio();
     dio.interceptors.add(PrettyDioLogger());
     return MerukariApiClient(dio);

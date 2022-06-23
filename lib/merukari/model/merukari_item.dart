@@ -1,7 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'merukari_item.freezed.dart';
-
 part 'merukari_item.g.dart';
 
 @freezed

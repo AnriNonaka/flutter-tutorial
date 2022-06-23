@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AsyncScreen extends StatefulWidget {
-  const AsyncScreen({Key? key}) : super(key: key);
+  const AsyncScreen({super.key});
 
   @override
   State<AsyncScreen> createState() => _AsyncScreenState();
@@ -25,7 +25,7 @@ class _AsyncScreenState extends State<AsyncScreen> {
   }
 
   // ⑤アプリ起動時に保存したデータを読み込む
-  void _checkData() async {
+  Future<void> _checkData() async {
     // SharedPreferencesオブジェクトの取得
     final prefs = await SharedPreferences.getInstance();
     setState(() {
@@ -37,12 +37,12 @@ class _AsyncScreenState extends State<AsyncScreen> {
   }
 
   // ④「保存」押した時に端末に情報を保存する
-  void _setData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+  Future<void> _setData() async {
+    final prefs = await SharedPreferences.getInstance();
     setState(() {
-      prefs.setString('name', _name);
-      prefs.setString('age', _age);
-      prefs.setString('birthday', _birthday);
+      prefs..setString('name', _name)
+      ..setString('age', _age)
+      ..setString('birthday', _birthday);
     });
   }
 
@@ -64,8 +64,8 @@ class _AsyncScreenState extends State<AsyncScreen> {
     );
   }
 
-  _showInputDialog(context) {
-    return showDialog(
+  void _showInputDialog(BuildContext context) {
+     showDialog <void>(
       context: context,
       builder: (context) {
         return AlertDialog(
@@ -85,7 +85,7 @@ class _AsyncScreenState extends State<AsyncScreen> {
                   //①ここで文字を入力してvalueに情報が入る
                   TextFormField(
                     decoration:
-                        const InputDecoration(hintText: "名前", labelText: '名前'),
+                        const InputDecoration(hintText: '名前', labelText: '名前'),
                     //validator:違ったら赤くエラーで出るやつ
                     //value:入力した情報が入るやつ
                     validator: (value) {
@@ -157,7 +157,7 @@ class _AsyncScreenState extends State<AsyncScreen> {
   }
 
   //③画面にchangeされたvalueの情報が表示される
-  Widget _buildInformationSection(context) {
+  Widget _buildInformationSection(BuildContext context) {
     return Column(
       children: [
         Text('名前 $_name'),

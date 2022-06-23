@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_await_in_return
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '/mvvm/api/qiita_api_client.dart';
 import '/mvvm/model/qiita_item.dart';

@@ -9,7 +9,7 @@ part 'qiita_api_client.g.dart';
 abstract class QiitaApiClient {
   factory QiitaApiClient(Dio dio, {String baseUrl}) = _QiitaApiClient;
 
-  static QiitaApiClient create() {
+  static Future<QiitaApiClient> create() async {
     final dio = Dio();
     dio.interceptors.add(PrettyDioLogger());
     return QiitaApiClient(dio);

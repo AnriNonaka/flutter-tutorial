@@ -19,5 +19,3 @@ class ResidenceItem with _$ResidenceItem {
   factory ResidenceItem.fromJson(Map<String, dynamic> json) =>
       _$ResidenceItemFromJson(json);
 }
-
-

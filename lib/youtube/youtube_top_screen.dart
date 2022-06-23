@@ -5,10 +5,6 @@ import 'package:flutter_tutorial/youtube/youtube_client_state_notifier.dart';
 import 'model/youtube_item.dart';
 
 class MovieInfo {
-  final String imagePath;
-  final String iconPath;
-  final String title;
-  final String subTitle;
 
   MovieInfo({
     required this.imagePath,
@@ -16,17 +12,22 @@ class MovieInfo {
     required this.title,
     required this.subTitle,
   });
+  final String imagePath;
+  final String iconPath;
+  final String title;
+  final String subTitle;
 }
 
 //StatelessWidget →変更
 class YoutubeTopScreen extends ConsumerWidget {
-  const YoutubeTopScreen({Key? key}) : super(key: key);
+  const YoutubeTopScreen({super.key});
 
   @override
   //変更(御作法で)
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(youtubeClientStateNotifier);
-    //youtube_client_state_notifier.dartの「state = state.copyWith(isLoading: true);」
+    //youtube_client_state_notifier.dartの
+    // 「state = state.copyWith(isLoading: true)
     // のフラグを活用して、読み込んでる時だけインジケータ出す
     if (state.isLoading) {
       return const Center(child: CircularProgressIndicator());
@@ -90,32 +91,31 @@ class YoutubeTopScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildBody(context, List<YoutubeItem> youtubeItems) {
+  Widget _buildBody(BuildContext context, List<YoutubeItem> youtubeItems) {
     return Center(
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8),
           child: Column(
             children: [
               Wrap(
                 // 「crossAxisCount: 2」使ってたけど、wrapで囲むために_buildCategoryメソッド作った。
-                alignment: WrapAlignment.start,
                 children: <Widget>[
                   _buildCategory(
-                      context, Colors.red, Icons.local_fire_department, '急上昇'),
+                      context, Colors.red, Icons.local_fire_department, '急上昇',),
                   _buildCategory(context, Colors.teal, Icons.music_note, '音楽'),
                   _buildCategory(
-                      context, Colors.brown, Icons.sports_esports, 'ゲーム'),
+                      context, Colors.brown, Icons.sports_esports, 'ゲーム',),
                   _buildCategory(
-                      context, Colors.blueAccent, Icons.feed, 'ニュース'),
+                      context, Colors.blueAccent, Icons.feed, 'ニュース',),
                   _buildCategory(context, Colors.green, Icons.lightbulb, '学び'),
                   _buildCategory(
-                      context, Colors.orange, Icons.lightbulb, 'ライブ'),
+                      context, Colors.orange, Icons.lightbulb, 'ライブ',),
                   _buildCategory(context, Colors.cyan, Icons.sports, 'スポーツ'),
                 ],
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 20.0),
+                padding: const EdgeInsets.only(top: 20),
                 child: Row(
                   children: const [
                     Text(
@@ -136,7 +136,7 @@ class YoutubeTopScreen extends ConsumerWidget {
                     color: Colors.black38,
                     elevation: 0,
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 10.0),
+                      padding: const EdgeInsets.only(top: 10),
                       child: Column(
                         children: [
                           Image.network(currentMovieData.imagePath ?? ''),
@@ -146,7 +146,7 @@ class YoutubeTopScreen extends ConsumerWidget {
                               child: SizedBox(
                                   width: 37,
                                   child: Image.network(
-                                      currentMovieData.iconPath ?? '')),
+                                      currentMovieData.iconPath ?? '',),),
                             ),
                             title: Text(
                               currentMovieData.title ?? '',
@@ -215,7 +215,7 @@ class YoutubeTopScreen extends ConsumerWidget {
   }
 
   Widget _buildCategory(
-      BuildContext context, Color color, IconData icon, String label) {
+      BuildContext context, Color color, IconData icon, String label,) {
     return SizedBox(
       //カードを2個に並べる「crossAxisCount: 2」じゃないやり方
       width: (MediaQuery.of(context).size.width - 16) / 2,
@@ -225,7 +225,7 @@ class YoutubeTopScreen extends ConsumerWidget {
         child: Row(
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Icon(
                 icon,
                 color: Colors.white,

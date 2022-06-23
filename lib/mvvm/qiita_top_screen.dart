@@ -1,10 +1,12 @@
+// ignore_for_file: use_colored_box
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '/mvvm/model/qiita_item.dart';
 import '/mvvm/qiita_client_state_notifier.dart';
 
 class QiitaTopScreen extends ConsumerWidget {
-  const QiitaTopScreen({Key? key}) : super(key: key);
+  const QiitaTopScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

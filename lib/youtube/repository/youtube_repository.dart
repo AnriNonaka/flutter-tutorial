@@ -10,6 +10,6 @@ class YoutubeRepository {
   final YoutubeApiClient _api = YoutubeApiClient.create() as YoutubeApiClient;
 
   Future<List<YoutubeItem>> fetchYoutubeItems() async {
-    return await _api.fetchYoutubeItems();
+    return _api.fetchYoutubeItems();
   }
 }

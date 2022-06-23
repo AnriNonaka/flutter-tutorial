@@ -1,7 +1,10 @@
+// ignore_for_file: invalid_annotation_target
+
 import 'package:freezed_annotation/freezed_annotation.dart';
 import '/mvvm/model/qiita_user.dart';
 
 part 'qiita_item.freezed.dart';
+
 part 'qiita_item.g.dart';
 
 @freezed

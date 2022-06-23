@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'merukari_client_state_notifier.dart';
 import 'model/merukari_item.dart';
 
 class GoodsInfo {
-  final String imagePath;
-  final String title;
-  final String price;
-  final String compassion;
 
   GoodsInfo({
     required this.imagePath,
@@ -16,10 +11,15 @@ class GoodsInfo {
     required this.price,
     required this.compassion,
   });
+  final String imagePath;
+  final String title;
+  final String price;
+  final String compassion;
 }
 
 class MerukariScreen extends ConsumerWidget {
-  const MerukariScreen({Key? key}) : super(key: key);
+  const MerukariScreen({super.key});
+
   static const lightGray = Color.fromRGBO(231, 231, 231, 1);
 
   @override
@@ -48,7 +48,7 @@ class MerukariScreen extends ConsumerWidget {
             child: Column(
               children: const [
                 Padding(
-                  padding: EdgeInsets.only(top: 5.0),
+                  padding: EdgeInsets.only(top: 5),
                   child: Icon(
                     Icons.photo_camera,
                     size: 23,
@@ -76,9 +76,12 @@ class MerukariScreen extends ConsumerWidget {
         mainAxisSize: MainAxisSize.min,
         children: const [
           Text(
-            "出品",
+            '出品',
             style: TextStyle(
-                fontSize: 20, color: Colors.black, fontWeight: FontWeight.bold),
+              fontSize: 20,
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ],
       ),
@@ -88,23 +91,23 @@ class MerukariScreen extends ConsumerWidget {
   Widget _buildBody(BuildContext context, List<MerukariItem> merukariItems) {
     //ここに定数を作って、各Containerのwidthで使う。
     final bottomWidths = (MediaQuery.of(context).size.width - 60) / 4;
-    //Listviewbuilder入れて出たエラー、下記2行で解決
+    //ListViewBuilder入れて出たエラー、下記2行で解決
     return SizedBox(
       height: MediaQuery.of(context).size.height,
       child: SingleChildScrollView(
-        child: Container(
+        child: ColoredBox(
           color: const Color.fromRGBO(239, 239, 239, 1),
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(7),
                   child: Image.asset('images/メルカリ_トップ画.png'),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20.0),
+                padding: const EdgeInsets.only(left: 20),
                 child: Row(
                   children: const [
                     Text(
@@ -137,14 +140,14 @@ class MerukariScreen extends ConsumerWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: const [
                                 Padding(
-                                  padding: EdgeInsets.only(top: 4.0),
+                                  padding: EdgeInsets.only(top: 4),
                                   child: Icon(
                                     Icons.camera_alt_outlined,
                                     size: 30,
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(top: 6.0),
+                                  padding: EdgeInsets.only(top: 6),
                                   child: Text(
                                     '写真を撮る',
                                     style: TextStyle(fontSize: 10),
@@ -168,14 +171,14 @@ class MerukariScreen extends ConsumerWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: const [
                                 Padding(
-                                  padding: EdgeInsets.only(top: 4.0),
+                                  padding: EdgeInsets.only(top: 4),
                                   child: Icon(
                                     Icons.photo_library_outlined,
                                     size: 30,
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(top: 6.0),
+                                  padding: EdgeInsets.only(top: 6),
                                   child: Text(
                                     'アルバム',
                                     style: TextStyle(fontSize: 10),
@@ -199,14 +202,14 @@ class MerukariScreen extends ConsumerWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: const [
                                 Padding(
-                                  padding: EdgeInsets.only(top: 4.0),
+                                  padding: EdgeInsets.only(top: 4),
                                   child: Icon(
                                     Icons.qr_code,
                                     size: 30,
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(top: 2.0),
+                                  padding: EdgeInsets.only(top: 2),
                                   child: Text(
                                     ' バーコード\n(本・コスメ)',
                                     style: TextStyle(fontSize: 10, height: 1),
@@ -230,14 +233,14 @@ class MerukariScreen extends ConsumerWidget {
                               mainAxisSize: MainAxisSize.min,
                               children: const [
                                 Padding(
-                                  padding: EdgeInsets.only(top: 4.0),
+                                  padding: EdgeInsets.only(top: 4),
                                   child: Icon(
                                     Icons.description_outlined,
                                     size: 30,
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(top: 5.0),
+                                  padding: EdgeInsets.only(top: 5),
                                   child: Text(
                                     '下書き一覧',
                                     style: TextStyle(fontSize: 10),
@@ -252,7 +255,7 @@ class MerukariScreen extends ConsumerWidget {
                   ),
                 ),
               ),
-              Container(
+              ColoredBox(
                 color: Colors.white,
                 child: ListView(
                   shrinkWrap: true,
@@ -260,8 +263,8 @@ class MerukariScreen extends ConsumerWidget {
                     Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.all(1.0),
-                          child: Container(
+                          padding: const EdgeInsets.all(1),
+                          child: DecoratedBox(
                             decoration: const BoxDecoration(
                               border: Border(
                                 bottom: BorderSide(color: lightGray),
@@ -271,7 +274,9 @@ class MerukariScreen extends ConsumerWidget {
                               title: const Text(
                                 '売れやすい持ち物',
                                 style: TextStyle(
-                                    fontSize: 14, fontWeight: FontWeight.bold),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                               subtitle: const Text(
                                 '使わないモノを出品してみよう！',
@@ -284,7 +289,9 @@ class MerukariScreen extends ConsumerWidget {
                                     Text(
                                       'すべて見る ',
                                       style: TextStyle(
-                                          fontSize: 16, color: Colors.blue),
+                                        fontSize: 16,
+                                        color: Colors.blue,
+                                      ),
                                     ),
                                     Icon(
                                       Icons.arrow_forward_ios_outlined,
@@ -311,14 +318,14 @@ class MerukariScreen extends ConsumerWidget {
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
+                                  padding: const EdgeInsets.all(8),
                                   child: Row(
                                     children: [
                                       Image.network(
-                                          currentGoodsData.imagePath ?? ''),
+                                          currentGoodsData.imagePath ?? '',),
                                       Padding(
                                         padding:
-                                            const EdgeInsets.only(left: 15.0),
+                                            const EdgeInsets.only(left: 15),
                                         child: Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.start,
@@ -326,14 +333,16 @@ class MerukariScreen extends ConsumerWidget {
                                             Text(
                                               currentGoodsData.title ?? '',
                                               style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 14),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 14,
+                                              ),
                                             ),
                                             Text(
                                               currentGoodsData.price ?? '',
                                               style: const TextStyle(
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 15),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15,
+                                              ),
                                             ),
                                             Row(
                                               children: [
@@ -346,7 +355,8 @@ class MerukariScreen extends ConsumerWidget {
                                                   currentGoodsData.compassion ??
                                                       '',
                                                   style: const TextStyle(
-                                                      fontSize: 12),
+                                                    fontSize: 12,
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -356,19 +366,24 @@ class MerukariScreen extends ConsumerWidget {
                                       const Spacer(),
                                       Padding(
                                         padding:
-                                            const EdgeInsets.only(right: 8.0),
+                                            const EdgeInsets.only(right: 8),
                                         child: ElevatedButton(
                                           onPressed: () {},
                                           style: ElevatedButton.styleFrom(
                                             primary: const Color.fromRGBO(
-                                                195, 90, 75, 1),
+                                              195,
+                                              90,
+                                              75,
+                                              1,
+                                            ),
                                           ),
                                           child: const Text(
                                             '出品する',
                                             style: TextStyle(
-                                                color: Colors.white,
-                                                fontWeight: FontWeight.bold,
-                                                fontSize: 12),
+                                              color: Colors.white,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 12,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -393,7 +408,6 @@ class MerukariScreen extends ConsumerWidget {
 
   BottomNavigationBar _buildBottomNavigationBar() {
     return BottomNavigationBar(
-      unselectedFontSize: 12,
       selectedFontSize: 12,
       unselectedItemColor: Colors.black,
       selectedItemColor: Colors.black,
