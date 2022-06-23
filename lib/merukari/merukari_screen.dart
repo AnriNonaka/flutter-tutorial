@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import 'merukari_client_state_notifier.dart';
+import 'model/merukari_item.dart';
 
 class GoodsInfo {
   final String imagePath;
@@ -14,36 +18,21 @@ class GoodsInfo {
   });
 }
 
-class MerukariScreen extends StatelessWidget {
-  MerukariScreen({Key? key}) : super(key: key);
+class MerukariScreen extends ConsumerWidget {
+  const MerukariScreen({Key? key}) : super(key: key);
   static const lightGray = Color.fromRGBO(231, 231, 231, 1);
 
-  final List<GoodsInfo> _dummyGoodsData = [
-    GoodsInfo(
-      imagePath: 'images/カメラ画像.png',
-      title: 'NikonD5500',
-      price: '¥51,000',
-      compassion: '446人が探しています',
-    ),
-    GoodsInfo(
-      imagePath: 'images/カメラ画像.png',
-      title: 'NikonD5500',
-      price: '¥51,000',
-      compassion: '446人が探しています',
-    ),
-    GoodsInfo(
-      imagePath: 'images/カメラ画像.png',
-      title: 'NikonD5500',
-      price: '¥51,000',
-      compassion: '446人が探しています',
-    ),
-  ];
-
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final state = ref.watch(merukariClientStateNotifier);
+
+    if (state.isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
     return Scaffold(
       appBar: _buildAppBar(),
-      body: _buildBody(context),
+      body: _buildBody(context, state.merukariItems),
       bottomNavigationBar: _buildBottomNavigationBar(),
       floatingActionButton: SizedBox(
         width: 60,
@@ -96,7 +85,7 @@ class MerukariScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildBody(context) {
+  Widget _buildBody(BuildContext context, List<MerukariItem> merukariItems) {
     //ここに定数を作って、各Containerのwidthで使う。
     final bottomWidths = (MediaQuery.of(context).size.width - 60) / 4;
     //Listviewbuilder入れて出たエラー、下記2行で解決
@@ -311,9 +300,9 @@ class MerukariScreen extends StatelessWidget {
                         LimitedBox(
                           maxHeight: 500,
                           child: ListView.builder(
-                            itemCount: _dummyGoodsData.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              final currentGoodsData = _dummyGoodsData[index];
+                            itemCount: merukariItems.length,
+                            itemBuilder: (BuildContext context, index) {
+                              final currentGoodsData = merukariItems[index];
                               return Container(
                                 height: 80,
                                 decoration: const BoxDecoration(
@@ -325,7 +314,8 @@ class MerukariScreen extends StatelessWidget {
                                   padding: const EdgeInsets.all(8.0),
                                   child: Row(
                                     children: [
-                                      Image.asset(currentGoodsData.imagePath),
+                                      Image.network(
+                                          currentGoodsData.imagePath ?? ''),
                                       Padding(
                                         padding:
                                             const EdgeInsets.only(left: 15.0),
@@ -334,13 +324,13 @@ class MerukariScreen extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              currentGoodsData.title,
+                                              currentGoodsData.title ?? '',
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 14),
                                             ),
                                             Text(
-                                              currentGoodsData.price,
+                                              currentGoodsData.price ?? '',
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15),
@@ -353,7 +343,8 @@ class MerukariScreen extends StatelessWidget {
                                                   size: 20,
                                                 ),
                                                 Text(
-                                                  currentGoodsData.compassion,
+                                                  currentGoodsData.compassion ??
+                                                      '',
                                                   style: const TextStyle(
                                                       fontSize: 12),
                                                 ),
