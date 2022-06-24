@@ -7,8 +7,7 @@ final merukariRepositoryProvider =
     Provider<MerukariRepository>((_) => MerukariRepository());
 
 class MerukariRepository {
-  final MerukariApiClient _api =
-      MerukariApiClient.create() as MerukariApiClient;
+  final MerukariApiClient _api = MerukariApiClient.create;
 
   Future<List<MerukariItem>> fetchMerukariItems() async {
     return _api.fetchMerukariItems();

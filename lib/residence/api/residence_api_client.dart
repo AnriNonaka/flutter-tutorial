@@ -10,7 +10,8 @@ part 'residence_api_client.g.dart';
 abstract class ResidenceApiClient {
   factory ResidenceApiClient(Dio dio, {String baseUrl}) = _ResidenceApiClient;
 
-  static Future<ResidenceApiClient> create() async {
+  //「create」のエラー：解決するためには大幅に変更が必要なためこのままで。
+  static ResidenceApiClient get create {
     final dio = Dio();
     dio.interceptors.add(PrettyDioLogger());
     return ResidenceApiClient(dio);
