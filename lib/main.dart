@@ -9,8 +9,9 @@ import 'merukari/merukari_screen.dart';
 import 'mvvm/qiita_top_screen.dart';
 
 void main() => runApp(
-    //これは必須
-    const ProviderScope(child: MyApp()),);
+      //これは必須
+      const ProviderScope(child: MyApp()),
+    );
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

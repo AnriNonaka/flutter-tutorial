@@ -4,13 +4,13 @@ import 'merukari_client_state_notifier.dart';
 import 'model/merukari_item.dart';
 
 class GoodsInfo {
-
   GoodsInfo({
     required this.imagePath,
     required this.title,
     required this.price,
     required this.compassion,
   });
+
   final String imagePath;
   final String title;
   final String price;
@@ -322,7 +322,8 @@ class MerukariScreen extends ConsumerWidget {
                                   child: Row(
                                     children: [
                                       Image.network(
-                                          currentGoodsData.imagePath ?? '',),
+                                        currentGoodsData.imagePath ?? '',
+                                      ),
                                       Padding(
                                         padding:
                                             const EdgeInsets.only(left: 15),

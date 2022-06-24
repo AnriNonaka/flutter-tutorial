@@ -93,7 +93,9 @@ class ResidenceTopScreen extends ConsumerWidget {
                         label: Text(
                           'カウルのおすすめ',
                           style: TextStyle(
-                              color: Colors.teal, fontWeight: FontWeight.w700,),
+                            color: Colors.teal,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ),
                     ),
@@ -142,9 +144,10 @@ class ResidenceTopScreen extends ConsumerWidget {
                                 Text(
                                   '新着3件',
                                   style: TextStyle(
-                                      color: Colors.deepOrange,
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,),
+                                    color: Colors.deepOrange,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                                 Spacer(),
                                 Padding(
@@ -183,8 +186,7 @@ class ResidenceTopScreen extends ConsumerWidget {
                                       Row(
                                         children: const [
                                           Padding(
-                                            padding:
-                                                EdgeInsets.only(right: 5),
+                                            padding: EdgeInsets.only(right: 5),
                                             child: Icon(
                                               Icons.train,
                                               size: 16,
@@ -199,8 +201,7 @@ class ResidenceTopScreen extends ConsumerWidget {
                                       Row(
                                         children: const [
                                           Padding(
-                                            padding:
-                                                EdgeInsets.only(right: 5),
+                                            padding: EdgeInsets.only(right: 5),
                                             child: Icon(
                                               Icons.paid,
                                               size: 16,
@@ -215,8 +216,7 @@ class ResidenceTopScreen extends ConsumerWidget {
                                       Row(
                                         children: const [
                                           Padding(
-                                            padding:
-                                                EdgeInsets.only(right: 5),
+                                            padding: EdgeInsets.only(right: 5),
                                             child: Icon(
                                               Icons.error_outline,
                                               size: 16,
@@ -267,23 +267,25 @@ class ResidenceTopScreen extends ConsumerWidget {
                                             Text(
                                               currentPropertyData.title ?? '',
                                               style: const TextStyle(
-                                                  fontSize: 20,
-                                                  fontWeight: FontWeight.bold,),
+                                                fontSize: 20,
+                                                fontWeight: FontWeight.bold,
+                                              ),
                                             ),
                                           ],
                                         ),
                                         Padding(
                                           padding: const EdgeInsets.only(
-                                              bottom: 6,),
+                                            bottom: 6,
+                                          ),
                                           child: Row(
                                             children: [
                                               Text(
                                                 currentPropertyData.price ?? '',
                                                 style: const TextStyle(
-                                                    color: Colors.deepOrange,
-                                                    fontSize: 20,
-                                                    fontWeight:
-                                                        FontWeight.bold,),
+                                                  color: Colors.deepOrange,
+                                                  fontSize: 20,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
                                               ),
                                             ],
                                           ),
@@ -361,10 +363,11 @@ class ResidenceTopScreen extends ConsumerWidget {
                                           children: const [
                                             Padding(
                                               padding: EdgeInsets.only(
-                                                  top: 8,
-                                                  left: 20,
-                                                  right: 19,
-                                                  bottom: 8,),
+                                                top: 8,
+                                                left: 20,
+                                                right: 19,
+                                                bottom: 8,
+                                              ),
                                               child: Icon(
                                                 Icons.delete,
                                                 color: Colors.grey,
@@ -388,10 +391,11 @@ class ResidenceTopScreen extends ConsumerWidget {
                                         children: const [
                                           Padding(
                                             padding: EdgeInsets.only(
-                                                top: 8,
-                                                left: 20,
-                                                right: 14,
-                                                bottom: 8,),
+                                              top: 8,
+                                              left: 20,
+                                              right: 14,
+                                              bottom: 8,
+                                            ),
                                             child: Icon(
                                               Icons.favorite_border,
                                               color: Colors.grey,
@@ -449,7 +453,9 @@ class ResidenceTopScreen extends ConsumerWidget {
                   width: 18,
                   height: 18,
                   decoration: const BoxDecoration(
-                      color: Colors.red, shape: BoxShape.circle,),
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                  ),
                   constraints: const BoxConstraints(
                     minHeight: 12,
                     minWidth: 12,

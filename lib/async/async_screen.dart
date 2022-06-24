@@ -40,9 +40,10 @@ class _AsyncScreenState extends State<AsyncScreen> {
   Future<void> _setData() async {
     final prefs = await SharedPreferences.getInstance();
     setState(() {
-      prefs..setString('name', _name)
-      ..setString('age', _age)
-      ..setString('birthday', _birthday);
+      prefs
+        ..setString('name', _name)
+        ..setString('age', _age)
+        ..setString('birthday', _birthday);
     });
   }
 
@@ -65,7 +66,7 @@ class _AsyncScreenState extends State<AsyncScreen> {
   }
 
   void _showInputDialog(BuildContext context) {
-     showDialog <void>(
+    showDialog<void>(
       context: context,
       builder: (context) {
         return AlertDialog(

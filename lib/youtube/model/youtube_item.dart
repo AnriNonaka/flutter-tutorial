@@ -1,7 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-part 'youtube_item.freezed.dart';
-part 'youtube_item.g.dart';
 
+part 'youtube_item.freezed.dart';
+
+part 'youtube_item.g.dart';
 
 @freezed
 class YoutubeItem with _$YoutubeItem {
@@ -12,8 +13,6 @@ class YoutubeItem with _$YoutubeItem {
     @JsonKey(name: 'channelName') String? channelName,
     @JsonKey(name: 'numOfViews') int? numOfViews,
     @JsonKey(name: 'daysAgo') int? daysAgo,
-
-
   }) = _YoutubeItem;
 
   factory YoutubeItem.fromJson(Map<String, dynamic> json) =>

@@ -3,6 +3,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'qiita_user.freezed.dart';
+
 part 'qiita_user.g.dart';
 
 @freezed

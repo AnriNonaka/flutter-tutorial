@@ -1,5 +1,3 @@
-// ignore_for_file: use_colored_box
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '/mvvm/model/qiita_item.dart';
@@ -37,9 +35,9 @@ class QiitaTopScreen extends ConsumerWidget {
             ),
             Visibility(
               visible: state.isLoading,
-              child: Container(
-                color: const Color(0x88000000),
-                child: const Center(
+              child: const ColoredBox(
+                color: Color(0x88000000),
+                child: Center(
                   child: CircularProgressIndicator(),
                 ),
               ),
