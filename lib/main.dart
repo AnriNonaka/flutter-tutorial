@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_tutorial/todo_app/state/todo_screen.dart';
+import 'package:flutter_tutorial/youtube/youtube_top_screen.dart';
 import 'package:flutter_tutorial/residence/residence_top_screen.dart';
 import 'package:flutter_tutorial/youtube/youtube_top_screen.dart';
 import 'animation/animation_screen.dart';
@@ -109,6 +111,17 @@ class Home extends StatelessWidget {
                     context,
                     MaterialPageRoute<void>(
                       builder: (context) => const QiitaTopScreen(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Tutorial8'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => const TodoScreen(),
                     ),
                   );
                 },
