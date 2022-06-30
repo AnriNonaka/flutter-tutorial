@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tutorial/todo_app/state/todo_db.dart';
-import 'package:tutorial/todo_app/todo_db.dart';
 
 final todoRepository = Provider(
       (ref) => TodoRepository(),

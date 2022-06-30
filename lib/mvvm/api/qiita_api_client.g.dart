@@ -6,8 +6,6 @@ part of 'qiita_api_client.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps
-
 class _QiitaApiClient implements QiitaApiClient {
   _QiitaApiClient(this._dio, {this.baseUrl}) {
     baseUrl ??= 'https://qiita.com/api/v2/';
@@ -26,7 +24,7 @@ class _QiitaApiClient implements QiitaApiClient {
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<List<QiitaItem>>(
             Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/tags/${tag}/items',
+                .compose(_dio.options, '/tags/$tag/items',
                     queryParameters: queryParameters, data: _data)
                 .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
     var value = _result.data!

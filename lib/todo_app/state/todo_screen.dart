@@ -84,9 +84,9 @@ class TodoScreen extends ConsumerWidget {
     final formKey = GlobalKey<FormState>();
     final addDate = DateTime.now();
     final title = TextEditingController();
-    final _description = TextEditingController();
-    var _limitData = TextEditingController();
-    final _format = DateFormat('yyyy-MM-dd');
+    final description = TextEditingController();
+    var limitData = TextEditingController();
+    final format = DateFormat('yyyy-MM-dd');
 
     return showDialog(
       context: context,
@@ -131,7 +131,7 @@ class TodoScreen extends ConsumerWidget {
                       }
                       return null;
                     },
-                    controller: _limitData,
+                    controller: limitData,
                     onTap: () async {
                       final date = await showDatePicker(
                         context: context,

@@ -6,8 +6,6 @@ part of 'merukari_api_client.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps
-
 class _MerukariApiClient implements MerukariApiClient {
   _MerukariApiClient(this._dio, {this.baseUrl}) {
     baseUrl ??= 'https://fir-cli-docker.web.app/api/v1/';
