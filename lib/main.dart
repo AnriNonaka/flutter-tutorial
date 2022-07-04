@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_tutorial/youtube/youtube_top_screen.dart';
 import 'package:flutter_tutorial/residence/residence_top_screen.dart';
+import 'package:flutter_tutorial/youtube/youtube_top_screen.dart';
 import 'animation/animation_screen.dart';
 import 'async/async_screen.dart';
 import 'building/building_layout_screen.dart';
@@ -9,11 +9,12 @@ import 'merukari/merukari_screen.dart';
 import 'mvvm/qiita_top_screen.dart';
 
 void main() => runApp(
-    //これは必須
-    const ProviderScope(child: MyApp()));
+      //これは必須
+      const ProviderScope(child: MyApp()),
+    );
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
 }
 
 class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class Home extends StatelessWidget {
         title: const Text('メイン画面'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(100.0),
+        padding: const EdgeInsets.all(100),
         child: Center(
           child: Column(
             children: [
@@ -40,7 +41,7 @@ class Home extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
+                    MaterialPageRoute<void>(
                       builder: (context) => const BuildLayoutScreen(),
                     ),
                   );
@@ -51,7 +52,7 @@ class Home extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
+                    MaterialPageRoute<void>(
                       builder: (context) => const LogoApp(),
                     ),
                   );
@@ -62,7 +63,7 @@ class Home extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
+                    MaterialPageRoute<void>(
                       builder: (context) => const YoutubeTopScreen(),
                     ),
                   );
@@ -73,7 +74,7 @@ class Home extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
+                    MaterialPageRoute<void>(
                       builder: (context) => const ResidenceTopScreen(),
                     ),
                   );
@@ -84,8 +85,8 @@ class Home extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => MerukariScreen(),
+                    MaterialPageRoute<void>(
+                      builder: (context) => const MerukariScreen(),
                     ),
                   );
                 },
@@ -95,7 +96,7 @@ class Home extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
+                    MaterialPageRoute<void>(
                       builder: (context) => const AsyncScreen(),
                     ),
                   );
@@ -106,7 +107,7 @@ class Home extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
+                    MaterialPageRoute<void>(
                       builder: (context) => const QiitaTopScreen(),
                     ),
                   );

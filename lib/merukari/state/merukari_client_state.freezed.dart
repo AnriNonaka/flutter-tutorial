@@ -36,9 +36,7 @@ const $MerukariClientState = _$MerukariClientStateTearOff();
 /// @nodoc
 mixin _$MerukariClientState {
   bool get isLoading => throw _privateConstructorUsedError;
-
   bool get isReadyData => throw _privateConstructorUsedError;
-
   List<MerukariItem> get merukariItems => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -51,7 +49,6 @@ abstract class $MerukariClientStateCopyWith<$Res> {
   factory $MerukariClientStateCopyWith(
           MerukariClientState value, $Res Function(MerukariClientState) then) =
       _$MerukariClientStateCopyWithImpl<$Res>;
-
   $Res call(
       {bool isLoading, bool isReadyData, List<MerukariItem> merukariItems});
 }
@@ -62,7 +59,6 @@ class _$MerukariClientStateCopyWithImpl<$Res>
   _$MerukariClientStateCopyWithImpl(this._value, this._then);
 
   final MerukariClientState _value;
-
   // ignore: unused_field
   final $Res Function(MerukariClientState) _then;
 
@@ -95,7 +91,6 @@ abstract class _$MerukariClientStateCopyWith<$Res>
   factory _$MerukariClientStateCopyWith(_MerukariClientState value,
           $Res Function(_MerukariClientState) then) =
       __$MerukariClientStateCopyWithImpl<$Res>;
-
   @override
   $Res call(
       {bool isLoading, bool isReadyData, List<MerukariItem> merukariItems});
@@ -192,13 +187,10 @@ abstract class _MerukariClientState implements MerukariClientState {
 
   @override
   bool get isLoading;
-
   @override
   bool get isReadyData;
-
   @override
   List<MerukariItem> get merukariItems;
-
   @override
   @JsonKey(ignore: true)
   _$MerukariClientStateCopyWith<_MerukariClientState> get copyWith =>
