@@ -4,7 +4,6 @@ import 'package:drift/native.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
-
 part 'todo_db.g.dart';
 
 // Driftを使ってデータベースを構築
@@ -13,10 +12,14 @@ part 'todo_db.g.dart';
 class Todos extends Table {
   // 主キー（autoIncrementで自動的にIDを設置する）
   IntColumn get id => integer().autoIncrement()();
+
   // タイトル（デフォルト値と長さを指定する）
   TextColumn get title => text().withLength(min: 1, max: 50)();
+
   TextColumn get description => text().withLength(min: 1, max: 50)();
+
   DateTimeColumn get addDate => dateTime()();
+
   DateTimeColumn get limitDate => dateTime()();
 }
 

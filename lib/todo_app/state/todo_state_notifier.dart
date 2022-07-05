@@ -6,8 +6,8 @@ import 'package:flutter_tutorial/todo_app/state/todo_db.dart';
 //データベースとView間のやりとりを状態管理する
 
 final todoStateNotifier =
-StateNotifierProvider<TodoStateNotifier, TodoClientState>(
-      (ref) => TodoStateNotifier(),
+    StateNotifierProvider<TodoStateNotifier, TodoClientState>(
+  (ref) => TodoStateNotifier(),
 );
 
 // DBの操作を行うクラス （dbの操作にstateを絡める）
@@ -19,6 +19,7 @@ class TodoStateNotifier extends StateNotifier<TodoClientState> {
   }
 
   final _repository = TodoRepository();
+
   Future getTodoData() async {
     //読み込み中のフラグを立ててる
     //コピーを作ってstateにセットする
@@ -50,8 +51,9 @@ class TodoStateNotifier extends StateNotifier<TodoClientState> {
       );
     }
   }
+
 //保存したデータを含めてもう1回ロードして画面構築をしている
-  Future insertTodoData(todo) async {
+  Future insertTodoData(TodosCompanion todo) async {
     //ローディングたてて
     state = state.copyWith(isLoading: true);
     //新規でレコード追加して

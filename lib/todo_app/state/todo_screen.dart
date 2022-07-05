@@ -80,7 +80,8 @@ class TodoScreen extends ConsumerWidget {
     );
   }
 
-  _showEditDialog(BuildContext context, TodoStateNotifier notifier) {
+  Future<void> _showEditDialog(
+      BuildContext context, TodoStateNotifier notifier) {
     final formKey = GlobalKey<FormState>();
     final addDate = DateTime.now();
     final title = TextEditingController();
