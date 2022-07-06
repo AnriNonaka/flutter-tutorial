@@ -33,7 +33,7 @@ class _QiitaApiClient implements QiitaApiClient {
     return value;
   }
 
-  RequestOptions _setStreamType<T>(RequLstOptions requestOptions) {
+  RequestOptions _setStreamType<T>(RequestOptions requestOptions) {
     if (T != dynamic &&
         !(requestOptions.responseType == ResponseType.bytes ||
             requestOptions.responseType == ResponseType.stream)) {
