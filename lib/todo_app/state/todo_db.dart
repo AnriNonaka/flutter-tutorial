@@ -32,7 +32,8 @@ LazyDatabase _openConnection() {
   });
 }
 
-// データベースの実行
+// データベースへアクセス（実際に読み書き）するクラスの定義ですね。
+// 中のメソッドは外向けに公開するメソッドとその動きを定義しています。
 @DriftDatabase(tables: [Todos])
 class MyDatabase extends _$MyDatabase {
   MyDatabase() : super(_openConnection());

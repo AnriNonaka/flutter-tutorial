@@ -40,43 +40,35 @@ class TodoScreen extends ConsumerWidget {
   }
 
   Widget _buildTodoList(TodoClientState state, TodoStateNotifier notifier) {
-    return Stack(
-      children: [
-        Column(
-          children: [
-            ListView.builder(
-              shrinkWrap: true,
-              itemCount: state.todoItems.length,
-              itemBuilder: ((context, index) {
-                final todoData = state.todoItems[index];
-                return Slidable(
-                  endActionPane: ActionPane(
-                    motion: const ScrollMotion(),
-                    children: [
-                      SlidableAction(
-                        onPressed: (context) {
-                          notifier.deleteTodoData(todoData.id);
-                        },
-                        backgroundColor: Colors.red,
-                        icon: Icons.delete,
-                        label: 'Delete',
-                      )
-                    ],
-                  ),
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Column(
-                      children: [
-                        _buildToDo(todoData),
-                      ],
-                    ),
-                  ),
-                );
-              }),
+    return ListView.builder(
+      shrinkWrap: true,
+      itemCount: state.todoItems.length,
+      itemBuilder: ((context, index) {
+        final todoData = state.todoItems[index];
+        return Slidable(
+          endActionPane: ActionPane(
+            motion: const ScrollMotion(),
+            children: [
+              SlidableAction(
+                onPressed: (context) {
+                  notifier.deleteTodoData(todoData.id);
+                },
+                backgroundColor: Colors.red,
+                icon: Icons.delete,
+                label: 'Delete',
+              )
+            ],
+          ),
+          child: SizedBox(
+            width: double.infinity,
+            child: Column(
+              children: [
+                _buildToDo(todoData),
+              ],
             ),
-          ],
-        )
-      ],
+          ),
+        );
+      }),
     );
   }
 
@@ -190,37 +182,35 @@ class TodoScreen extends ConsumerWidget {
 
   Widget _buildToDo(Todo todoItems) {
     DateFormat outputFormat = DateFormat('yyyy-MM-dd');
-    return Padding(
+    return Container(
       padding: const EdgeInsets.all(16.0),
-      child: Container(
-        decoration: const BoxDecoration(
-          border: Border(
-            bottom: BorderSide(color: Colors.grey),
-          ),
+      decoration: const BoxDecoration(
+        border: Border(
+          bottom: BorderSide(color: Colors.grey),
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('タイトル：${todoItems.title}'),
-              Text(todoItems.description, style: const TextStyle(fontSize: 24)),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text('作成日：${outputFormat.format(todoItems.addDate)}'),
-                  const SizedBox(
-                    width: 30,
-                  ),
-                  Text(
-                    '期日：${outputFormat.format(todoItems.limitDate)}',
-                    style: const TextStyle(
-                        color: Color.fromARGB(255, 211, 127, 17)),
-                  ),
-                ],
-              ),
-            ],
-          ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('タイトル：${todoItems.title}'),
+            Text(todoItems.description, style: const TextStyle(fontSize: 24)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('作成日：${outputFormat.format(todoItems.addDate)}'),
+                const SizedBox(
+                  width: 30,
+                ),
+                Text(
+                  '期日：${outputFormat.format(todoItems.limitDate)}',
+                  style:
+                      const TextStyle(color: Color.fromARGB(255, 211, 127, 17)),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
