@@ -46,18 +46,14 @@ const $MerukariItem = _$MerukariItemTearOff();
 mixin _$MerukariItem {
   @JsonKey(name: 'imagePath')
   String? get imagePath => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'title')
   String? get title => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'price')
   String? get price => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'compassion')
   String? get compassion => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $MerukariItemCopyWith<MerukariItem> get copyWith =>
       throw _privateConstructorUsedError;
@@ -68,7 +64,6 @@ abstract class $MerukariItemCopyWith<$Res> {
   factory $MerukariItemCopyWith(
           MerukariItem value, $Res Function(MerukariItem) then) =
       _$MerukariItemCopyWithImpl<$Res>;
-
   $Res call(
       {@JsonKey(name: 'imagePath') String? imagePath,
       @JsonKey(name: 'title') String? title,
@@ -81,7 +76,6 @@ class _$MerukariItemCopyWithImpl<$Res> implements $MerukariItemCopyWith<$Res> {
   _$MerukariItemCopyWithImpl(this._value, this._then);
 
   final MerukariItem _value;
-
   // ignore: unused_field
   final $Res Function(MerukariItem) _then;
 
@@ -119,7 +113,6 @@ abstract class _$MerukariItemCopyWith<$Res>
   factory _$MerukariItemCopyWith(
           _MerukariItem value, $Res Function(_MerukariItem) then) =
       __$MerukariItemCopyWithImpl<$Res>;
-
   @override
   $Res call(
       {@JsonKey(name: 'imagePath') String? imagePath,
@@ -240,19 +233,15 @@ abstract class _MerukariItem implements MerukariItem {
   @override
   @JsonKey(name: 'imagePath')
   String? get imagePath;
-
   @override
   @JsonKey(name: 'title')
   String? get title;
-
   @override
   @JsonKey(name: 'price')
   String? get price;
-
   @override
   @JsonKey(name: 'compassion')
   String? get compassion;
-
   @override
   @JsonKey(ignore: true)
   _$MerukariItemCopyWith<_MerukariItem> get copyWith =>

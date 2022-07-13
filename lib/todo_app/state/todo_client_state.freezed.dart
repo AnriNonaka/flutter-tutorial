@@ -20,7 +20,7 @@ class _$TodoClientStateTearOff {
   _TodoClientState call(
       {bool isLoading = false,
       bool isReadyData = false,
-      List<Todo> todoItems = const []}) {
+      List<Todo> todoItems = const [Todo]}) {
     return _TodoClientState(
       isLoading: isLoading,
       isReadyData: isReadyData,
@@ -36,9 +36,7 @@ const $TodoClientState = _$TodoClientStateTearOff();
 mixin _$TodoClientState {
 //読み込み中の時はプログレス出したいよって時
   bool get isLoading => throw _privateConstructorUsedError;
-
   bool get isReadyData => throw _privateConstructorUsedError;
-
   List<Todo> get todoItems => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -51,7 +49,6 @@ abstract class $TodoClientStateCopyWith<$Res> {
   factory $TodoClientStateCopyWith(
           TodoClientState value, $Res Function(TodoClientState) then) =
       _$TodoClientStateCopyWithImpl<$Res>;
-
   $Res call({bool isLoading, bool isReadyData, List<Todo> todoItems});
 }
 
@@ -61,7 +58,6 @@ class _$TodoClientStateCopyWithImpl<$Res>
   _$TodoClientStateCopyWithImpl(this._value, this._then);
 
   final TodoClientState _value;
-
   // ignore: unused_field
   final $Res Function(TodoClientState) _then;
 
@@ -94,7 +90,6 @@ abstract class _$TodoClientStateCopyWith<$Res>
   factory _$TodoClientStateCopyWith(
           _TodoClientState value, $Res Function(_TodoClientState) then) =
       __$TodoClientStateCopyWithImpl<$Res>;
-
   @override
   $Res call({bool isLoading, bool isReadyData, List<Todo> todoItems});
 }
@@ -139,7 +134,7 @@ class _$_TodoClientState implements _TodoClientState {
   const _$_TodoClientState(
       {this.isLoading = false,
       this.isReadyData = false,
-      this.todoItems = const []});
+      this.todoItems = const [Todo]});
 
   @JsonKey()
   @override //読み込み中の時はプログレス出したいよって時
@@ -188,13 +183,10 @@ abstract class _TodoClientState implements TodoClientState {
 
   @override //読み込み中の時はプログレス出したいよって時
   bool get isLoading;
-
   @override
   bool get isReadyData;
-
   @override
   List<Todo> get todoItems;
-
   @override
   @JsonKey(ignore: true)
   _$TodoClientStateCopyWith<_TodoClientState> get copyWith =>

@@ -50,24 +50,18 @@ const $YoutubeItem = _$YoutubeItemTearOff();
 mixin _$YoutubeItem {
   @JsonKey(name: 'imagePath')
   String? get imagePath => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'iconPath')
   String? get iconPath => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'title')
   String? get title => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'channelName')
   String? get channelName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'numOfViews')
   int? get numOfViews => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'daysAgo')
   int? get daysAgo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $YoutubeItemCopyWith<YoutubeItem> get copyWith =>
       throw _privateConstructorUsedError;
@@ -78,7 +72,6 @@ abstract class $YoutubeItemCopyWith<$Res> {
   factory $YoutubeItemCopyWith(
           YoutubeItem value, $Res Function(YoutubeItem) then) =
       _$YoutubeItemCopyWithImpl<$Res>;
-
   $Res call(
       {@JsonKey(name: 'imagePath') String? imagePath,
       @JsonKey(name: 'iconPath') String? iconPath,
@@ -93,7 +86,6 @@ class _$YoutubeItemCopyWithImpl<$Res> implements $YoutubeItemCopyWith<$Res> {
   _$YoutubeItemCopyWithImpl(this._value, this._then);
 
   final YoutubeItem _value;
-
   // ignore: unused_field
   final $Res Function(YoutubeItem) _then;
 
@@ -141,7 +133,6 @@ abstract class _$YoutubeItemCopyWith<$Res>
   factory _$YoutubeItemCopyWith(
           _YoutubeItem value, $Res Function(_YoutubeItem) then) =
       __$YoutubeItemCopyWithImpl<$Res>;
-
   @override
   $Res call(
       {@JsonKey(name: 'imagePath') String? imagePath,
@@ -289,27 +280,21 @@ abstract class _YoutubeItem implements YoutubeItem {
   @override
   @JsonKey(name: 'imagePath')
   String? get imagePath;
-
   @override
   @JsonKey(name: 'iconPath')
   String? get iconPath;
-
   @override
   @JsonKey(name: 'title')
   String? get title;
-
   @override
   @JsonKey(name: 'channelName')
   String? get channelName;
-
   @override
   @JsonKey(name: 'numOfViews')
   int? get numOfViews;
-
   @override
   @JsonKey(name: 'daysAgo')
   int? get daysAgo;
-
   @override
   @JsonKey(ignore: true)
   _$YoutubeItemCopyWith<_YoutubeItem> get copyWith =>

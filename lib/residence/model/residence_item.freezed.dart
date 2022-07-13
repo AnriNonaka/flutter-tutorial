@@ -50,24 +50,18 @@ const $ResidenceItem = _$ResidenceItemTearOff();
 mixin _$ResidenceItem {
   @JsonKey(name: 'imagePath')
   String? get imagePath => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'title')
   String? get title => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'price')
   String? get price => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'traffic')
   String? get traffic => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'detail1')
   String? get detail1 => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'detail2')
   String? get detail2 => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ResidenceItemCopyWith<ResidenceItem> get copyWith =>
       throw _privateConstructorUsedError;
@@ -78,7 +72,6 @@ abstract class $ResidenceItemCopyWith<$Res> {
   factory $ResidenceItemCopyWith(
           ResidenceItem value, $Res Function(ResidenceItem) then) =
       _$ResidenceItemCopyWithImpl<$Res>;
-
   $Res call(
       {@JsonKey(name: 'imagePath') String? imagePath,
       @JsonKey(name: 'title') String? title,
@@ -94,7 +87,6 @@ class _$ResidenceItemCopyWithImpl<$Res>
   _$ResidenceItemCopyWithImpl(this._value, this._then);
 
   final ResidenceItem _value;
-
   // ignore: unused_field
   final $Res Function(ResidenceItem) _then;
 
@@ -142,7 +134,6 @@ abstract class _$ResidenceItemCopyWith<$Res>
   factory _$ResidenceItemCopyWith(
           _ResidenceItem value, $Res Function(_ResidenceItem) then) =
       __$ResidenceItemCopyWithImpl<$Res>;
-
   @override
   $Res call(
       {@JsonKey(name: 'imagePath') String? imagePath,
@@ -289,27 +280,21 @@ abstract class _ResidenceItem implements ResidenceItem {
   @override
   @JsonKey(name: 'imagePath')
   String? get imagePath;
-
   @override
   @JsonKey(name: 'title')
   String? get title;
-
   @override
   @JsonKey(name: 'price')
   String? get price;
-
   @override
   @JsonKey(name: 'traffic')
   String? get traffic;
-
   @override
   @JsonKey(name: 'detail1')
   String? get detail1;
-
   @override
   @JsonKey(name: 'detail2')
   String? get detail2;
-
   @override
   @JsonKey(ignore: true)
   _$ResidenceItemCopyWith<_ResidenceItem> get copyWith =>

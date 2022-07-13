@@ -42,7 +42,6 @@ mixin _$QiitaUser {
   String? get profileImageUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $QiitaUserCopyWith<QiitaUser> get copyWith =>
       throw _privateConstructorUsedError;
@@ -52,7 +51,6 @@ mixin _$QiitaUser {
 abstract class $QiitaUserCopyWith<$Res> {
   factory $QiitaUserCopyWith(QiitaUser value, $Res Function(QiitaUser) then) =
       _$QiitaUserCopyWithImpl<$Res>;
-
   $Res call({@JsonKey(name: 'profile_image_url') String? profileImageUrl});
 }
 
@@ -61,7 +59,6 @@ class _$QiitaUserCopyWithImpl<$Res> implements $QiitaUserCopyWith<$Res> {
   _$QiitaUserCopyWithImpl(this._value, this._then);
 
   final QiitaUser _value;
-
   // ignore: unused_field
   final $Res Function(QiitaUser) _then;
 
@@ -83,7 +80,6 @@ abstract class _$QiitaUserCopyWith<$Res> implements $QiitaUserCopyWith<$Res> {
   factory _$QiitaUserCopyWith(
           _QiitaUser value, $Res Function(_QiitaUser) then) =
       __$QiitaUserCopyWithImpl<$Res>;
-
   @override
   $Res call({@JsonKey(name: 'profile_image_url') String? profileImageUrl});
 }
@@ -163,7 +159,6 @@ abstract class _QiitaUser implements QiitaUser {
   @override
   @JsonKey(name: 'profile_image_url')
   String? get profileImageUrl;
-
   @override
   @JsonKey(ignore: true)
   _$QiitaUserCopyWith<_QiitaUser> get copyWith =>

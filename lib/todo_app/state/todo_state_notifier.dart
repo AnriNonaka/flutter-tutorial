@@ -52,7 +52,8 @@ class TodoStateNotifier extends StateNotifier<TodoClientState> {
     }
   }
 
-//保存したデータを含めてもう1回ロードして画面構築をしている
+  //保存したデータを含めてもう1回ロードして画面構築をしている
+  //テスト用のダミーデータで使うメソッドはこれ参考に
   Future insertTodoData(TodosCompanion todo) async {
     //ローディングたてて
     state = state.copyWith(isLoading: true);

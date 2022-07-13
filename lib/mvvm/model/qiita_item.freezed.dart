@@ -44,15 +44,12 @@ const $QiitaItem = _$QiitaItemTearOff();
 mixin _$QiitaItem {
   @JsonKey(name: 'title')
   String? get title => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'url')
   String? get url => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'user')
   QiitaUser? get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $QiitaItemCopyWith<QiitaItem> get copyWith =>
       throw _privateConstructorUsedError;
@@ -62,7 +59,6 @@ mixin _$QiitaItem {
 abstract class $QiitaItemCopyWith<$Res> {
   factory $QiitaItemCopyWith(QiitaItem value, $Res Function(QiitaItem) then) =
       _$QiitaItemCopyWithImpl<$Res>;
-
   $Res call(
       {@JsonKey(name: 'title') String? title,
       @JsonKey(name: 'url') String? url,
@@ -76,7 +72,6 @@ class _$QiitaItemCopyWithImpl<$Res> implements $QiitaItemCopyWith<$Res> {
   _$QiitaItemCopyWithImpl(this._value, this._then);
 
   final QiitaItem _value;
-
   // ignore: unused_field
   final $Res Function(QiitaItem) _then;
 
@@ -119,7 +114,6 @@ abstract class _$QiitaItemCopyWith<$Res> implements $QiitaItemCopyWith<$Res> {
   factory _$QiitaItemCopyWith(
           _QiitaItem value, $Res Function(_QiitaItem) then) =
       __$QiitaItemCopyWithImpl<$Res>;
-
   @override
   $Res call(
       {@JsonKey(name: 'title') String? title,
@@ -228,15 +222,12 @@ abstract class _QiitaItem implements QiitaItem {
   @override
   @JsonKey(name: 'title')
   String? get title;
-
   @override
   @JsonKey(name: 'url')
   String? get url;
-
   @override
   @JsonKey(name: 'user')
   QiitaUser? get user;
-
   @override
   @JsonKey(ignore: true)
   _$QiitaItemCopyWith<_QiitaItem> get copyWith =>
