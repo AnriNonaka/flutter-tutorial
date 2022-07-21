@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tutorial/foods/repository/food_list_repository.dart';
 import 'package:flutter_tutorial/foods/state/food_list_state.dart';
@@ -19,11 +18,15 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
   FoodStateNotifier() : super(const FoodListState()) {
     //FoodDataを取得
     getFoodData();
+
+    // final newFood = FoodsCompanion(title: drift.Value('タイトル'),tag1: drift.Value('和食'),);
+    // insertFoodData(newFood);
   }
 
   final _repository = FoodRepository();
 
   Future getFoodData() async {
+    print('getFoodData');
     //読み込み中のフラグを立ててる
     //コピーを作ってstateにセットする
     //screen側のビルドが再度走る
@@ -32,8 +35,12 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
     //DBから値を取ってきます
     final List<Food> foods = await _repository.getAllFoodData();
 
+    print('getFoodData foods = $foods');
+
     //リストの要素が空ではない場合の処理
     if (foods.isNotEmpty) {
+      print('getFoodData foods.isNotEmpty');
+
       //screen側のビルドが再度走る
       state = state.copyWith(
         //Loadingは終わってるからfalse

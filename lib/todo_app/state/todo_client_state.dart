@@ -11,6 +11,6 @@ class TodoClientState with _$TodoClientState {
     //読み込み中の時はプログレス出したいよって時
     @Default(false) bool isLoading,
     @Default(false) bool isReadyData,
-    @Default([Todo]) List<Todo> todoItems,
+    @Default(<Todo>[]) List<Todo> todoItems,
   }) = _TodoClientState;
 }

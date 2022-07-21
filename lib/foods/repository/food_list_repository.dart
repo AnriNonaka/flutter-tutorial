@@ -6,22 +6,27 @@ final foodRepository = Provider(
 );
 
 class FoodRepository {
-  MyDatabase database = MyDatabase();
+  FoodRepository() {
+    _database = MyDatabase.getInstance();
+  }
+
+  late MyDatabase _database;
+
 
   Future<List<Food>> getAllFoodData() async {
-    final foodList = database.readAllFoodData;
+    final foodList = _database.readAllFoodData;
     return foodList;
   }
 
   Future insertFoodData(FoodsCompanion food) async {
-    return await database.writeFood(food);
+    return await _database.writeFood(food);
   }
 
   Future updateFoodData(FoodsCompanion food) async {
-    return await database.updateFood(food);
+    return await _database.updateFood(food);
   }
 
   Future deleteFoodData(int id) async {
-    return await database.deleteFood(id);
+    return await _database.deleteFood(id);
   }
 }

@@ -11,6 +11,7 @@ class FoodListState with _$FoodListState {
     //読み込み中の時はプログレス出したいよって時
     @Default(false) bool isLoading,
     @Default(false) bool isReadyData,
+    //読み込み終わったあとに表示させる
     @Default(<Food>[]) List<Food> foodItems,
   }) = _FoodListState;
 }

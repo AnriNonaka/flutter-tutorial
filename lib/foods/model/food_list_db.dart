@@ -23,6 +23,8 @@ LazyDatabase _openConnection() {
   return LazyDatabase(() async {
     final dbFolder = await getApplicationDocumentsDirectory();
     final file = File(p.join(dbFolder.path, 'db2.sqlite'));
+    //シングルトン対応すべく、以下1行追加
+    driftRuntimeOptions.dontWarnAboutMultipleDatabases = true;
     return NativeDatabase(file);
   });
 }
@@ -31,6 +33,16 @@ LazyDatabase _openConnection() {
 // 中のメソッドは外向けに公開するメソッドとその動きを定義している。
 @DriftDatabase(tables: [Foods])
 class MyDatabase extends _$MyDatabase {
+  static MyDatabase? _instance;
+
+  static MyDatabase getInstance() {
+    //シングルトン対応
+    if (_instance == null) {
+      _instance = new MyDatabase();
+    }
+    return _instance!;
+  }
+
   MyDatabase() : super(_openConnection());
 
   @override
@@ -45,5 +57,4 @@ class MyDatabase extends _$MyDatabase {
   // データの削除
   Future deleteFood(int id) =>
       (delete(foods)..where((tbl) => tbl.id.equals(id))).go();
-
 }

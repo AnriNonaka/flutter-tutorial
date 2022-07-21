@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'qiita_item.dart';
@@ -11,34 +12,11 @@ part of 'qiita_item.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 QiitaItem _$QiitaItemFromJson(Map<String, dynamic> json) {
   return _QiitaItem.fromJson(json);
 }
-
-/// @nodoc
-class _$QiitaItemTearOff {
-  const _$QiitaItemTearOff();
-
-  _QiitaItem call(
-      {@JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'url') String? url,
-      @JsonKey(name: 'user') QiitaUser? user}) {
-    return _QiitaItem(
-      title: title,
-      url: url,
-      user: user,
-    );
-  }
-
-  QiitaItem fromJson(Map<String, Object?> json) {
-    return QiitaItem.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $QiitaItem = _$QiitaItemTearOff();
 
 /// @nodoc
 mixin _$QiitaItem {
@@ -110,10 +88,10 @@ class _$QiitaItemCopyWithImpl<$Res> implements $QiitaItemCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$QiitaItemCopyWith<$Res> implements $QiitaItemCopyWith<$Res> {
-  factory _$QiitaItemCopyWith(
-          _QiitaItem value, $Res Function(_QiitaItem) then) =
-      __$QiitaItemCopyWithImpl<$Res>;
+abstract class _$$_QiitaItemCopyWith<$Res> implements $QiitaItemCopyWith<$Res> {
+  factory _$$_QiitaItemCopyWith(
+          _$_QiitaItem value, $Res Function(_$_QiitaItem) then) =
+      __$$_QiitaItemCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'title') String? title,
@@ -125,13 +103,14 @@ abstract class _$QiitaItemCopyWith<$Res> implements $QiitaItemCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$QiitaItemCopyWithImpl<$Res> extends _$QiitaItemCopyWithImpl<$Res>
-    implements _$QiitaItemCopyWith<$Res> {
-  __$QiitaItemCopyWithImpl(_QiitaItem _value, $Res Function(_QiitaItem) _then)
-      : super(_value, (v) => _then(v as _QiitaItem));
+class __$$_QiitaItemCopyWithImpl<$Res> extends _$QiitaItemCopyWithImpl<$Res>
+    implements _$$_QiitaItemCopyWith<$Res> {
+  __$$_QiitaItemCopyWithImpl(
+      _$_QiitaItem _value, $Res Function(_$_QiitaItem) _then)
+      : super(_value, (v) => _then(v as _$_QiitaItem));
 
   @override
-  _QiitaItem get _value => super._value as _QiitaItem;
+  _$_QiitaItem get _value => super._value as _$_QiitaItem;
 
   @override
   $Res call({
@@ -139,7 +118,7 @@ class __$QiitaItemCopyWithImpl<$Res> extends _$QiitaItemCopyWithImpl<$Res>
     Object? url = freezed,
     Object? user = freezed,
   }) {
-    return _then(_QiitaItem(
+    return _then(_$_QiitaItem(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -186,12 +165,13 @@ class _$_QiitaItem implements _QiitaItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _QiitaItem &&
+            other is _$_QiitaItem &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.url, url) &&
             const DeepCollectionEquality().equals(other.user, user));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -201,8 +181,8 @@ class _$_QiitaItem implements _QiitaItem {
 
   @JsonKey(ignore: true)
   @override
-  _$QiitaItemCopyWith<_QiitaItem> get copyWith =>
-      __$QiitaItemCopyWithImpl<_QiitaItem>(this, _$identity);
+  _$$_QiitaItemCopyWith<_$_QiitaItem> get copyWith =>
+      __$$_QiitaItemCopyWithImpl<_$_QiitaItem>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -212,9 +192,9 @@ class _$_QiitaItem implements _QiitaItem {
 
 abstract class _QiitaItem implements QiitaItem {
   const factory _QiitaItem(
-      {@JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'url') String? url,
-      @JsonKey(name: 'user') QiitaUser? user}) = _$_QiitaItem;
+      {@JsonKey(name: 'title') final String? title,
+      @JsonKey(name: 'url') final String? url,
+      @JsonKey(name: 'user') final QiitaUser? user}) = _$_QiitaItem;
 
   factory _QiitaItem.fromJson(Map<String, dynamic> json) =
       _$_QiitaItem.fromJson;
@@ -230,6 +210,6 @@ abstract class _QiitaItem implements QiitaItem {
   QiitaUser? get user;
   @override
   @JsonKey(ignore: true)
-  _$QiitaItemCopyWith<_QiitaItem> get copyWith =>
+  _$$_QiitaItemCopyWith<_$_QiitaItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
