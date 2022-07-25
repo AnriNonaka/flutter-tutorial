@@ -26,7 +26,6 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
   final _repository = FoodRepository();
 
   Future getFoodData() async {
-    print('getFoodData');
     //読み込み中のフラグを立ててる
     //コピーを作ってstateにセットする
     //screen側のビルドが再度走る
@@ -35,11 +34,8 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
     //DBから値を取ってきます
     final List<Food> foods = await _repository.getAllFoodData();
 
-    print('getFoodData foods = $foods');
-
     //リストの要素が空ではない場合の処理
     if (foods.isNotEmpty) {
-      print('getFoodData foods.isNotEmpty');
 
       //screen側のビルドが再度走る
       state = state.copyWith(
@@ -124,15 +120,15 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
     }
   }
 
-  //保存したデータを含めてもう1回ロードして画面構築をしている
-  Future insertFoodData(FoodsCompanion food) async {
-    //ローディングたてて
-    state = state.copyWith(isLoading: true);
-    //新規でレコード追加して
-    _repository.insertFoodData(food);
-    //データをゲットする
-    await getFoodData();
-  }
+  // //保存したデータを含めてもう1回ロードして画面構築をしている
+  // Future insertFoodData(FoodsCompanion food) async {
+  //   //ローディングたてて
+  //   state = state.copyWith(isLoading: true);
+  //   //新規でレコード追加して
+  //   _repository.insertFoodData(food);
+  //   //データをゲットする
+  //   await getFoodData();
+  // }
 
   Future deleteFoodData(int id) async {
     await _repository.deleteFoodData(id);

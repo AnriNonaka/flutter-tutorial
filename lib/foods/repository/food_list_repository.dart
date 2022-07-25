@@ -1,6 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_tutorial/foods/model/food_list_db.dart';
 
+// シングルトン対応にしている(dbページも変更あり)
+
 final foodRepository = Provider(
       (ref) => FoodRepository(),
 );

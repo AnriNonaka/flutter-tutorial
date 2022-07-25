@@ -9,8 +9,6 @@ import 'package:flutter_tutorial/foods/model/food_list_state_notifier.dart';
 import 'package:flutter_tutorial/foods/state/food_list_state.dart';
 import 'package:drift/drift.dart' as drift;
 
-
-//元々作ってる方。chipでタグ選択
 class FoodListScreen extends ConsumerWidget {
   FoodListScreen({Key? key}) : super(key: key);
 
@@ -29,7 +27,6 @@ class FoodListScreen extends ConsumerWidget {
             style: TextStyle(
               fontSize: 23,
               fontWeight: FontWeight.bold,
-
               color: Colors.white,
             ),
           ),
@@ -155,40 +152,30 @@ class FoodListScreen extends ConsumerWidget {
                         },
                       ),
                       Wrap(
-                        children:
-                        List<Widget>.generate(_choiceList.length, (int index) {
-                          return Padding(
-                            padding: const EdgeInsets.all(2.0),
-                            child: ChoiceChip(
-                              selectedColor: Colors.green,
-                              label: Text(_choiceList[index]),
-                              //selectしてるかしてないか
-                              selected:
-                              //[]の中にkeyとして文字列(_choices)を入れてる
-                              //2行上のlabelと同じものを入れてる
-                              //HashMapに対してこう書くとtrueかfalseが返る
-                              //HashMapの中に[〜]のkeyが入ってない場合は無効として扱う
-                              state.tagSelectState?[_choiceList[index]] ?? false,
-                              onSelected: (newBoolValue) {
-                                //trueだったらfalse返ってくる(逆も)
-                                notifier.toggleTagChip(
-                                    _choiceList[index], newBoolValue);
-                              },
-                            ),
-                          );
-                        }),
+                        children: List<Widget>.generate(_choiceList.length,
+                                (int index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(2.0),
+                                child: ChoiceChip(
+                                  selectedColor: Colors.green,
+                                  label: Text(_choiceList[index]),
+                                  //selectしてるかしてないか
+                                  selected:
+                                  //[]の中にkeyとして文字列(_choices)を入れてる
+                                  //2行上のlabelと同じものを入れてる
+                                  //HashMapに対してこう書くとtrueかfalseが返る
+                                  //HashMapの中に[〜]のkeyが入ってない場合は無効として扱う
+                                  state.tagSelectState?[_choiceList[index]] ??
+                                      false,
+                                  onSelected: (newBoolValue) {
+                                    //trueだったらfalse返ってくる(逆も)
+                                    notifier.toggleTagChip(
+                                        _choiceList[index], newBoolValue);
+                                  },
+                                ),
+                              );
+                            }),
                       ),
-                      // FormField(
-                      //   validator: (value) {
-                      //     if (value?.isEmpty ?? value == null) {
-                      //       return 'Please select some categories';
-                      //     }
-                      //     if (value.length > 5) {
-                      //       return "Can't select more than 5 categories";
-                      //     }
-                      //     return null;
-                      //   },
-                      // ),
                     ],
                   ),
                 ),
@@ -196,7 +183,7 @@ class FoodListScreen extends ConsumerWidget {
               actions: <Widget>[
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pop(context,false);
+                    Navigator.pop(context, false);
                   },
                   child: Text("キャンセル"),
                 ),
@@ -204,22 +191,21 @@ class FoodListScreen extends ConsumerWidget {
                   onPressed: () async {
                     //バリデーションない時だけ保存処理実行
                     if (formKey.currentState!.validate()) {
-                      //tagsの中に選んだタグのStringが入ってくる
-                      //0個選択の時に落ちないようにする
-                      final tags = getEnableTags(state.tagSelectState ?? HashMap());
-                      //FoodsCompanionを初期化してる・「newFood」を作ってる
-                      final newFood = FoodsCompanion(
-                        title: drift.Value(title.text),
-                        tag1: drift.Value(tags[0]),
-                        tag2: drift.Value(tags[1]),
-                        tag3: drift.Value(tags[2]),
-                        tag4: drift.Value(tags[3]),
-                        tag5: drift.Value(tags[4]),
-                      );
+                      //tagsの中に、HashMapの中でtrueになったタグのStringが入ってくる
+                      final tags =
+                      getEnableTags(state.tagSelectState ?? HashMap());
+                      //「newFood」が作られる(タイトル、タグ1~5(空のタグ含む) のセット)
+                      print('//「newFood」が作られる(タイトル、タグ1~5(空のタグ含む) のセット)');
+                      // createSaveDataで
+                      final newFood = createSaveData(title.text, tags);
                       //作った「_newTodo」を_notifierのinsertTodoDataに渡してる
+                      print('//作った「_newTodo」を_notifierのinsertTodoDataに渡してる');
                       //これで内部的にrepositoryを呼んでDBへの書き込みがされる
                       notifier.insertFoodData(newFood);
-                      Navigator.pop(context,true);
+                      print('//これで内部的にrepositoryを呼んでDBへの書き込みがされる');
+                      //showDialogでtrueを返す
+                      Navigator.pop(context, true);
+                      print('Navigator.pop(context, true);');
                     }
                   },
                   child: Text("保存"),
@@ -230,10 +216,35 @@ class FoodListScreen extends ConsumerWidget {
         );
       },
     );
-    print('needRefresh = $needRefresh');
-    if (needRefresh == true){
+    if (needRefresh == true) {
       print('needRefresh = $needRefresh 2');
       notifier.getFoodData();
+    }
+  }
+
+// getTagByIndexを使って、タグ選択が0〜4個の場合でもできるようにするメソッド
+// FoodsCompanionのインスタンス
+  FoodsCompanion createSaveData(String title, List<String> tags) {
+    return FoodsCompanion(
+      title: drift.Value(title),
+      tag1: drift.Value(getTagByIndex(tags, 0)),
+      tag2: drift.Value(getTagByIndex(tags, 1)),
+      tag3: drift.Value(getTagByIndex(tags, 2)),
+      tag4: drift.Value(getTagByIndex(tags, 3)),
+      tag5: drift.Value(getTagByIndex(tags, 4)),
+    );
+  }
+
+//上のメソッド内で使っている
+  String getTagByIndex(List<String> tags,
+      int index,) {
+    //  例) タグ選択3個の場合：
+    if (tags.length > index) {
+      // trueのindex0~2にはtagsを返す
+      return tags[index];
+    } else {
+      // それ以外の3,4には空を返す
+      return '';
     }
   }
 
@@ -273,35 +284,45 @@ class FoodListScreen extends ConsumerWidget {
               children: [
                 Chip(
                   label: Text(
-                    '${foodItems.tag1}', style: TextStyle(fontSize: 11),),
+                    '${foodItems.tag1}',
+                    style: TextStyle(fontSize: 11),
+                  ),
                   backgroundColor: Colors.greenAccent.shade100,
                   labelPadding: EdgeInsets.symmetric(horizontal: 5),
                   visualDensity: VisualDensity(horizontal: 0.0, vertical: -4),
                 ),
                 Chip(
                   label: Text(
-                    '${foodItems.tag2}', style: TextStyle(fontSize: 11),),
+                    '${foodItems.tag2}',
+                    style: TextStyle(fontSize: 11),
+                  ),
                   backgroundColor: Colors.greenAccent.shade100,
                   labelPadding: EdgeInsets.symmetric(horizontal: 5),
                   visualDensity: VisualDensity(horizontal: 0.0, vertical: -4),
                 ),
                 Chip(
                   label: Text(
-                    '${foodItems.tag3}', style: TextStyle(fontSize: 11),),
+                    '${foodItems.tag3}',
+                    style: TextStyle(fontSize: 11),
+                  ),
                   backgroundColor: Colors.greenAccent.shade100,
                   labelPadding: EdgeInsets.symmetric(horizontal: 5),
                   visualDensity: VisualDensity(horizontal: 0.0, vertical: -4),
                 ),
                 Chip(
                   label: Text(
-                    '${foodItems.tag4}', style: TextStyle(fontSize: 11),),
+                    '${foodItems.tag4}',
+                    style: TextStyle(fontSize: 11),
+                  ),
                   backgroundColor: Colors.greenAccent.shade100,
                   labelPadding: EdgeInsets.symmetric(horizontal: 5),
                   visualDensity: VisualDensity(horizontal: 0.0, vertical: -4),
                 ),
                 Chip(
                   label: Text(
-                    '${foodItems.tag5}', style: TextStyle(fontSize: 11),),
+                    '${foodItems.tag5}',
+                    style: TextStyle(fontSize: 11),
+                  ),
                   backgroundColor: Colors.greenAccent.shade100,
                   labelPadding: EdgeInsets.symmetric(horizontal: 5),
                   visualDensity: VisualDensity(horizontal: 0.0, vertical: -4),
@@ -315,12 +336,33 @@ class FoodListScreen extends ConsumerWidget {
   }
 
   final List<String> _choiceList = [
-    "和食", "洋食", "アジア", "イタリアン", "中華", "海鮮", "朝食", "昼食", "夕食",
-    "鍋もの", "丼もの", "メイン", "サブ", "汁物", "サラダ", "鶏肉", "豚肉", "牛肉",
-    "つまみ", "お菓子", "飲み物", "その他",
+    "和食",
+    "洋食",
+    "アジア",
+    "イタリアン",
+    "中華",
+    "海鮮",
+    "朝食",
+    "昼食",
+    "夕食",
+    "鍋もの",
+    "丼もの",
+    "メイン",
+    "サブ",
+    "汁物",
+    "サラダ",
+    "鶏肉",
+    "豚肉",
+    "牛肉",
+    "つまみ",
+    "お菓子",
+    "飲み物",
+    "その他",
   ];
 
-  //Zennメモあり
+// HashMapに入ってるValue (タグのON,OFFの状態)のtrueのkeyを抽出して,
+// enableTagsというListを作っている
+// Zennメモあり
   List<String> getEnableTags(HashMap<String, bool> tags) {
     List<String> enableTags = [];
     // ここで絞り込みを行う
@@ -331,4 +373,3 @@ class FoodListScreen extends ConsumerWidget {
     return enableTags;
   }
 }
-

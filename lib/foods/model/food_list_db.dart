@@ -6,6 +6,8 @@ import 'package:path_provider/path_provider.dart';
 
 part 'food_list_db.g.dart';
 
+// シングルトン対応にしている(Repositoryページにも変更あり)
+
 // テーブルの作成
 class Foods extends Table {
   // 主キー（autoIncrementで自動的にIDを設置する）

@@ -19,12 +19,22 @@ class FoodInputStateNotifier extends StateNotifier<FoodInputState> {
 
   final _repository = FoodRepository();
 
-
   //toggle:ONとOFFを切り替える(電気スイッチみたいに)
   //isEnable：有効です(trueだったら有効です、falseだったら有効じゃないです)
   Future toggleTagChip(String tag, bool isEnable) async {
     final HashMap<String, bool> tagSelectState =
         state.tagSelectState ?? HashMap<String, bool>();
+    List<String> enableTags = [];
+    // HashMap. keyのListを取得できる。このリストを使って、ループを行って、フィルターを使う
+    tagSelectState.entries.where((element) => element.value).forEach((element) {
+      enableTags.add(element.key);
+    });
+    // tagSelectState(HashMap)の中にtrueの数が5個以上
+    // 且つisEnableがtrueならreturnする
+    if (enableTags.length > 4 && isEnable) {
+      //ここで早期リターンして、ここ以下の処理はしない
+      return ;
+    }
 
     //tagSelectStateのtagをkey(String)としてEnableで書き換えてる
     tagSelectState[tag] = isEnable;
@@ -37,9 +47,12 @@ class FoodInputStateNotifier extends StateNotifier<FoodInputState> {
   }
   //保存したデータを含めてもう1回ロードして画面構築をしている
   Future insertFoodData(FoodsCompanion food) async {
+    print('  Future insertFoodData(FoodsCompanion food)');
     //ローディングたてて
     state = state.copyWith(isLoading: true);
+    print(' state = state.copyWith(isLoading: true);');
     //新規でレコード追加して
     _repository.insertFoodData(food);
+    print('_repository.insertFoodData(food);');
   }
 }
