@@ -51,6 +51,7 @@ class FoodListScreen extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: FloatingActionButton(
+              heroTag: "hero1",
               backgroundColor: Colors.greenAccent.shade100,
               onPressed: () async => _showFilterDialog(context, notifier),
               //   _showInputDialog(context, notifier);
@@ -60,6 +61,7 @@ class FoodListScreen extends ConsumerWidget {
             ),
           ),
           FloatingActionButton(
+            heroTag: "hero2",
             backgroundColor: Colors.greenAccent.shade100,
             onPressed: () {
               _showInputDialog(context, notifier);
