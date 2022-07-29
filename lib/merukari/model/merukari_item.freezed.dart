@@ -194,7 +194,9 @@ class _$_MerukariItem implements _MerukariItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MerukariItemToJson(this);
+    return _$$_MerukariItemToJson(
+      this,
+    );
   }
 }
 

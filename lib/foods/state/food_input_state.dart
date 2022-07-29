@@ -1,5 +1,4 @@
 import 'dart:collection';
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'food_input_state.freezed.dart';

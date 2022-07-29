@@ -33,7 +33,7 @@ class FoodInputStateNotifier extends StateNotifier<FoodInputState> {
     // 且つisEnableがtrueならreturnする
     if (enableTags.length > 4 && isEnable) {
       //ここで早期リターンして、ここ以下の処理はしない
-      return ;
+      return;
     }
 
     //tagSelectStateのtagをkey(String)としてEnableで書き換えてる
@@ -45,14 +45,12 @@ class FoodInputStateNotifier extends StateNotifier<FoodInputState> {
     // final List<String> tags = [];
     // tagSelectState.forEach((k, v) => tagSelectState.add(tags(k, v)));
   }
+
   //保存したデータを含めてもう1回ロードして画面構築をしている
   Future insertFoodData(FoodsCompanion food) async {
-    print('  Future insertFoodData(FoodsCompanion food)');
     //ローディングたてて
     state = state.copyWith(isLoading: true);
-    print(' state = state.copyWith(isLoading: true);');
     //新規でレコード追加して
     _repository.insertFoodData(food);
-    print('_repository.insertFoodData(food);');
   }
 }

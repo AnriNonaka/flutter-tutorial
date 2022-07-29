@@ -4,7 +4,7 @@ import 'package:flutter_tutorial/foods/model/food_list_db.dart';
 // シングルトン対応にしている(dbページも変更あり)
 
 final foodRepository = Provider(
-      (ref) => FoodRepository(),
+  (ref) => FoodRepository(),
 );
 
 class FoodRepository {
@@ -14,7 +14,6 @@ class FoodRepository {
 
   late MyDatabase _database;
 
-
   Future<List<Food>> getAllFoodData() async {
     final foodList = _database.readAllFoodData;
     return foodList;
@@ -22,10 +21,6 @@ class FoodRepository {
 
   Future insertFoodData(FoodsCompanion food) async {
     return await _database.writeFood(food);
-  }
-
-  Future updateFoodData(FoodsCompanion food) async {
-    return await _database.updateFood(food);
   }
 
   Future deleteFoodData(int id) async {

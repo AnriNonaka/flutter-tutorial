@@ -128,7 +128,9 @@ class _$_QiitaUser implements _QiitaUser {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_QiitaUserToJson(this);
+    return _$$_QiitaUserToJson(
+      this,
+    );
   }
 }
 

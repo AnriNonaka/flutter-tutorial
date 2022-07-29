@@ -234,7 +234,9 @@ class _$_ResidenceItem implements _ResidenceItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ResidenceItemToJson(this);
+    return _$$_ResidenceItemToJson(
+      this,
+    );
   }
 }
 

@@ -12,11 +12,17 @@ part 'food_list_db.g.dart';
 class Foods extends Table {
   // 主キー（autoIncrementで自動的にIDを設置する）
   IntColumn get id => integer().autoIncrement()();
+
   TextColumn get title => text().withLength(min: 1, max: 50)();
+
   TextColumn get tag1 => text()();
+
   TextColumn get tag2 => text()();
+
   TextColumn get tag3 => text()();
+
   TextColumn get tag4 => text()();
+
   TextColumn get tag5 => text()();
 }
 
@@ -52,10 +58,13 @@ class MyDatabase extends _$MyDatabase {
 
   // 全てのデータの取得
   Future<List<Food>> get readAllFoodData => select(foods).get();
+
   // データの追加,DBに保存がされる
   Future writeFood(FoodsCompanion food) => into(foods).insert(food);
+
   // データの更新
   Future updateFood(FoodsCompanion food) => update(foods).replace(food);
+
   // データの削除
   Future deleteFood(int id) =>
       (delete(foods)..where((tbl) => tbl.id.equals(id))).go();

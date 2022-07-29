@@ -234,7 +234,9 @@ class _$_YoutubeItem implements _YoutubeItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_YoutubeItemToJson(this);
+    return _$$_YoutubeItemToJson(
+      this,
+    );
   }
 }
 

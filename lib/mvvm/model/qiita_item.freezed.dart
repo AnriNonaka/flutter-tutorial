@@ -186,7 +186,9 @@ class _$_QiitaItem implements _QiitaItem {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_QiitaItemToJson(this);
+    return _$$_QiitaItemToJson(
+      this,
+    );
   }
 }
 
