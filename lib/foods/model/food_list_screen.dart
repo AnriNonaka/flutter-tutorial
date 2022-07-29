@@ -40,36 +40,39 @@ class FoodListScreen extends ConsumerWidget {
                 image: AssetImage('images/料理2.jpg'), fit: BoxFit.cover),
           ),
         ),
+        actions: [
+          Stack(
+            children: [
+
+              Padding(
+                padding: const EdgeInsets.only(right: 6.0),
+                child: IconButton(
+                  onPressed: () async => _showFilterDialog(context, notifier),
+                  icon: Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: Icon(
+                      Icons.filter_alt,
+                      color: Colors.black54,
+                      size: 35,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
       //「todoItems」が空なら「_buildEmptyTodo」、データ入ってたら「_buildTodoList」に行く
       body: state.foodItems.isEmpty
           ? _buildEmptyFood()
           : _buildFoodList(state, notifier),
-      floatingActionButton: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: FloatingActionButton(
-              heroTag: "hero1",
-              backgroundColor: Colors.greenAccent.shade100,
-              onPressed: () async => _showFilterDialog(context, notifier),
-              //   _showInputDialog(context, notifier);
-              // },
-
-              child: Icon(Icons.filter_alt),
-            ),
-          ),
-          FloatingActionButton(
-            heroTag: "hero2",
-            backgroundColor: Colors.greenAccent.shade100,
-            onPressed: () {
-              _showInputDialog(context, notifier);
-            },
-            // notifier.insertDummyData();},
-            child: Icon(Icons.edit),
-          ),
-        ],
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.greenAccent.shade100,
+        onPressed: () {
+          _showInputDialog(context, notifier);
+        },
+        // notifier.insertDummyData();},
+        child: Icon(Icons.edit),
       ),
     );
   }
@@ -116,7 +119,7 @@ class FoodListScreen extends ConsumerWidget {
     );
   }
 
-  Future _showFilterDialog(
+  Future<void> _showFilterDialog(
       BuildContext context, FoodStateNotifier notifier) async {
     // showDialogは値を返す。その値を使って判定を行いデータの再読み込みを行う。
     final tags = await showDialog<List<String>>(
@@ -179,16 +182,26 @@ class FoodListScreen extends ConsumerWidget {
               ),
               actions: <Widget>[
                 ElevatedButton(
-                  style:
-                      ElevatedButton.styleFrom(primary: Colors.blue.shade300),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.black26,
+                    side: BorderSide(
+                      color: Colors.black26,
+                      width: 1, //太さ
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.pop(context);
                   },
                   child: Text("キャンセル"),
                 ),
                 ElevatedButton(
-                  style:
-                      ElevatedButton.styleFrom(primary: Colors.blue.shade300),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.black26,
+                    side: BorderSide(
+                      color: Colors.black26,
+                      width: 1, //太さ
+                    ),
+                  ),
                   onPressed: () async {
                     //tags(List)の中に、HashMapの中でtrueになったタグのString(List)が入ってくる
                     final tags = getFilterEnableTags(
@@ -236,7 +249,7 @@ class FoodListScreen extends ConsumerWidget {
             final notifier = ref.watch(foodInputStateNotifier.notifier);
             return AlertDialog(
               content: SizedBox(
-                height: 440,
+                height: 410,
                 width: double.maxFinite,
                 child: Form(
                   key: formKey,
@@ -288,16 +301,27 @@ class FoodListScreen extends ConsumerWidget {
               ),
               actions: <Widget>[
                 ElevatedButton(
-                  style:
-                      ElevatedButton.styleFrom(primary: Colors.blue.shade300),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.black26,
+                    side: BorderSide(
+                      color: Colors.black26,
+                      width: 1, //太さ
+                    ),
+                  ),
                   onPressed: () {
+                    Navigator.pop(context, false);
                     Navigator.pop(context, false);
                   },
                   child: Text("キャンセル"),
                 ),
                 ElevatedButton(
-                  style:
-                      ElevatedButton.styleFrom(primary: Colors.blue.shade300),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.black26,
+                    side: BorderSide(
+                      color: Colors.black26,
+                      width: 1, //太さ
+                    ),
+                  ),
                   onPressed: () async {
                     //バリデーションない時だけ保存処理実行
                     if (formKey.currentState!.validate()) {
