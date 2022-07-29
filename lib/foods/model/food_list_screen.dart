@@ -310,7 +310,6 @@ class FoodListScreen extends ConsumerWidget {
                   ),
                   onPressed: () {
                     Navigator.pop(context, false);
-                    Navigator.pop(context, false);
                   },
                   child: Text("キャンセル"),
                 ),
