@@ -8,20 +8,21 @@ import 'food_list_db.dart';
 
 final foodStateNotifier =
     StateNotifierProvider<FoodStateNotifier, FoodListState>(
-  (ref) => FoodStateNotifier(),
+  (ref) => FoodStateNotifier(ref.read),
 );
 
 // DBの操作を行うクラス （dbの操作にstateを絡める）
 //FoodListStateをstateとして持つStateNotifier。
 class FoodStateNotifier extends StateNotifier<FoodListState> {
-  FoodStateNotifier() : super(const FoodListState()) {
+  FoodStateNotifier(this.read) : super(const FoodListState()) {
     //FoodDataを取得
     getFoodData();
   }
 
-  final _repository = FoodRepository();
+  final Reader read;
+  late final _repository = read(foodListRepository);
 
-  Future getFoodData() async {
+  Future<void> getFoodData() async {
     //読み込み中のフラグを立ててる
     //コピーを作ってstateにセットする
     //screen側のビルドが再度走る
@@ -103,17 +104,18 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
     return true;
   }
 
-  Future deleteFoodData(int id) async {
+  Future<void> deleteFoodData(int id) async {
     await _repository.deleteFoodData(id);
     getFoodData();
   }
 
   //stateにtagsだけ登録して通常のgetFoodDataを呼び出す
-  Future getFilteredFoodData(List<String> tags) async {
+  Future<void> getFilteredFoodData(List<String> tags) async {
     state = state.copyWith(tags: tags);
     getFoodData();
   }
 
+// ダミーデータを入れる際に必要なため残しておきます。
 // Future insertDummyData() async{
 //   List<FoodsCompanion> foods = [
 //     FoodsCompanion( title: drift.Value('親子丼'),tag1: drift.Value('昼食'),tag2: drift.Value('夕食'),tag3: drift.Value('和食'),tag4: drift.Value('丼もの'),tag5: drift.Value('メイン')),

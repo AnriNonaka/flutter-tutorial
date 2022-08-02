@@ -13,6 +13,31 @@ import 'package:drift/drift.dart' as drift;
 class FoodListScreen extends ConsumerWidget {
   FoodListScreen({Key? key}) : super(key: key);
 
+  final List<String> _choiceList = [
+    "和食",
+    "洋食",
+    "アジア",
+    "イタリアン",
+    "中華",
+    "海鮮",
+    "朝食",
+    "昼食",
+    "夕食",
+    "鍋もの",
+    "丼もの",
+    "メイン",
+    "サブ",
+    "汁物",
+    "サラダ",
+    "鶏肉",
+    "豚肉",
+    "牛肉",
+    "つまみ",
+    "お菓子",
+    "飲み物",
+    "その他",
+  ];
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //foodStateNotifierを監視している
@@ -71,6 +96,7 @@ class FoodListScreen extends ConsumerWidget {
         onPressed: () {
           _showInputDialog(context, notifier);
         },
+        // ダミーデータを入れる際に必要なため残しておきます。
         // notifier.insertDummyData();},
         child: Icon(Icons.edit),
       ),
@@ -283,7 +309,7 @@ class FoodListScreen extends ConsumerWidget {
                                     //2行上のlabelと同じものを入れてる
                                     //HashMapに対してこう書くとtrueかfalseが返る
                                     //HashMapの中に[〜]のkeyが入ってない場合は無効として扱う
-                                    state.tagSelectState?[_choiceList[index]] ??
+                                    state.tagData?[_choiceList[index]] ??
                                         false,
                                 onSelected: (newBoolValue) {
                                   //trueだったらfalse返ってくる(逆も)
@@ -326,7 +352,7 @@ class FoodListScreen extends ConsumerWidget {
                     if (formKey.currentState!.validate()) {
                       //tagsの中に、HashMapの中でtrueになったタグのStringが入ってくる
                       final tags =
-                          getEnableTags(state.tagSelectState ?? HashMap());
+                          getEnableTags(state.tagData ?? HashMap());
                       //「newFood」が作られる(タイトル、タグ1~5(空のタグ含む) のセット)
                       final newFood = createSaveData(title.text, tags);
                       //作った「_newTodo」を_notifierのinsertTodoDataに渡してる
@@ -348,31 +374,6 @@ class FoodListScreen extends ConsumerWidget {
       notifier.getFoodData();
     }
   }
-
-  final List<String> _choiceList = [
-    "和食",
-    "洋食",
-    "アジア",
-    "イタリアン",
-    "中華",
-    "海鮮",
-    "朝食",
-    "昼食",
-    "夕食",
-    "鍋もの",
-    "丼もの",
-    "メイン",
-    "サブ",
-    "汁物",
-    "サラダ",
-    "鶏肉",
-    "豚肉",
-    "牛肉",
-    "つまみ",
-    "お菓子",
-    "飲み物",
-    "その他",
-  ];
 
 // HashMapに入ってるValue (タグのON,OFFの状態)のtrueのkeyを抽出して,
 // enableTagsというListを作っている
@@ -462,9 +463,29 @@ class FoodListScreen extends ConsumerWidget {
     );
   }
 
+  // Widget _test(Food foodItems) {
+  //   final chipList = [foodItems];
+  //   chipList.forEach((element) {
+  //   }
+  //     if (chipList.isEmpty) {
+  //       return Column();
+  //     } else {
+  //       return Chip(
+  //         label: Text(
+  //           '${foodItems.tag1}',
+  //           style: TextStyle(fontSize: 11),
+  //         ),
+  //         backgroundColor: Colors.greenAccent.shade100,
+  //         labelPadding: EdgeInsets.symmetric(horizontal: 5),
+  //         visualDensity: VisualDensity(horizontal: 0.0, vertical: -4),
+  //       );
+  //     }
+  // }
+
+
   Widget _chip1(Food foodItems) {
     if (foodItems.tag1.isEmpty) {
-      return Column();
+      return SizedBox.shrink();
     } else {
       return Chip(
         label: Text(
@@ -480,7 +501,7 @@ class FoodListScreen extends ConsumerWidget {
 
   Widget _chip2(Food foodItems) {
     if (foodItems.tag2.isEmpty) {
-      return Column();
+      return SizedBox.shrink();
     } else {
       return Padding(
         padding: const EdgeInsets.only(left: 5.0),
@@ -499,7 +520,7 @@ class FoodListScreen extends ConsumerWidget {
 
   Widget _chip3(Food foodItems) {
     if (foodItems.tag3.isEmpty) {
-      return Column();
+      return SizedBox.shrink();
     } else {
       return Padding(
         padding: const EdgeInsets.only(left: 5.0),
@@ -518,7 +539,7 @@ class FoodListScreen extends ConsumerWidget {
 
   Widget _chip4(Food foodItems) {
     if (foodItems.tag4.isEmpty) {
-      return Column();
+      return SizedBox.shrink();
     } else {
       return Padding(
         padding: const EdgeInsets.only(left: 5.0),
@@ -537,7 +558,7 @@ class FoodListScreen extends ConsumerWidget {
 
   Widget _chip5(Food foodItems) {
     if (foodItems.tag5.isEmpty) {
-      return Column();
+      return SizedBox.shrink();
     } else {
       return Padding(
         padding: const EdgeInsets.only(left: 5.0),

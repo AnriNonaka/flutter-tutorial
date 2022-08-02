@@ -16,10 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$FoodListState {
-//読み込み中の時はプログレス出したいよって時
-  bool get isLoading => throw _privateConstructorUsedError;
-  bool get isReadyData => throw _privateConstructorUsedError; //読み込み終わったあとに表示させる
-  List<Food> get foodItems => throw _privateConstructorUsedError;
+//ローディング中か
+  bool get isLoading => throw _privateConstructorUsedError; //リストが揃ってるか
+  bool get isReadyData =>
+      throw _privateConstructorUsedError; //読み込み終わったあとに表示させるリストの中身
+//filterDialogの時はこのfoodItemsを絞り込みする
+  List<Food> get foodItems =>
+      throw _privateConstructorUsedError; //現在どんなフォルターで絞り込んでるか
   List<String> get tags => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -140,16 +143,19 @@ class _$_FoodListState implements _FoodListState {
       : _foodItems = foodItems,
         _tags = tags;
 
-//読み込み中の時はプログレス出したいよって時
+//ローディング中か
   @override
   @JsonKey()
   final bool isLoading;
+//リストが揃ってるか
   @override
   @JsonKey()
   final bool isReadyData;
-//読み込み終わったあとに表示させる
+//読み込み終わったあとに表示させるリストの中身
+//filterDialogの時はこのfoodItemsを絞り込みする
   final List<Food> _foodItems;
-//読み込み終わったあとに表示させる
+//読み込み終わったあとに表示させるリストの中身
+//filterDialogの時はこのfoodItemsを絞り込みする
   @override
   @JsonKey()
   List<Food> get foodItems {
@@ -157,7 +163,9 @@ class _$_FoodListState implements _FoodListState {
     return EqualUnmodifiableListView(_foodItems);
   }
 
+//現在どんなフォルターで絞り込んでるか
   final List<String> _tags;
+//現在どんなフォルターで絞り込んでるか
   @override
   @JsonKey()
   List<String> get tags {
@@ -204,13 +212,14 @@ abstract class _FoodListState implements FoodListState {
       final List<Food> foodItems,
       final List<String> tags}) = _$_FoodListState;
 
-  @override //読み込み中の時はプログレス出したいよって時
+  @override //ローディング中か
   bool get isLoading;
-  @override
+  @override //リストが揃ってるか
   bool get isReadyData;
-  @override //読み込み終わったあとに表示させる
+  @override //読み込み終わったあとに表示させるリストの中身
+//filterDialogの時はこのfoodItemsを絞り込みする
   List<Food> get foodItems;
-  @override
+  @override //現在どんなフォルターで絞り込んでるか
   List<String> get tags;
   @override
   @JsonKey(ignore: true)

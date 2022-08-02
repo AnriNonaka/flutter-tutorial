@@ -57,15 +57,15 @@ class MyDatabase extends _$MyDatabase {
   int get schemaVersion => 1;
 
   // 全てのデータの取得
-  Future<List<Food>> get readAllFoodData => select(foods).get();
+  Future<List<Food>> get getAllFoodData => select(foods).get();
 
   // データの追加,DBに保存がされる
-  Future writeFood(FoodsCompanion food) => into(foods).insert(food);
+  Future<void> insertFood(FoodsCompanion food) => into(foods).insert(food);
 
   // データの更新
-  Future updateFood(FoodsCompanion food) => update(foods).replace(food);
+  Future<void> updateFood(FoodsCompanion food) => update(foods).replace(food);
 
   // データの削除
-  Future deleteFood(int id) =>
+  Future<void> deleteFood(int id) =>
       (delete(foods)..where((tbl) => tbl.id.equals(id))).go();
 }

@@ -12,6 +12,6 @@ class FoodInputState with _$FoodInputState {
     @Default(false) bool isLoading,
     @Default(false) bool isReadyData,
     //inputDialogのタグの選択がHashMapに保存される
-     HashMap<String,bool>? tagSelectState,
+     HashMap<String,bool>? tagData,
   }) = _FoodInputState;
 }

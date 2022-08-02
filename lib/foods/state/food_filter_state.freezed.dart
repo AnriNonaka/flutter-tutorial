@@ -16,9 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$FoodFilterState {
-//読み込み中の時はプログレス出したいよって時
-  bool get isLoading => throw _privateConstructorUsedError;
-  bool get isReadyData => throw _privateConstructorUsedError; //読み込み終わったあとに表示させる
+//ローディング中か
+  bool get isLoading => throw _privateConstructorUsedError; //リストが揃ってるか
+  bool get isReadyData =>
+      throw _privateConstructorUsedError; //読み込み終わったあとに表示させるリストの中身
   HashMap<String, bool>? get filterTagSelectState =>
       throw _privateConstructorUsedError;
 
@@ -125,14 +126,15 @@ class _$_FoodFilterState implements _FoodFilterState {
       this.isReadyData = false,
       this.filterTagSelectState});
 
-//読み込み中の時はプログレス出したいよって時
+//ローディング中か
   @override
   @JsonKey()
   final bool isLoading;
+//リストが揃ってるか
   @override
   @JsonKey()
   final bool isReadyData;
-//読み込み終わったあとに表示させる
+//読み込み終わったあとに表示させるリストの中身
   @override
   final HashMap<String, bool>? filterTagSelectState;
 
@@ -172,11 +174,11 @@ abstract class _FoodFilterState implements FoodFilterState {
       final bool isReadyData,
       final HashMap<String, bool>? filterTagSelectState}) = _$_FoodFilterState;
 
-  @override //読み込み中の時はプログレス出したいよって時
+  @override //ローディング中か
   bool get isLoading;
-  @override
+  @override //リストが揃ってるか
   bool get isReadyData;
-  @override //読み込み終わったあとに表示させる
+  @override //読み込み終わったあとに表示させるリストの中身
   HashMap<String, bool>? get filterTagSelectState;
   @override
   @JsonKey(ignore: true)

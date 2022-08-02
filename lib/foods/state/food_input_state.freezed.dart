@@ -20,8 +20,7 @@ mixin _$FoodInputState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isReadyData =>
       throw _privateConstructorUsedError; //inputDialogのタグの選択がHashMapに保存される
-  HashMap<String, bool>? get tagSelectState =>
-      throw _privateConstructorUsedError;
+  HashMap<String, bool>? get tagData => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $FoodInputStateCopyWith<FoodInputState> get copyWith =>
@@ -33,10 +32,7 @@ abstract class $FoodInputStateCopyWith<$Res> {
   factory $FoodInputStateCopyWith(
           FoodInputState value, $Res Function(FoodInputState) then) =
       _$FoodInputStateCopyWithImpl<$Res>;
-  $Res call(
-      {bool isLoading,
-      bool isReadyData,
-      HashMap<String, bool>? tagSelectState});
+  $Res call({bool isLoading, bool isReadyData, HashMap<String, bool>? tagData});
 }
 
 /// @nodoc
@@ -52,7 +48,7 @@ class _$FoodInputStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? isReadyData = freezed,
-    Object? tagSelectState = freezed,
+    Object? tagData = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: isLoading == freezed
@@ -63,9 +59,9 @@ class _$FoodInputStateCopyWithImpl<$Res>
           ? _value.isReadyData
           : isReadyData // ignore: cast_nullable_to_non_nullable
               as bool,
-      tagSelectState: tagSelectState == freezed
-          ? _value.tagSelectState
-          : tagSelectState // ignore: cast_nullable_to_non_nullable
+      tagData: tagData == freezed
+          ? _value.tagData
+          : tagData // ignore: cast_nullable_to_non_nullable
               as HashMap<String, bool>?,
     ));
   }
@@ -78,10 +74,7 @@ abstract class _$$_FoodInputStateCopyWith<$Res>
           _$_FoodInputState value, $Res Function(_$_FoodInputState) then) =
       __$$_FoodInputStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {bool isLoading,
-      bool isReadyData,
-      HashMap<String, bool>? tagSelectState});
+  $Res call({bool isLoading, bool isReadyData, HashMap<String, bool>? tagData});
 }
 
 /// @nodoc
@@ -99,7 +92,7 @@ class __$$_FoodInputStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = freezed,
     Object? isReadyData = freezed,
-    Object? tagSelectState = freezed,
+    Object? tagData = freezed,
   }) {
     return _then(_$_FoodInputState(
       isLoading: isLoading == freezed
@@ -110,9 +103,9 @@ class __$$_FoodInputStateCopyWithImpl<$Res>
           ? _value.isReadyData
           : isReadyData // ignore: cast_nullable_to_non_nullable
               as bool,
-      tagSelectState: tagSelectState == freezed
-          ? _value.tagSelectState
-          : tagSelectState // ignore: cast_nullable_to_non_nullable
+      tagData: tagData == freezed
+          ? _value.tagData
+          : tagData // ignore: cast_nullable_to_non_nullable
               as HashMap<String, bool>?,
     ));
   }
@@ -122,7 +115,7 @@ class __$$_FoodInputStateCopyWithImpl<$Res>
 
 class _$_FoodInputState implements _FoodInputState {
   const _$_FoodInputState(
-      {this.isLoading = false, this.isReadyData = false, this.tagSelectState});
+      {this.isLoading = false, this.isReadyData = false, this.tagData});
 
 //読み込み中の時はプログレス出したいよって時
   @override
@@ -133,11 +126,11 @@ class _$_FoodInputState implements _FoodInputState {
   final bool isReadyData;
 //inputDialogのタグの選択がHashMapに保存される
   @override
-  final HashMap<String, bool>? tagSelectState;
+  final HashMap<String, bool>? tagData;
 
   @override
   String toString() {
-    return 'FoodInputState(isLoading: $isLoading, isReadyData: $isReadyData, tagSelectState: $tagSelectState)';
+    return 'FoodInputState(isLoading: $isLoading, isReadyData: $isReadyData, tagData: $tagData)';
   }
 
   @override
@@ -148,8 +141,7 @@ class _$_FoodInputState implements _FoodInputState {
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other.isReadyData, isReadyData) &&
-            const DeepCollectionEquality()
-                .equals(other.tagSelectState, tagSelectState));
+            const DeepCollectionEquality().equals(other.tagData, tagData));
   }
 
   @override
@@ -157,7 +149,7 @@ class _$_FoodInputState implements _FoodInputState {
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(isReadyData),
-      const DeepCollectionEquality().hash(tagSelectState));
+      const DeepCollectionEquality().hash(tagData));
 
   @JsonKey(ignore: true)
   @override
@@ -169,14 +161,14 @@ abstract class _FoodInputState implements FoodInputState {
   const factory _FoodInputState(
       {final bool isLoading,
       final bool isReadyData,
-      final HashMap<String, bool>? tagSelectState}) = _$_FoodInputState;
+      final HashMap<String, bool>? tagData}) = _$_FoodInputState;
 
   @override //読み込み中の時はプログレス出したいよって時
   bool get isLoading;
   @override
   bool get isReadyData;
   @override //inputDialogのタグの選択がHashMapに保存される
-  HashMap<String, bool>? get tagSelectState;
+  HashMap<String, bool>? get tagData;
   @override
   @JsonKey(ignore: true)
   _$$_FoodInputStateCopyWith<_$_FoodInputState> get copyWith =>
