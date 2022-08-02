@@ -111,7 +111,7 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
 
   //stateにtagsだけ登録して通常のgetFoodDataを呼び出す
   Future<void> getFilteredFoodData(List<String> tags) async {
-    state = state.copyWith(tags: tags);
+    state = await state.copyWith(tags: tags);
     getFoodData();
   }
 

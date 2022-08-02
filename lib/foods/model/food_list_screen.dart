@@ -56,12 +56,8 @@ class FoodListScreen extends ConsumerWidget {
           strokeWidth: 2,
           strokeColor: Colors.black54,
         ),
-        flexibleSpace: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('images/料理2.jpg'), fit: BoxFit.cover),
-          ),
-        ),
+        //Container＞BoxDecorationの中にImageを入れていたが、下記に修正
+        flexibleSpace: Image.asset('images/料理2.jpg', fit: BoxFit.cover),
         actions: [
           Stack(
             children: [
@@ -120,7 +116,8 @@ class FoodListScreen extends ConsumerWidget {
             children: [
               SlidableAction(
                 onPressed: (context) {
-                  ref.read(foodStateNotifier.notifier)
+                  ref
+                      .read(foodStateNotifier.notifier)
                       .deleteFoodData(foodData.id);
                 },
                 backgroundColor: Colors.red,
@@ -191,7 +188,8 @@ class FoodListScreen extends ConsumerWidget {
                                     false,
                             onSelected: (newBoolValue) {
                               //trueだったらfalse返ってくる(逆も)
-                              ref.read(foodFilterStateNotifier.notifier)
+                              ref
+                                  .read(foodFilterStateNotifier.notifier)
                                   .filterToggleTagChip(
                                       _choiceList[index], newBoolValue);
                             },
@@ -239,7 +237,9 @@ class FoodListScreen extends ConsumerWidget {
         );
       },
     );
-    ref.read(foodStateNotifier.notifier).getFilteredFoodData(tags!);
+    if (tags != null) {
+      ref.read(foodStateNotifier.notifier).getFilteredFoodData(tags);
+    }
   }
 
 // HashMapに入ってるValue (タグのON,OFFの状態)のtrueのkeyを抽出して,
@@ -305,7 +305,8 @@ class FoodListScreen extends ConsumerWidget {
                                     state.tagData?[_choiceList[index]] ?? false,
                                 onSelected: (newBoolValue) {
                                   //trueだったらfalse返ってくる(逆も)
-                                  ref.read(foodInputStateNotifier.notifier)
+                                  ref
+                                      .read(foodInputStateNotifier.notifier)
                                       .toggleTagChip(
                                           _choiceList[index], newBoolValue);
                                 },
@@ -349,7 +350,9 @@ class FoodListScreen extends ConsumerWidget {
                       final newFood = createSaveData(title.text, tags);
                       //作った「_newTodo」を_notifierのinsertTodoDataに渡してる
                       //これで内部的にrepositoryを呼んでDBへの書き込みがされる
-                      ref.read(foodInputStateNotifier.notifier).insertFoodData(newFood);
+                      ref
+                          .read(foodInputStateNotifier.notifier)
+                          .insertFoodData(newFood);
                       //showDialogでtrueを返す
                       Navigator.pop(context, true);
                     }
@@ -362,6 +365,7 @@ class FoodListScreen extends ConsumerWidget {
         );
       },
     );
+    //nullチェック
     if (needRefresh == true) {
       ref.read(foodStateNotifier.notifier).getFoodData();
     }
