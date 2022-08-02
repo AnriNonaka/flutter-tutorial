@@ -40,10 +40,7 @@ class FoodListScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //foodStateNotifierを監視している
-    //foodStateNotifierに変化があったらビルドを再実行してくれる
     final state = ref.watch(foodStateNotifier);
-    final notifier = ref.watch(foodStateNotifier.notifier);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -68,11 +65,10 @@ class FoodListScreen extends ConsumerWidget {
         actions: [
           Stack(
             children: [
-
               Padding(
                 padding: const EdgeInsets.only(right: 6.0),
                 child: IconButton(
-                  onPressed: () async => _showFilterDialog(context, notifier),
+                  onPressed: () async => _showFilterDialog(context, ref),
                   icon: Padding(
                     padding: const EdgeInsets.only(top: 5),
                     child: Icon(
@@ -90,14 +86,14 @@ class FoodListScreen extends ConsumerWidget {
       //「todoItems」が空なら「_buildEmptyTodo」、データ入ってたら「_buildTodoList」に行く
       body: state.foodItems.isEmpty
           ? _buildEmptyFood()
-          : _buildFoodList(state, notifier),
+          : _buildFoodList(state, ref),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.greenAccent.shade100,
         onPressed: () {
-          _showInputDialog(context, notifier);
+          _showInputDialog(context, ref);
         },
         // ダミーデータを入れる際に必要なため残しておきます。
-        // notifier.insertDummyData();},
+        // ref.read(foodStateNotifier.notifier).insertDummyData();},
         child: Icon(Icons.edit),
       ),
     );
@@ -112,7 +108,7 @@ class FoodListScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildFoodList(FoodListState state, FoodStateNotifier notifier) {
+  Widget _buildFoodList(FoodListState state, WidgetRef ref) {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: state.foodItems.length,
@@ -124,7 +120,8 @@ class FoodListScreen extends ConsumerWidget {
             children: [
               SlidableAction(
                 onPressed: (context) {
-                  notifier.deleteFoodData(foodData.id);
+                  ref.read(foodStateNotifier.notifier)
+                      .deleteFoodData(foodData.id);
                 },
                 backgroundColor: Colors.red,
                 icon: Icons.delete,
@@ -145,17 +142,15 @@ class FoodListScreen extends ConsumerWidget {
     );
   }
 
-  Future<void> _showFilterDialog(
-      BuildContext context, FoodStateNotifier notifier) async {
+  Future<void> _showFilterDialog(BuildContext context, WidgetRef ref) async {
     // showDialogは値を返す。その値を使って判定を行いデータの再読み込みを行う。
     final tags = await showDialog<List<String>>(
       context: context,
       builder: (context) {
         return Consumer(
           builder: (BuildContext context, WidgetRef ref, Widget? child) {
-            final state = ref.watch(foodFilterStateNotifier);
             //ここでHashMapに入ったstateが来る
-            final notifier = ref.watch(foodFilterStateNotifier.notifier);
+            final state = ref.watch(foodFilterStateNotifier);
             return AlertDialog(
               title: Row(
                 children: [
@@ -196,8 +191,9 @@ class FoodListScreen extends ConsumerWidget {
                                     false,
                             onSelected: (newBoolValue) {
                               //trueだったらfalse返ってくる(逆も)
-                              notifier.filterToggleTagChip(
-                                  _choiceList[index], newBoolValue);
+                              ref.read(foodFilterStateNotifier.notifier)
+                                  .filterToggleTagChip(
+                                      _choiceList[index], newBoolValue);
                             },
                           ),
                         );
@@ -243,7 +239,7 @@ class FoodListScreen extends ConsumerWidget {
         );
       },
     );
-    notifier.getFilteredFoodData(tags!);
+    ref.read(foodStateNotifier.notifier).getFilteredFoodData(tags!);
   }
 
 // HashMapに入ってるValue (タグのON,OFFの状態)のtrueのkeyを抽出して,
@@ -258,8 +254,7 @@ class FoodListScreen extends ConsumerWidget {
     return filterEnableTags;
   }
 
-  Future<void> _showInputDialog(
-      BuildContext context, FoodStateNotifier notifier) async {
+  Future<void> _showInputDialog(BuildContext context, WidgetRef ref) async {
     final formKey = GlobalKey<FormState>();
     final title = TextEditingController();
 
@@ -271,8 +266,6 @@ class FoodListScreen extends ConsumerWidget {
         return Consumer(
           builder: (BuildContext context, WidgetRef ref, Widget? child) {
             final state = ref.watch(foodInputStateNotifier);
-            //ここでHashMapに入ったstateが来る
-            final notifier = ref.watch(foodInputStateNotifier.notifier);
             return AlertDialog(
               content: SizedBox(
                 height: 410,
@@ -309,12 +302,12 @@ class FoodListScreen extends ConsumerWidget {
                                     //2行上のlabelと同じものを入れてる
                                     //HashMapに対してこう書くとtrueかfalseが返る
                                     //HashMapの中に[〜]のkeyが入ってない場合は無効として扱う
-                                    state.tagData?[_choiceList[index]] ??
-                                        false,
+                                    state.tagData?[_choiceList[index]] ?? false,
                                 onSelected: (newBoolValue) {
                                   //trueだったらfalse返ってくる(逆も)
-                                  notifier.toggleTagChip(
-                                      _choiceList[index], newBoolValue);
+                                  ref.read(foodInputStateNotifier.notifier)
+                                      .toggleTagChip(
+                                          _choiceList[index], newBoolValue);
                                 },
                               ),
                             );
@@ -351,13 +344,12 @@ class FoodListScreen extends ConsumerWidget {
                     //バリデーションない時だけ保存処理実行
                     if (formKey.currentState!.validate()) {
                       //tagsの中に、HashMapの中でtrueになったタグのStringが入ってくる
-                      final tags =
-                          getEnableTags(state.tagData ?? HashMap());
+                      final tags = getEnableTags(state.tagData ?? HashMap());
                       //「newFood」が作られる(タイトル、タグ1~5(空のタグ含む) のセット)
                       final newFood = createSaveData(title.text, tags);
                       //作った「_newTodo」を_notifierのinsertTodoDataに渡してる
                       //これで内部的にrepositoryを呼んでDBへの書き込みがされる
-                      notifier.insertFoodData(newFood);
+                      ref.read(foodInputStateNotifier.notifier).insertFoodData(newFood);
                       //showDialogでtrueを返す
                       Navigator.pop(context, true);
                     }
@@ -371,7 +363,7 @@ class FoodListScreen extends ConsumerWidget {
       },
     );
     if (needRefresh == true) {
-      notifier.getFoodData();
+      ref.read(foodStateNotifier.notifier).getFoodData();
     }
   }
 
@@ -481,7 +473,6 @@ class FoodListScreen extends ConsumerWidget {
   //       );
   //     }
   // }
-
 
   Widget _chip1(Food foodItems) {
     if (foodItems.tag1.isEmpty) {
