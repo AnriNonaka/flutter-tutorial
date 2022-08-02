@@ -20,7 +20,13 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
   }
 
   final Reader read;
-  late final _repository = read(foodListRepository);
+  //late final _repository = read(foodListRepository); を以下に変更。
+  // late以前の同様の書き方。
+  // 全く同じではなく、lateの場合は結果がキャッシュされる違いがある。
+  // 特にimmutable値はlateだと古い値のままになり得るため、
+  // getの方が適している(それならget統一の方がシンプルかもしれない)。
+  // Provider1 get _provider1 => _read(provider1);
+  FoodListRepository get _foodListRepository => read(foodListRepository);
 
   Future<void> getFoodData() async {
     //読み込み中のフラグを立ててる
@@ -29,7 +35,7 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
     state = state.copyWith(isLoading: true);
 
     //DBから値を取ってきます
-    final List<Food> foods = await _repository.getAllFoodData();
+    final List<Food> foods = await _foodListRepository.getAllFoodData();
 
     //isExistTagsで該当するもの(tureが返ってきたfood)が、filteredFoodsに含まれる
     final Iterable<Food> filteredFoods =
@@ -105,14 +111,14 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
   }
 
   Future<void> deleteFoodData(int id) async {
-    await _repository.deleteFoodData(id);
-    getFoodData();
+    await _foodListRepository.deleteFoodData(id);
+    await getFoodData();
   }
 
   //stateにtagsだけ登録して通常のgetFoodDataを呼び出す
   Future<void> getFilteredFoodData(List<String> tags) async {
     state = await state.copyWith(tags: tags);
-    getFoodData();
+    await getFoodData();
   }
 
 // ダミーデータを入れる際に必要なため残しておきます。

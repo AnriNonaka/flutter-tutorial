@@ -374,15 +374,13 @@ class FoodListScreen extends ConsumerWidget {
 // HashMapに入ってるValue (タグのON,OFFの状態)のtrueのkeyを抽出して,
 // enableTagsというListを作っている
 // Zennメモあり
-  List<String> getEnableTags(HashMap<String, bool> tags) {
-    List<String> enableTags = [];
-    // ここで絞り込みを行う
-    // HashMap. keyのListを取得できる。このリストを使って、ループを行って、フィルターを使う
-    tags.entries.where((element) => element.value).forEach((element) {
-      enableTags.add(element.key);
-    });
-    return enableTags;
-  }
+  List<String> getEnableTags(HashMap<String, bool> tags)  =>
+      // ここで絞り込みを行う
+      // HashMap. keyのListを取得できる。このリストを使って、ループを行って、フィルターを使う
+     tags.entries
+        .where((element) => element.value)
+        .map((e) => e.key)
+        .toList();
 
 // getTagByIndexを使って、タグ選択が0〜4個の場合でもできるようにするメソッド
 // FoodsCompanionのインスタンス
