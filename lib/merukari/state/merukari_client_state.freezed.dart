@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'merukari_client_state.dart';
@@ -11,26 +12,7 @@ part of 'merukari_client_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$MerukariClientStateTearOff {
-  const _$MerukariClientStateTearOff();
-
-  _MerukariClientState call(
-      {bool isLoading = false,
-      bool isReadyData = false,
-      List<MerukariItem> merukariItems = const <MerukariItem>[]}) {
-    return _MerukariClientState(
-      isLoading: isLoading,
-      isReadyData: isReadyData,
-      merukariItems: merukariItems,
-    );
-  }
-}
-
-/// @nodoc
-const $MerukariClientState = _$MerukariClientStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$MerukariClientState {
@@ -85,26 +67,26 @@ class _$MerukariClientStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MerukariClientStateCopyWith<$Res>
+abstract class _$$_MerukariClientStateCopyWith<$Res>
     implements $MerukariClientStateCopyWith<$Res> {
-  factory _$MerukariClientStateCopyWith(_MerukariClientState value,
-          $Res Function(_MerukariClientState) then) =
-      __$MerukariClientStateCopyWithImpl<$Res>;
+  factory _$$_MerukariClientStateCopyWith(_$_MerukariClientState value,
+          $Res Function(_$_MerukariClientState) then) =
+      __$$_MerukariClientStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool isLoading, bool isReadyData, List<MerukariItem> merukariItems});
 }
 
 /// @nodoc
-class __$MerukariClientStateCopyWithImpl<$Res>
+class __$$_MerukariClientStateCopyWithImpl<$Res>
     extends _$MerukariClientStateCopyWithImpl<$Res>
-    implements _$MerukariClientStateCopyWith<$Res> {
-  __$MerukariClientStateCopyWithImpl(
-      _MerukariClientState _value, $Res Function(_MerukariClientState) _then)
-      : super(_value, (v) => _then(v as _MerukariClientState));
+    implements _$$_MerukariClientStateCopyWith<$Res> {
+  __$$_MerukariClientStateCopyWithImpl(_$_MerukariClientState _value,
+      $Res Function(_$_MerukariClientState) _then)
+      : super(_value, (v) => _then(v as _$_MerukariClientState));
 
   @override
-  _MerukariClientState get _value => super._value as _MerukariClientState;
+  _$_MerukariClientState get _value => super._value as _$_MerukariClientState;
 
   @override
   $Res call({
@@ -112,7 +94,7 @@ class __$MerukariClientStateCopyWithImpl<$Res>
     Object? isReadyData = freezed,
     Object? merukariItems = freezed,
   }) {
-    return _then(_MerukariClientState(
+    return _then(_$_MerukariClientState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -122,7 +104,7 @@ class __$MerukariClientStateCopyWithImpl<$Res>
           : isReadyData // ignore: cast_nullable_to_non_nullable
               as bool,
       merukariItems: merukariItems == freezed
-          ? _value.merukariItems
+          ? _value._merukariItems
           : merukariItems // ignore: cast_nullable_to_non_nullable
               as List<MerukariItem>,
     ));
@@ -135,17 +117,22 @@ class _$_MerukariClientState implements _MerukariClientState {
   const _$_MerukariClientState(
       {this.isLoading = false,
       this.isReadyData = false,
-      this.merukariItems = const <MerukariItem>[]});
+      final List<MerukariItem> merukariItems = const <MerukariItem>[]})
+      : _merukariItems = merukariItems;
 
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isLoading;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isReadyData;
-  @JsonKey()
+  final List<MerukariItem> _merukariItems;
   @override
-  final List<MerukariItem> merukariItems;
+  @JsonKey()
+  List<MerukariItem> get merukariItems {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_merukariItems);
+  }
 
   @override
   String toString() {
@@ -156,12 +143,12 @@ class _$_MerukariClientState implements _MerukariClientState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MerukariClientState &&
+            other is _$_MerukariClientState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other.isReadyData, isReadyData) &&
             const DeepCollectionEquality()
-                .equals(other.merukariItems, merukariItems));
+                .equals(other._merukariItems, _merukariItems));
   }
 
   @override
@@ -169,20 +156,20 @@ class _$_MerukariClientState implements _MerukariClientState {
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(isReadyData),
-      const DeepCollectionEquality().hash(merukariItems));
+      const DeepCollectionEquality().hash(_merukariItems));
 
   @JsonKey(ignore: true)
   @override
-  _$MerukariClientStateCopyWith<_MerukariClientState> get copyWith =>
-      __$MerukariClientStateCopyWithImpl<_MerukariClientState>(
+  _$$_MerukariClientStateCopyWith<_$_MerukariClientState> get copyWith =>
+      __$$_MerukariClientStateCopyWithImpl<_$_MerukariClientState>(
           this, _$identity);
 }
 
 abstract class _MerukariClientState implements MerukariClientState {
   const factory _MerukariClientState(
-      {bool isLoading,
-      bool isReadyData,
-      List<MerukariItem> merukariItems}) = _$_MerukariClientState;
+      {final bool isLoading,
+      final bool isReadyData,
+      final List<MerukariItem> merukariItems}) = _$_MerukariClientState;
 
   @override
   bool get isLoading;
@@ -192,6 +179,6 @@ abstract class _MerukariClientState implements MerukariClientState {
   List<MerukariItem> get merukariItems;
   @override
   @JsonKey(ignore: true)
-  _$MerukariClientStateCopyWith<_MerukariClientState> get copyWith =>
+  _$$_MerukariClientStateCopyWith<_$_MerukariClientState> get copyWith =>
       throw _privateConstructorUsedError;
 }

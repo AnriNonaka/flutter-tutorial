@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'youtube_client_state.dart';
@@ -11,26 +12,7 @@ part of 'youtube_client_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$YoutubeClientStateTearOff {
-  const _$YoutubeClientStateTearOff();
-
-  _YoutubeClientState call(
-      {bool isLoading = false,
-      bool isReadyData = false,
-      List<YoutubeItem> youtubeItems = const <YoutubeItem>[]}) {
-    return _YoutubeClientState(
-      isLoading: isLoading,
-      isReadyData: isReadyData,
-      youtubeItems: youtubeItems,
-    );
-  }
-}
-
-/// @nodoc
-const $YoutubeClientState = _$YoutubeClientStateTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$YoutubeClientState {
@@ -84,25 +66,25 @@ class _$YoutubeClientStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$YoutubeClientStateCopyWith<$Res>
+abstract class _$$_YoutubeClientStateCopyWith<$Res>
     implements $YoutubeClientStateCopyWith<$Res> {
-  factory _$YoutubeClientStateCopyWith(
-          _YoutubeClientState value, $Res Function(_YoutubeClientState) then) =
-      __$YoutubeClientStateCopyWithImpl<$Res>;
+  factory _$$_YoutubeClientStateCopyWith(_$_YoutubeClientState value,
+          $Res Function(_$_YoutubeClientState) then) =
+      __$$_YoutubeClientStateCopyWithImpl<$Res>;
   @override
   $Res call({bool isLoading, bool isReadyData, List<YoutubeItem> youtubeItems});
 }
 
 /// @nodoc
-class __$YoutubeClientStateCopyWithImpl<$Res>
+class __$$_YoutubeClientStateCopyWithImpl<$Res>
     extends _$YoutubeClientStateCopyWithImpl<$Res>
-    implements _$YoutubeClientStateCopyWith<$Res> {
-  __$YoutubeClientStateCopyWithImpl(
-      _YoutubeClientState _value, $Res Function(_YoutubeClientState) _then)
-      : super(_value, (v) => _then(v as _YoutubeClientState));
+    implements _$$_YoutubeClientStateCopyWith<$Res> {
+  __$$_YoutubeClientStateCopyWithImpl(
+      _$_YoutubeClientState _value, $Res Function(_$_YoutubeClientState) _then)
+      : super(_value, (v) => _then(v as _$_YoutubeClientState));
 
   @override
-  _YoutubeClientState get _value => super._value as _YoutubeClientState;
+  _$_YoutubeClientState get _value => super._value as _$_YoutubeClientState;
 
   @override
   $Res call({
@@ -110,7 +92,7 @@ class __$YoutubeClientStateCopyWithImpl<$Res>
     Object? isReadyData = freezed,
     Object? youtubeItems = freezed,
   }) {
-    return _then(_YoutubeClientState(
+    return _then(_$_YoutubeClientState(
       isLoading: isLoading == freezed
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
@@ -120,7 +102,7 @@ class __$YoutubeClientStateCopyWithImpl<$Res>
           : isReadyData // ignore: cast_nullable_to_non_nullable
               as bool,
       youtubeItems: youtubeItems == freezed
-          ? _value.youtubeItems
+          ? _value._youtubeItems
           : youtubeItems // ignore: cast_nullable_to_non_nullable
               as List<YoutubeItem>,
     ));
@@ -133,17 +115,22 @@ class _$_YoutubeClientState implements _YoutubeClientState {
   const _$_YoutubeClientState(
       {this.isLoading = false,
       this.isReadyData = false,
-      this.youtubeItems = const <YoutubeItem>[]});
+      final List<YoutubeItem> youtubeItems = const <YoutubeItem>[]})
+      : _youtubeItems = youtubeItems;
 
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isLoading;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isReadyData;
-  @JsonKey()
+  final List<YoutubeItem> _youtubeItems;
   @override
-  final List<YoutubeItem> youtubeItems;
+  @JsonKey()
+  List<YoutubeItem> get youtubeItems {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_youtubeItems);
+  }
 
   @override
   String toString() {
@@ -154,12 +141,12 @@ class _$_YoutubeClientState implements _YoutubeClientState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _YoutubeClientState &&
+            other is _$_YoutubeClientState &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality()
                 .equals(other.isReadyData, isReadyData) &&
             const DeepCollectionEquality()
-                .equals(other.youtubeItems, youtubeItems));
+                .equals(other._youtubeItems, _youtubeItems));
   }
 
   @override
@@ -167,19 +154,20 @@ class _$_YoutubeClientState implements _YoutubeClientState {
       runtimeType,
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(isReadyData),
-      const DeepCollectionEquality().hash(youtubeItems));
+      const DeepCollectionEquality().hash(_youtubeItems));
 
   @JsonKey(ignore: true)
   @override
-  _$YoutubeClientStateCopyWith<_YoutubeClientState> get copyWith =>
-      __$YoutubeClientStateCopyWithImpl<_YoutubeClientState>(this, _$identity);
+  _$$_YoutubeClientStateCopyWith<_$_YoutubeClientState> get copyWith =>
+      __$$_YoutubeClientStateCopyWithImpl<_$_YoutubeClientState>(
+          this, _$identity);
 }
 
 abstract class _YoutubeClientState implements YoutubeClientState {
   const factory _YoutubeClientState(
-      {bool isLoading,
-      bool isReadyData,
-      List<YoutubeItem> youtubeItems}) = _$_YoutubeClientState;
+      {final bool isLoading,
+      final bool isReadyData,
+      final List<YoutubeItem> youtubeItems}) = _$_YoutubeClientState;
 
   @override
   bool get isLoading;
@@ -189,6 +177,6 @@ abstract class _YoutubeClientState implements YoutubeClientState {
   List<YoutubeItem> get youtubeItems;
   @override
   @JsonKey(ignore: true)
-  _$YoutubeClientStateCopyWith<_YoutubeClientState> get copyWith =>
+  _$$_YoutubeClientStateCopyWith<_$_YoutubeClientState> get copyWith =>
       throw _privateConstructorUsedError;
 }
