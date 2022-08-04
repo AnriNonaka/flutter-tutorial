@@ -374,13 +374,10 @@ class FoodListScreen extends ConsumerWidget {
 // HashMapに入ってるValue (タグのON,OFFの状態)のtrueのkeyを抽出して,
 // enableTagsというListを作っている
 // Zennメモあり
-  List<String> getEnableTags(HashMap<String, bool> tags)  =>
+  List<String> getEnableTags(HashMap<String, bool> tags) =>
       // ここで絞り込みを行う
       // HashMap. keyのListを取得できる。このリストを使って、ループを行って、フィルターを使う
-     tags.entries
-        .where((element) => element.value)
-        .map((e) => e.key)
-        .toList();
+      tags.entries.where((element) => element.value).map((e) => e.key).toList();
 
 // getTagByIndexを使って、タグ選択が0〜4個の場合でもできるようにするメソッド
 // FoodsCompanionのインスタンス
@@ -444,11 +441,11 @@ class FoodListScreen extends ConsumerWidget {
             ),
             Row(
               children: [
-                _chip1(foodItems),
-                _chip2(foodItems),
-                _chip3(foodItems),
-                _chip4(foodItems),
-                _chip5(foodItems),
+                _chip(foodItems.tag1),
+                _chip(foodItems.tag2),
+                _chip(foodItems.tag3),
+                _chip(foodItems.tag4),
+                _chip(foodItems.tag5),
               ],
             ),
           ],
@@ -457,107 +454,17 @@ class FoodListScreen extends ConsumerWidget {
     );
   }
 
-  // Widget _test(Food foodItems) {
-  //   final chipList = [foodItems];
-  //   chipList.forEach((element) {
-  //   }
-  //     if (chipList.isEmpty) {
-  //       return Column();
-  //     } else {
-  //       return Chip(
-  //         label: Text(
-  //           '${foodItems.tag1}',
-  //           style: TextStyle(fontSize: 11),
-  //         ),
-  //         backgroundColor: Colors.greenAccent.shade100,
-  //         labelPadding: EdgeInsets.symmetric(horizontal: 5),
-  //         visualDensity: VisualDensity(horizontal: 0.0, vertical: -4),
-  //       );
-  //     }
-  // }
-
-  Widget _chip1(Food foodItems) {
-    if (foodItems.tag1.isEmpty) {
-      return SizedBox.shrink();
-    } else {
-      return Chip(
-        label: Text(
-          '${foodItems.tag1}',
-          style: TextStyle(fontSize: 11),
-        ),
-        backgroundColor: Colors.greenAccent.shade100,
-        labelPadding: EdgeInsets.symmetric(horizontal: 5),
-        visualDensity: VisualDensity(horizontal: 0.0, vertical: -4),
-      );
-    }
-  }
-
-  Widget _chip2(Food foodItems) {
-    if (foodItems.tag2.isEmpty) {
+  // 元々、tag1~5のメソッド5個あったのを、
+  // 引数だけをいじって使ってメソッドを1個にした。(動画あり)
+  Widget _chip(String tag) {
+    if (tag.isEmpty) {
       return SizedBox.shrink();
     } else {
       return Padding(
         padding: const EdgeInsets.only(left: 5.0),
         child: Chip(
           label: Text(
-            '${foodItems.tag2}',
-            style: TextStyle(fontSize: 11),
-          ),
-          backgroundColor: Colors.greenAccent.shade100,
-          labelPadding: EdgeInsets.symmetric(horizontal: 5),
-          visualDensity: VisualDensity(horizontal: 0.0, vertical: -4),
-        ),
-      );
-    }
-  }
-
-  Widget _chip3(Food foodItems) {
-    if (foodItems.tag3.isEmpty) {
-      return SizedBox.shrink();
-    } else {
-      return Padding(
-        padding: const EdgeInsets.only(left: 5.0),
-        child: Chip(
-          label: Text(
-            '${foodItems.tag3}',
-            style: TextStyle(fontSize: 11),
-          ),
-          backgroundColor: Colors.greenAccent.shade100,
-          labelPadding: EdgeInsets.symmetric(horizontal: 5),
-          visualDensity: VisualDensity(horizontal: 0.0, vertical: -4),
-        ),
-      );
-    }
-  }
-
-  Widget _chip4(Food foodItems) {
-    if (foodItems.tag4.isEmpty) {
-      return SizedBox.shrink();
-    } else {
-      return Padding(
-        padding: const EdgeInsets.only(left: 5.0),
-        child: Chip(
-          label: Text(
-            '${foodItems.tag4}',
-            style: TextStyle(fontSize: 11),
-          ),
-          backgroundColor: Colors.greenAccent.shade100,
-          labelPadding: EdgeInsets.symmetric(horizontal: 5),
-          visualDensity: VisualDensity(horizontal: 0.0, vertical: -4),
-        ),
-      );
-    }
-  }
-
-  Widget _chip5(Food foodItems) {
-    if (foodItems.tag5.isEmpty) {
-      return SizedBox.shrink();
-    } else {
-      return Padding(
-        padding: const EdgeInsets.only(left: 5.0),
-        child: Chip(
-          label: Text(
-            '${foodItems.tag5}',
+            '${tag}',
             style: TextStyle(fontSize: 11),
           ),
           backgroundColor: Colors.greenAccent.shade100,
