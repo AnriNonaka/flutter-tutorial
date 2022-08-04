@@ -112,13 +112,13 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
 
   Future<void> deleteFoodData(int id) async {
     await _foodListRepository.deleteFoodData(id);
-    await getFoodData();
+    getFoodData();
   }
 
   //stateにtagsだけ登録して通常のgetFoodDataを呼び出す
   Future<void> getFilteredFoodData(List<String> tags) async {
-    state = await state.copyWith(tags: tags);
-    await getFoodData();
+    state = state.copyWith(tags: tags);
+    getFoodData();
   }
 
 // ダミーデータを入れる際に必要なため残しておきます。
