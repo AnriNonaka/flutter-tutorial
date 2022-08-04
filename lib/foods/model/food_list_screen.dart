@@ -237,8 +237,10 @@ class FoodListScreen extends ConsumerWidget {
         );
       },
     );
-    if (tags != null) {
-      ref.read(foodStateNotifier.notifier).getFilteredFoodData(tags);
+    if (tags == null) {
+      return;
+    }
+     await ref.read(foodStateNotifier.notifier).getFilteredFoodData(tags);
     }
   }
 
