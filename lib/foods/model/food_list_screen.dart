@@ -237,24 +237,18 @@ class FoodListScreen extends ConsumerWidget {
         );
       },
     );
+    // nullチェック
+    // 早期リターンする方法がgood
     if (tags == null) {
       return;
     }
-     await ref.read(foodStateNotifier.notifier).getFilteredFoodData(tags);
-    }
+    await ref.read(foodStateNotifier.notifier).getFilteredFoodData(tags);
   }
 
 // HashMapに入ってるValue (タグのON,OFFの状態)のtrueのkeyを抽出して,
 // filterEnableTagsというListを作っている
-  List<String> getFilterEnableTags(HashMap<String, bool> tags) {
-    List<String> filterEnableTags = [];
-    // ここで絞り込みを行う
-    // HashMap. keyのListを取得できる。このリストを使って、ループを行って、フィルターを使う
-    tags.entries.where((element) => element.value).forEach((element) {
-      filterEnableTags.add(element.key);
-    });
-    return filterEnableTags;
-  }
+  List<String> getFilterEnableTags(HashMap<String, bool> tags) =>
+      tags.entries.where((element) => element.value).map((e) => e.key).toList();
 
   Future<void> _showInputDialog(BuildContext context, WidgetRef ref) async {
     final formKey = GlobalKey<FormState>();
@@ -264,121 +258,114 @@ class FoodListScreen extends ConsumerWidget {
     final needRefresh = await showDialog<bool>(
       context: context,
       builder: (context) {
-        //Consumerで囲むことにより、ダイアログ全体にアクセスできるようにする
-        return Consumer(
-          builder: (BuildContext context, WidgetRef ref, Widget? child) {
-            final state = ref.watch(foodInputStateNotifier);
-            return AlertDialog(
-              content: SizedBox(
-                height: 410,
-                width: double.maxFinite,
-                child: Form(
-                  key: formKey,
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        TextFormField(
-                          controller: title,
-                          decoration: InputDecoration(
-                            hintText: "料理名を入力してください",
-                            icon: Icon(Icons.restaurant_outlined),
-                          ),
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return '入力してください';
-                            }
-                            return null;
-                          },
-                        ),
-                        Wrap(
-                          children: List<Widget>.generate(_choiceList.length,
-                              (int index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: ChoiceChip(
-                                selectedColor: Colors.greenAccent.shade100,
-                                label: Text(_choiceList[index]),
-                                //selectしてるかしてないか
-                                selected:
-                                    //[]の中にkeyとして文字列(_choices)を入れてる
-                                    //2行上のlabelと同じものを入れてる
-                                    //HashMapに対してこう書くとtrueかfalseが返る
-                                    //HashMapの中に[〜]のkeyが入ってない場合は無効として扱う
-                                    state.tagData?[_choiceList[index]] ?? false,
-                                onSelected: (newBoolValue) {
-                                  //trueだったらfalse返ってくる(逆も)
-                                  ref
-                                      .read(foodInputStateNotifier.notifier)
-                                      .toggleTagChip(
-                                          _choiceList[index], newBoolValue);
-                                },
-                              ),
-                            );
-                          }),
-                        ),
-                      ],
+        final state = ref.watch(foodInputStateNotifier);
+
+        return AlertDialog(
+          content: SizedBox(
+            height: 410,
+            width: double.maxFinite,
+            child: Form(
+              key: formKey,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    TextFormField(
+                      controller: title,
+                      decoration: InputDecoration(
+                        hintText: "料理名を入力してください",
+                        icon: Icon(Icons.restaurant_outlined),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return '入力してください';
+                        }
+                        return null;
+                      },
                     ),
-                  ),
+                    Wrap(
+                      children: List<Widget>.generate(_choiceList.length,
+                          (int index) {
+                        return Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: ChoiceChip(
+                            selectedColor: Colors.greenAccent.shade100,
+                            label: Text(_choiceList[index]),
+                            //selectしてるかしてないか
+                            selected:
+                                //[]の中にkeyとして文字列(_choices)を入れてる
+                                //2行上のlabelと同じものを入れてる
+                                //HashMapに対してこう書くとtrueかfalseが返る
+                                //HashMapの中に[〜]のkeyが入ってない場合は無効として扱う
+                                state.tagData?[_choiceList[index]] ?? false,
+                            onSelected: (newBoolValue) {
+                              //trueだったらfalse返ってくる(逆も)
+                              ref
+                                  .read(foodInputStateNotifier.notifier)
+                                  .toggleTagChip(
+                                      _choiceList[index], newBoolValue);
+                            },
+                          ),
+                        );
+                      }),
+                    ),
+                  ],
                 ),
               ),
-              actions: <Widget>[
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.black26,
-                    side: BorderSide(
-                      color: Colors.black26,
-                      width: 1, //太さ
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context, false);
-                  },
-                  child: Text("キャンセル"),
+            ),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.black26,
+                side: BorderSide(
+                  color: Colors.black26,
+                  width: 1, //太さ
                 ),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.black26,
-                    side: BorderSide(
-                      color: Colors.black26,
-                      width: 1, //太さ
-                    ),
-                  ),
-                  onPressed: () async {
-                    //バリデーションない時だけ保存処理実行
-                    if (formKey.currentState!.validate()) {
-                      //tagsの中に、HashMapの中でtrueになったタグのStringが入ってくる
-                      final tags = getEnableTags(state.tagData ?? HashMap());
-                      //「newFood」が作られる(タイトル、タグ1~5(空のタグ含む) のセット)
-                      final newFood = createSaveData(title.text, tags);
-                      //作った「_newTodo」を_notifierのinsertTodoDataに渡してる
-                      //これで内部的にrepositoryを呼んでDBへの書き込みがされる
-                      ref
-                          .read(foodInputStateNotifier.notifier)
-                          .insertFoodData(newFood);
-                      //showDialogでtrueを返す
-                      Navigator.pop(context, true);
-                    }
-                  },
-                  child: Text("保存"),
-                )
-              ],
-            );
-          },
+              ),
+              onPressed: () {
+                Navigator.pop(context, false);
+              },
+              child: Text("キャンセル"),
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.black26,
+                side: BorderSide(
+                  color: Colors.black26,
+                  width: 1, //太さ
+                ),
+              ),
+              onPressed: () async {
+                //バリデーションない時だけ保存処理実行
+                if (formKey.currentState!.validate()) {
+                  //tagsの中に、HashMapの中でtrueになったタグのStringが入ってくる
+                  final tags = getEnableTags(state.tagData ?? HashMap());
+                  //「newFood」が作られる(タイトル、タグ1~5(空のタグ含む) のセット)
+                  final newFood = createSaveData(title.text, tags);
+                  //作った「_newTodo」を_notifierのinsertTodoDataに渡してる
+                  //これで内部的にrepositoryを呼んでDBへの書き込みがされる
+                  ref
+                      .read(foodInputStateNotifier.notifier)
+                      .insertFoodData(newFood);
+                  //showDialogでtrueを返す
+                  Navigator.pop(context, true);
+                }
+              },
+              child: Text("保存"),
+            )
+          ],
         );
       },
     );
-    //nullチェック
+
     if (needRefresh == true) {
       ref.read(foodStateNotifier.notifier).getFoodData();
     }
   }
 
-// HashMapに入ってるValue (タグのON,OFFの状態)のtrueのkeyを抽出して,
-// enableTagsというListを作っている
+// HashMapに入ってるValue (タグのON,OFFの状態)のtrueのkeyを抽出してListを作っている
 // Zennメモあり
   List<String> getEnableTags(HashMap<String, bool> tags) =>
-      // ここで絞り込みを行う
-      // HashMap. keyのListを取得できる。このリストを使って、ループを行って、フィルターを使う
       tags.entries.where((element) => element.value).map((e) => e.key).toList();
 
 // getTagByIndexを使って、タグ選択が0〜4個の場合でもできるようにするメソッド

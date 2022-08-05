@@ -6,7 +6,7 @@ import 'package:flutter_tutorial/foods/state/food_input_state.dart';
 
 final foodInputStateNotifier =
     StateNotifierProvider<FoodInputStateNotifier, FoodInputState>(
-  (ref) => FoodInputStateNotifier(),
+  (ref) => FoodInputStateNotifier(ref.read),
 );
 
 //FoodInputStateNotifierをstateとして持つStateNotifier。
@@ -15,23 +15,26 @@ final foodInputStateNotifier =
 //2：データの加工を行う(並び替えとかフィルタリングとか)
 //3：stateを更新する（ステートを更新したいと思ったらStateNotifierに処理を書く）
 class FoodInputStateNotifier extends StateNotifier<FoodInputState> {
-  FoodInputStateNotifier() : super(FoodInputState()) {}
+  FoodInputStateNotifier(this.read) : super(FoodInputState()) {}
 
-  final _repository = FoodListRepository();
+  // late final _repository = read(foodListRepository); を以下に変更。
+  // ↑ repository.dartにあるProviderを使うために
+  final Reader read;
+  FoodListRepository get _foodInputRepository => read(foodListRepository);
 
   //toggle:ONとOFFを切り替える(電気スイッチみたいに)
   //isEnable：有効です(trueだったら有効です、falseだったら有効じゃないです)
   Future<void> toggleTagChip(String tag, bool isEnable) async {
     final HashMap<String, bool> tagSelectState =
         state.tagData ?? HashMap<String, bool>();
-    List<String> enableTags = [];
-    // HashMap. keyのListを取得できる。このリストを使って、ループを行って、フィルターを使う
-    tagSelectState.entries.where((element) => element.value).forEach((element) {
-      enableTags.add(element.key);
-    });
+    // HashMapの中でvalueがtrueのkeyを抽出して_enableTagsというListにしてる
+    final _enableTags = tagSelectState.entries
+        .where((element) => element.value)
+        .map((e) => e.key)
+        .toList();
     // tagSelectState(HashMap)の中にtrueの数が5個以上
     // 且つisEnableがtrueならreturnする
-    if (enableTags.length > 4 && isEnable) {
+    if (_enableTags.length > 4 && isEnable) {
       //ここで早期リターンして、ここ以下の処理はしない
       return;
     }
@@ -48,6 +51,6 @@ class FoodInputStateNotifier extends StateNotifier<FoodInputState> {
     //ローディングたてて
     state = state.copyWith(isLoading: true);
     //新規でレコード追加して
-    _repository.insertFoodData(food);
+    _foodInputRepository.insertFoodData(food);
   }
 }

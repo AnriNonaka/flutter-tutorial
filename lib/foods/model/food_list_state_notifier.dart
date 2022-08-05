@@ -19,8 +19,9 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
     getFoodData();
   }
 
+  // late final _repository = read(foodListRepository); を以下に変更。
+  // ↑ repository.dartにあるProviderを使うために
   final Reader read;
-  //late final _repository = read(foodListRepository); を以下に変更。
   // late以前の同様の書き方。
   // 全く同じではなく、lateの場合は結果がキャッシュされる違いがある。
   // 特にimmutable値はlateだと古い値のままになり得るため、
@@ -146,7 +147,7 @@ class FoodStateNotifier extends StateNotifier<FoodListState> {
 //     FoodsCompanion( title: drift.Value('ピザトースト'),tag1: drift.Value('朝食'),tag2: drift.Value('洋食'),tag3: drift.Value('メイン'),tag4: drift.Value(''),tag5: drift.Value('')),
 //   ];
 //
-//   foods.forEach((food) { _repository.insertFoodData(food);});
+//   foods.forEach((food) { _foodListRepository.insertFoodData(food);});
 //   getFoodData();
 // }
 }
