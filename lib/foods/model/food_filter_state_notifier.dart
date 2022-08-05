@@ -29,19 +29,15 @@ class FoodFilterStateNotifier extends StateNotifier<FoodFilterState> {
         .where((element) => element.value)
         .map((e) => e.key)
         .toList();
-    print(_enableTags);
     // tagSelectState(HashMap)の中にtrueの数が2個以上
     // 且つisEnableがtrueならreturnする
     if (_enableTags.length > 1 && isEnable) {
-      print(_enableTags);
-
       //ここで早期リターンして、ここ以下の処理はしない
       return;
     }
 
     //filterTagSelectStateのtagをkey(String)としてEnableで書き換えてる
     filterTagSelectState[tag] = isEnable;
-    print(_enableTags);
 
     //上でEnableで書き換えたものがfilterTagSelectStateに入ってくる
     state = state.copyWith(filterTagSelectState: filterTagSelectState);
