@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'residence_item.dart';
@@ -11,63 +12,28 @@ part of 'residence_item.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ResidenceItem _$ResidenceItemFromJson(Map<String, dynamic> json) {
   return _ResidenceItem.fromJson(json);
 }
 
 /// @nodoc
-class _$ResidenceItemTearOff {
-  const _$ResidenceItemTearOff();
-
-  _ResidenceItem call(
-      {@JsonKey(name: 'imagePath') String? imagePath,
-      @JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'price') String? price,
-      @JsonKey(name: 'traffic') String? traffic,
-      @JsonKey(name: 'detail1') String? detail1,
-      @JsonKey(name: 'detail2') String? detail2}) {
-    return _ResidenceItem(
-      imagePath: imagePath,
-      title: title,
-      price: price,
-      traffic: traffic,
-      detail1: detail1,
-      detail2: detail2,
-    );
-  }
-
-  ResidenceItem fromJson(Map<String, Object?> json) {
-    return ResidenceItem.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ResidenceItem = _$ResidenceItemTearOff();
-
-/// @nodoc
 mixin _$ResidenceItem {
   @JsonKey(name: 'imagePath')
   String? get imagePath => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'title')
   String? get title => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'price')
   String? get price => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'traffic')
   String? get traffic => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'detail1')
   String? get detail1 => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'detail2')
   String? get detail2 => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $ResidenceItemCopyWith<ResidenceItem> get copyWith =>
       throw _privateConstructorUsedError;
@@ -78,7 +44,6 @@ abstract class $ResidenceItemCopyWith<$Res> {
   factory $ResidenceItemCopyWith(
           ResidenceItem value, $Res Function(ResidenceItem) then) =
       _$ResidenceItemCopyWithImpl<$Res>;
-
   $Res call(
       {@JsonKey(name: 'imagePath') String? imagePath,
       @JsonKey(name: 'title') String? title,
@@ -94,7 +59,6 @@ class _$ResidenceItemCopyWithImpl<$Res>
   _$ResidenceItemCopyWithImpl(this._value, this._then);
 
   final ResidenceItem _value;
-
   // ignore: unused_field
   final $Res Function(ResidenceItem) _then;
 
@@ -137,12 +101,11 @@ class _$ResidenceItemCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ResidenceItemCopyWith<$Res>
+abstract class _$$_ResidenceItemCopyWith<$Res>
     implements $ResidenceItemCopyWith<$Res> {
-  factory _$ResidenceItemCopyWith(
-          _ResidenceItem value, $Res Function(_ResidenceItem) then) =
-      __$ResidenceItemCopyWithImpl<$Res>;
-
+  factory _$$_ResidenceItemCopyWith(
+          _$_ResidenceItem value, $Res Function(_$_ResidenceItem) then) =
+      __$$_ResidenceItemCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'imagePath') String? imagePath,
@@ -154,15 +117,15 @@ abstract class _$ResidenceItemCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ResidenceItemCopyWithImpl<$Res>
+class __$$_ResidenceItemCopyWithImpl<$Res>
     extends _$ResidenceItemCopyWithImpl<$Res>
-    implements _$ResidenceItemCopyWith<$Res> {
-  __$ResidenceItemCopyWithImpl(
-      _ResidenceItem _value, $Res Function(_ResidenceItem) _then)
-      : super(_value, (v) => _then(v as _ResidenceItem));
+    implements _$$_ResidenceItemCopyWith<$Res> {
+  __$$_ResidenceItemCopyWithImpl(
+      _$_ResidenceItem _value, $Res Function(_$_ResidenceItem) _then)
+      : super(_value, (v) => _then(v as _$_ResidenceItem));
 
   @override
-  _ResidenceItem get _value => super._value as _ResidenceItem;
+  _$_ResidenceItem get _value => super._value as _$_ResidenceItem;
 
   @override
   $Res call({
@@ -173,7 +136,7 @@ class __$ResidenceItemCopyWithImpl<$Res>
     Object? detail1 = freezed,
     Object? detail2 = freezed,
   }) {
-    return _then(_ResidenceItem(
+    return _then(_$_ResidenceItem(
       imagePath: imagePath == freezed
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
@@ -244,7 +207,7 @@ class _$_ResidenceItem implements _ResidenceItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ResidenceItem &&
+            other is _$_ResidenceItem &&
             const DeepCollectionEquality().equals(other.imagePath, imagePath) &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.price, price) &&
@@ -253,6 +216,7 @@ class _$_ResidenceItem implements _ResidenceItem {
             const DeepCollectionEquality().equals(other.detail2, detail2));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -265,23 +229,25 @@ class _$_ResidenceItem implements _ResidenceItem {
 
   @JsonKey(ignore: true)
   @override
-  _$ResidenceItemCopyWith<_ResidenceItem> get copyWith =>
-      __$ResidenceItemCopyWithImpl<_ResidenceItem>(this, _$identity);
+  _$$_ResidenceItemCopyWith<_$_ResidenceItem> get copyWith =>
+      __$$_ResidenceItemCopyWithImpl<_$_ResidenceItem>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ResidenceItemToJson(this);
+    return _$$_ResidenceItemToJson(
+      this,
+    );
   }
 }
 
 abstract class _ResidenceItem implements ResidenceItem {
   const factory _ResidenceItem(
-      {@JsonKey(name: 'imagePath') String? imagePath,
-      @JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'price') String? price,
-      @JsonKey(name: 'traffic') String? traffic,
-      @JsonKey(name: 'detail1') String? detail1,
-      @JsonKey(name: 'detail2') String? detail2}) = _$_ResidenceItem;
+      {@JsonKey(name: 'imagePath') final String? imagePath,
+      @JsonKey(name: 'title') final String? title,
+      @JsonKey(name: 'price') final String? price,
+      @JsonKey(name: 'traffic') final String? traffic,
+      @JsonKey(name: 'detail1') final String? detail1,
+      @JsonKey(name: 'detail2') final String? detail2}) = _$_ResidenceItem;
 
   factory _ResidenceItem.fromJson(Map<String, dynamic> json) =
       _$_ResidenceItem.fromJson;
@@ -289,29 +255,23 @@ abstract class _ResidenceItem implements ResidenceItem {
   @override
   @JsonKey(name: 'imagePath')
   String? get imagePath;
-
   @override
   @JsonKey(name: 'title')
   String? get title;
-
   @override
   @JsonKey(name: 'price')
   String? get price;
-
   @override
   @JsonKey(name: 'traffic')
   String? get traffic;
-
   @override
   @JsonKey(name: 'detail1')
   String? get detail1;
-
   @override
   @JsonKey(name: 'detail2')
   String? get detail2;
-
   @override
   @JsonKey(ignore: true)
-  _$ResidenceItemCopyWith<_ResidenceItem> get copyWith =>
+  _$$_ResidenceItemCopyWith<_$_ResidenceItem> get copyWith =>
       throw _privateConstructorUsedError;
 }

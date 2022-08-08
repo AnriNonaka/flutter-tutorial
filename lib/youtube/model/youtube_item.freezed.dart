@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'youtube_item.dart';
@@ -11,63 +12,28 @@ part of 'youtube_item.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 YoutubeItem _$YoutubeItemFromJson(Map<String, dynamic> json) {
   return _YoutubeItem.fromJson(json);
 }
 
 /// @nodoc
-class _$YoutubeItemTearOff {
-  const _$YoutubeItemTearOff();
-
-  _YoutubeItem call(
-      {@JsonKey(name: 'imagePath') String? imagePath,
-      @JsonKey(name: 'iconPath') String? iconPath,
-      @JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'channelName') String? channelName,
-      @JsonKey(name: 'numOfViews') int? numOfViews,
-      @JsonKey(name: 'daysAgo') int? daysAgo}) {
-    return _YoutubeItem(
-      imagePath: imagePath,
-      iconPath: iconPath,
-      title: title,
-      channelName: channelName,
-      numOfViews: numOfViews,
-      daysAgo: daysAgo,
-    );
-  }
-
-  YoutubeItem fromJson(Map<String, Object?> json) {
-    return YoutubeItem.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $YoutubeItem = _$YoutubeItemTearOff();
-
-/// @nodoc
 mixin _$YoutubeItem {
   @JsonKey(name: 'imagePath')
   String? get imagePath => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'iconPath')
   String? get iconPath => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'title')
   String? get title => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'channelName')
   String? get channelName => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'numOfViews')
   int? get numOfViews => throw _privateConstructorUsedError;
-
   @JsonKey(name: 'daysAgo')
   int? get daysAgo => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $YoutubeItemCopyWith<YoutubeItem> get copyWith =>
       throw _privateConstructorUsedError;
@@ -78,7 +44,6 @@ abstract class $YoutubeItemCopyWith<$Res> {
   factory $YoutubeItemCopyWith(
           YoutubeItem value, $Res Function(YoutubeItem) then) =
       _$YoutubeItemCopyWithImpl<$Res>;
-
   $Res call(
       {@JsonKey(name: 'imagePath') String? imagePath,
       @JsonKey(name: 'iconPath') String? iconPath,
@@ -93,7 +58,6 @@ class _$YoutubeItemCopyWithImpl<$Res> implements $YoutubeItemCopyWith<$Res> {
   _$YoutubeItemCopyWithImpl(this._value, this._then);
 
   final YoutubeItem _value;
-
   // ignore: unused_field
   final $Res Function(YoutubeItem) _then;
 
@@ -136,12 +100,11 @@ class _$YoutubeItemCopyWithImpl<$Res> implements $YoutubeItemCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$YoutubeItemCopyWith<$Res>
+abstract class _$$_YoutubeItemCopyWith<$Res>
     implements $YoutubeItemCopyWith<$Res> {
-  factory _$YoutubeItemCopyWith(
-          _YoutubeItem value, $Res Function(_YoutubeItem) then) =
-      __$YoutubeItemCopyWithImpl<$Res>;
-
+  factory _$$_YoutubeItemCopyWith(
+          _$_YoutubeItem value, $Res Function(_$_YoutubeItem) then) =
+      __$$_YoutubeItemCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'imagePath') String? imagePath,
@@ -153,14 +116,14 @@ abstract class _$YoutubeItemCopyWith<$Res>
 }
 
 /// @nodoc
-class __$YoutubeItemCopyWithImpl<$Res> extends _$YoutubeItemCopyWithImpl<$Res>
-    implements _$YoutubeItemCopyWith<$Res> {
-  __$YoutubeItemCopyWithImpl(
-      _YoutubeItem _value, $Res Function(_YoutubeItem) _then)
-      : super(_value, (v) => _then(v as _YoutubeItem));
+class __$$_YoutubeItemCopyWithImpl<$Res> extends _$YoutubeItemCopyWithImpl<$Res>
+    implements _$$_YoutubeItemCopyWith<$Res> {
+  __$$_YoutubeItemCopyWithImpl(
+      _$_YoutubeItem _value, $Res Function(_$_YoutubeItem) _then)
+      : super(_value, (v) => _then(v as _$_YoutubeItem));
 
   @override
-  _YoutubeItem get _value => super._value as _YoutubeItem;
+  _$_YoutubeItem get _value => super._value as _$_YoutubeItem;
 
   @override
   $Res call({
@@ -171,7 +134,7 @@ class __$YoutubeItemCopyWithImpl<$Res> extends _$YoutubeItemCopyWithImpl<$Res>
     Object? numOfViews = freezed,
     Object? daysAgo = freezed,
   }) {
-    return _then(_YoutubeItem(
+    return _then(_$_YoutubeItem(
       imagePath: imagePath == freezed
           ? _value.imagePath
           : imagePath // ignore: cast_nullable_to_non_nullable
@@ -242,7 +205,7 @@ class _$_YoutubeItem implements _YoutubeItem {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _YoutubeItem &&
+            other is _$_YoutubeItem &&
             const DeepCollectionEquality().equals(other.imagePath, imagePath) &&
             const DeepCollectionEquality().equals(other.iconPath, iconPath) &&
             const DeepCollectionEquality().equals(other.title, title) &&
@@ -253,6 +216,7 @@ class _$_YoutubeItem implements _YoutubeItem {
             const DeepCollectionEquality().equals(other.daysAgo, daysAgo));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -265,23 +229,25 @@ class _$_YoutubeItem implements _YoutubeItem {
 
   @JsonKey(ignore: true)
   @override
-  _$YoutubeItemCopyWith<_YoutubeItem> get copyWith =>
-      __$YoutubeItemCopyWithImpl<_YoutubeItem>(this, _$identity);
+  _$$_YoutubeItemCopyWith<_$_YoutubeItem> get copyWith =>
+      __$$_YoutubeItemCopyWithImpl<_$_YoutubeItem>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_YoutubeItemToJson(this);
+    return _$$_YoutubeItemToJson(
+      this,
+    );
   }
 }
 
 abstract class _YoutubeItem implements YoutubeItem {
   const factory _YoutubeItem(
-      {@JsonKey(name: 'imagePath') String? imagePath,
-      @JsonKey(name: 'iconPath') String? iconPath,
-      @JsonKey(name: 'title') String? title,
-      @JsonKey(name: 'channelName') String? channelName,
-      @JsonKey(name: 'numOfViews') int? numOfViews,
-      @JsonKey(name: 'daysAgo') int? daysAgo}) = _$_YoutubeItem;
+      {@JsonKey(name: 'imagePath') final String? imagePath,
+      @JsonKey(name: 'iconPath') final String? iconPath,
+      @JsonKey(name: 'title') final String? title,
+      @JsonKey(name: 'channelName') final String? channelName,
+      @JsonKey(name: 'numOfViews') final int? numOfViews,
+      @JsonKey(name: 'daysAgo') final int? daysAgo}) = _$_YoutubeItem;
 
   factory _YoutubeItem.fromJson(Map<String, dynamic> json) =
       _$_YoutubeItem.fromJson;
@@ -289,29 +255,23 @@ abstract class _YoutubeItem implements YoutubeItem {
   @override
   @JsonKey(name: 'imagePath')
   String? get imagePath;
-
   @override
   @JsonKey(name: 'iconPath')
   String? get iconPath;
-
   @override
   @JsonKey(name: 'title')
   String? get title;
-
   @override
   @JsonKey(name: 'channelName')
   String? get channelName;
-
   @override
   @JsonKey(name: 'numOfViews')
   int? get numOfViews;
-
   @override
   @JsonKey(name: 'daysAgo')
   int? get daysAgo;
-
   @override
   @JsonKey(ignore: true)
-  _$YoutubeItemCopyWith<_YoutubeItem> get copyWith =>
+  _$$_YoutubeItemCopyWith<_$_YoutubeItem> get copyWith =>
       throw _privateConstructorUsedError;
 }
