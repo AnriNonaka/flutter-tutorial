@@ -1,70 +1,146 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_tutorial/foods/model/food_list_screen.dart';
+import 'package:flutter_tutorial/todo_app/state/todo_screen.dart';
+import 'package:flutter_tutorial/youtube/youtube_top_screen.dart';
+import 'package:flutter_tutorial/residence/residence_top_screen.dart';
+import 'animation/animation_screen.dart';
+import 'async/async_screen.dart';
+import 'building/building_layout_screen.dart';
+import 'merukari/merukari_screen.dart';
+import 'mvvm/qiita_top_screen.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+void main() => runApp(
+      //これは必須
+      const ProviderScope(child: MyApp()),
+    );
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+    return const MaterialApp(title: 'Tutorial', home: Home());
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+class Home extends StatelessWidget {
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('メイン画面'),
       ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.all(100),
+        child: Center(
+          child: Column(
+            children: [
+              ElevatedButton(
+                child: const Text('Tutorial1'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => const BuildLayoutScreen(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Tutorial1-1'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => const LogoApp(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('YouTube'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => const YoutubeTopScreen(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Tutorial2-2'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => const ResidenceTopScreen(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Tutorial2-3'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => const MerukariScreen(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('async'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => const AsyncScreen(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Tutorial5'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => const QiitaTopScreen(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Tutorial8'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => const TodoScreen(),
+                    ),
+                  );
+                },
+              ),
+              ElevatedButton(
+                child: const Text('Tutorial9'),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<void>(
+                      builder: (context) => FoodListScreen(),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
